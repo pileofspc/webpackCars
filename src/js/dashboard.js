@@ -1,14 +1,19 @@
 import '../assets/sass/dashboard.sass'
-import '../assets/img/logo.svg'
-require.context('../assets/img/icons/', false, /\.svg$/);
+require.context('../assets/img/dashboard/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
 
-// let navLinks = document.querySelectorAll('.nav__link');
 
-// for (let navLink of navLinks) {
-//     let imgName = navLink.textContent.replace(' ', '').toLowerCase();
-//     navLink.children[0].src = `assets/img/${imgName}_icon.svg`;
-    
-//     if (navLink.href === window.location.href) {
-//         navLink.classList.add('current')
-//     }
-// }
+// 
+
+// Notification bell
+let unreadBellPath = '/assets/img/notification-bell_active.svg';
+let bellPath = '/assets/img/notification-bell.svg';
+
+let unreadNotifications = true;
+
+if (unreadNotifications) {
+    let bell = document.querySelector('.notification-bell__img');
+    bell.setAttribute('src', unreadBellPath)
+} else {
+    let bell = document.querySelector('.notification-bell__img');
+    bell.setAttribute('src', bellPath)
+}

@@ -1,7 +1,7 @@
 const base =  require('./webpack.config.base.js');
 const {merge} = require('webpack-merge');
 
-const functions = require('./functions.js');
+const functions = require('./user_scripts/functions.js');
 
 let newOptions = {
     mode: 'production',

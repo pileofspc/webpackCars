@@ -6,18 +6,19 @@
     padding: 0
     margin: 0
 
-ul
-    list-style: none
+input
+    border: none
+    &:focus
+        outline: none
 
 // PAGE
 .page
     font-family: 'DM Sans', sans-serif
     background-color: v.$background
     color: v.$text
-
-.page__sidebar
-    position: fixed
-    padding-left: 26px
+    &__sidebar
+        position: fixed
+        padding-left: 26px
 
 // BLOCKS
 .link
@@ -36,36 +37,41 @@ ul
     font-size: 14px
     font-weight: 500
     line-height: 18px
+    &__logo
+        display: flex
+        margin-top: 30px
+        margin-bottom: 35px
+    &__logo-img
+        display: block
+        width: 109px
+        height: auto
 
-    
-.sidebar__logo
+.nav
     display: flex
-    height: 96px
+    flex-direction: column
+    height: 100%
+    &__controls
+        margin-top: auto
+    &__link
+        display: flex
+        flex-direction: row
+        align-content: center
+        
+        border-radius: 6px
 
-.sidebar__logo-img
-    display: block
+        width: 174px
+        padding: 7px
+        padding-left: 8px
+        margin-bottom: 17px
 
-.nav__link
-    display: flex
-    flex-direction: row
-    align-content: center
-    
-    
-    border-radius: 6px
-
-    width: 174px
-    padding: 7px
-    padding-left: 8px
-    margin-bottom: 17px
-
-    filter: opacity(0.5)
-    background-color: transparent
-    &.current
+        filter: opacity(0.5)
+        background-color: transparent
+    &__img
+        margin-right: 8px
+    &_current-link
         filter: none
         background-color: v.$link-active
-.nav__img
-    margin-right: 8px
-
+   
 .header
     display: flex
     height: 78px
@@ -74,9 +80,59 @@ ul
     margin-left: 248px
     padding-left: 30px
     padding-right: 30px
+    &__searchbar
+        margin-top: auto
+        margin-bottom: auto
+    &__user
+        margin-left: auto
+        margin-top: auto
+        margin-bottom: auto
+
+$header_inner_height: 46px
 
 .searchbar
-    width: 100px
-    height: 46px
-
+    display: flex
+    width: 358px
+    height: $header_inner_height
     background-color: v.$background
+    border-radius: 8px
+    &__icon
+        margin-left: auto
+        margin-right: auto
+        width: 20px
+        height: auto
+    &__form
+        margin-left: auto
+    &__input
+        width: 306px
+        height: 100%
+        background-color: transparent
+        caret-color: v.$caret-color
+
+        color: v.$text
+        font-family: 'DM Sans'
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+
+.user
+    display: flex
+    justify-content: flex-end
+    align-items: center
+
+    width: 110px
+    height: $header_inner_height
+    &__profile
+        margin-left: 39px
+
+.profile
+    position: relative
+    overflow: hidden
+    border-radius: 50%
+
+    width: $header_inner_height
+    height: $header_inner_height
+    &__img
+        height: 100%
+        width: auto
+        transform: translate(var(--avatar_translate, 0)) scale(var(--avatar_scale, 1)) 
