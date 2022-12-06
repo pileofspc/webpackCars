@@ -1,0 +1,82 @@
+@use 'vars' as v
+@use 'fonts'
+
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+ul
+    list-style: none
+
+// PAGE
+.page
+    font-family: 'DM Sans', sans-serif
+    background-color: v.$background
+    color: v.$text
+
+.page__sidebar
+    position: fixed
+    padding-left: 26px
+
+// BLOCKS
+.link
+    color: inherit
+    text-decoration: inherit
+
+.sidebar
+    display: flex
+    flex-direction: column
+
+    width: 248px
+    height: 100%
+    background-color: v.$primary
+
+    font-family: DM Sans
+    font-size: 14px
+    font-weight: 500
+    line-height: 18px
+
+    
+.sidebar__logo
+    display: flex
+    height: 96px
+
+.sidebar__logo-img
+    display: block
+
+.nav__link
+    display: flex
+    flex-direction: row
+    align-content: center
+    
+    
+    border-radius: 6px
+
+    width: 174px
+    padding: 7px
+    padding-left: 8px
+    margin-bottom: 17px
+
+    filter: opacity(0.5)
+    background-color: transparent
+    &.current
+        filter: none
+        background-color: v.$link-active
+.nav__img
+    margin-right: 8px
+
+.header
+    display: flex
+    height: 78px
+    background-color: v.$primary
+
+    margin-left: 248px
+    padding-left: 30px
+    padding-right: 30px
+
+.searchbar
+    width: 100px
+    height: 46px
+
+    background-color: v.$background
