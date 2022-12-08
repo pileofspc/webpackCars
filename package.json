@@ -5,10 +5,10 @@
   "main": "src/js/index.js",
   "scripts": {
     "dev": "webpack serve --config webpack.config.dev.js",
-    "dev+build": "npm run \"build dev\" & webpack serve --config webpack.config.dev.js",
     "build dev": "webpack --config webpack.config.dev.js",
     "build prod": "webpack --config webpack.config.prod.js",
-    "addMissingJs": "node user_scripts/addMissingJs.js"
+    "addMissingJs": "node user_scripts/addMissingJs.js",
+    "dev+build": "npm run \"build dev\" & webpack serve --config webpack.config.dev.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,5 +1,6 @@
 @use 'vars' as v
 @use 'fonts'
+// @use "sass:color"
 
 *
     box-sizing: border-box
@@ -33,7 +34,7 @@ input
 
     width: 248px
     height: 100%
-    background-color: v.$primary
+    background-color: v.$primary1
 
     font-family: DM Sans
     font-size: 14px
@@ -79,7 +80,7 @@ input
 .header
     display: flex
     height: 78px
-    background-color: v.$primary
+    background-color: v.$primary1
 
     padding-left: 30px
     padding-right: 30px
@@ -140,10 +141,6 @@ $header_inner_height: 46px
         width: auto
         transform: translate(var(--avatar_translate, 0)) scale(var(--avatar_scale, 1))
 
-@function scaleHeight($value)
-    $result: calc($value*0.89)
-    @return $result
-
 .content
     display: grid
     column-gap: 25px
@@ -154,19 +151,70 @@ $header_inner_height: 46px
     grid-template-rows: 266px 332px 236px
 
     padding: 30px
-    background-color: #ffffff
     width: 100%
-    div
-        background-color: black
+
+// Primary3     purple
+// secondary1   red
+// secondary2   yellow
 
 .grid
     border-radius: 14px
-.grid3
-    grid-column: span 3
-    width: 232px
-.grid6
-    grid-column: span 6
-    width: 488px
-.grid4
-    grid-column: span 4
-    width: 318px
+    background-color: v.$primary1
+    &_active
+        .grid__logo
+            filter: brightness(98%) hue-rotate(-5deg) brightness(115%)
+        .grid__name
+            visibility: visible
+    &_3
+        grid-column: span 3
+        width: 232px
+    &_4
+        grid-column: span 4
+        width: 318px
+    &_6
+        grid-column: span 6
+        width: 488px
+    &_meter
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &__logo
+        -webkit-mask-size: cover
+        -webkit-mask-image: url('/assets/img/range.svg')
+        mask-size: cover
+        mask-image: url('/assets/img/range.svg')
+        background-color: green
+        width: 40px
+        height: 40px
+
+        margin-top: 22.5px
+    &__name
+        visibility: hidden
+        margin-top: 10px
+        font-size: 24px
+        font-weight: 700
+    &__progress-bar
+        margin-top: 30px
+
+#energy
+    &.grid_active
+        background-color: v.$primary3
+        .grid__logo
+            content: url('/assets/img/energy_active.svg')
+#range
+    &.grid_active
+        background-color: v.$secondary1
+        .grid__logo
+            content: url('/assets/img/range_active.svg')
+#break-fluid
+    &.grid_active
+        background-color: v.$primary3
+        .grid__logo
+            content: url('/assets/img/break_fluid_active.svg')
+#tire-wear
+    &.grid_active
+        background-color: v.$secondary2
+        color: v.$primary1
+        .grid__logo
+            content: url('/assets/img/tire_wear_active.svg')

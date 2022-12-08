@@ -24,9 +24,20 @@ let newOptions = {
                     {
                         loader: 'css-loader',
                         options: {
-                            // url: false,
+                            url: false,
                         }
                     },
+                    // {
+                    //     loader: 'postcss-loader',
+                    //     options: {
+                    //         postcssOptions: {
+                    //             plugins: [
+                    //                 // require('autoprefixer')
+                    //             ],
+                    //         },
+                            
+                    //     }
+                    // },
                     // 'resolve-url-loader',
                     'sass-loader',
                 ],
