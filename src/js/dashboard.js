@@ -1,10 +1,8 @@
 "use strict"
 
 import '../assets/sass/dashboard.sass'
+// import '../assets/less/dashboard.less'
 require.context('../assets/img/dashboard/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
-
-
-// 
 
 // Notification bell
 let unreadBellPath = '/assets/img/notification-bell_active.svg';
@@ -21,22 +19,15 @@ if (unreadNotifications) {
 }
 
 
-// let grids = document.querySelectorAll('.grid_meter');
-// let currentMeter = grids[0];
-// for (let grid of grids) {
-//     grid.addEventListener('click', () => {
-//         for (let grid of grids) {
-//             grid.classList.remove('grid_active');
-//         }
-//         grid.classList.add('grid_active');
-//         currentMeter = grid;
-//     })
-//     grid.addEventListener('mouseover', () => {
-//         grid.classList.add('grid_active');
-//     })
-//     grid.addEventListener('mouseout', () => {
-//         if (currentMeter !== grid) {
-//             grid.classList.remove('grid_active');
-//         }
-//     })
-// }
+// Ховер эффекты
+let grids = document.querySelectorAll('.grid_meter');
+let currentGridActive = grids[0];
+currentGridActive.classList.add('grid_active');
+
+for (let grid of grids) {
+    grid.addEventListener('mouseover', () => {
+        currentGridActive.classList.remove('grid_active');
+        grid.classList.add('grid_active');
+        currentGridActive = grid;
+    })
+}

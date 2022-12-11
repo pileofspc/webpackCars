@@ -1,0 +1,363 @@
+@import "_vars";
+@import '_fonts';
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+//  PAGE
+.page {
+    font-family: 'DM Sans', sans-serif;
+    background-color: @background;
+    color: @text;
+
+    &__sidebar {
+        position: fixed;
+        padding-left: 26px;
+    }
+
+    &__main {
+        margin-left: 248px;
+    }
+}
+
+// BLOCKS
+.link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+    width: 248px;
+    height: 100%;
+    background-color: @primary1;
+
+    font-family: 'DM Sans';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+
+    &__logo {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 35px;
+    }
+
+    &__logo-img {
+        display: block;
+        width: 109px;
+        height: auto;
+    }
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__controls {
+        margin-top: auto;
+    }
+
+    &__link {
+        &:hover {
+            filter: opacity(0.75);
+        }
+
+        display : flex;
+        flex-direction: row;
+        align-content : center;
+
+        border-radius: 6px;
+
+        width : 174px;
+        padding : 7px;
+        padding-left : 8px;
+        margin-bottom: 17px;
+
+        filter : opacity(0.5);
+        background-color: transparent;
+    }
+
+    &__img {
+        margin-right: 8px;
+    }
+
+    &_current-link {
+        filter: none;
+        background-color: @link-active;
+    }
+}
+
+.header {
+    display: flex;
+    height: 78px;
+    background-color: @primary1;
+
+    padding-left: 30px;
+    padding-right: 30px;
+
+    &__searchbar {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    &__user {
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+@header_inner_height: 46px;
+
+.searchbar {
+    display: flex;
+    width: 358px;
+    height: @header_inner_height;
+    background-color: @background;
+    border-radius: 8px;
+
+    &__icon {
+        margin-left: auto;
+        margin-right: auto;
+        width: 20px;
+        height: auto;
+    }
+
+    &__form {
+        margin-left: auto;
+    }
+
+    &__input {
+        width: 306px;
+        height: 100%;
+        background-color: transparent;
+        caret-color: @caret-color;
+
+        color: @text;
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
+
+.user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 110px;
+    height: @header_inner_height;
+
+    &__profile {
+        margin-left: 39px;
+    }
+}
+
+.profile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+
+    width: @header_inner_height;
+    height: @header_inner_height;
+
+    &__img {
+        height: 100%;
+        width: auto;
+        transform: translate(var(--avatar_translate, 0)) scale(var(--avatar_scale, 1));
+    }
+}
+
+.content {
+    display: grid;
+    column-gap: 25px;
+    row-gap: 25px;
+    justify-items: center;
+
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 266px 332px 236px;
+
+    padding: 30px;
+    width: 100%;
+}
+
+// // Primary3     purple
+// // secondary1   light red
+// // secondary2   yellow
+
+
+
+.grid {
+    border-radius: 14px;
+    background-color: @primary1;
+
+    // general modifiers
+    &.grid_active {
+
+        // Здесь двойной селектор (.grid.grid_active) нужен, так как ниже идет правило, которое по специфичности перебьет в ином случае
+        .grid__name {
+            visibility: visible;
+        }
+
+        .grid__circle {
+            opacity: 1;
+            filter: hue-rotate(-5deg) brightness(115%);
+        }
+
+        .grid__icon {
+            @color: white;
+            background-color: white;
+        }
+    }
+
+    &_3 {
+        grid-column: span 3;
+        width: 232px;
+    }
+
+    &_4 {
+        grid-column: span 4;
+        width: 318px;
+    }
+
+    &_6 {
+        grid-column: span 6;
+        width: 488px;
+    }
+
+    &_meter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    // elem
+    &__logo {
+        margin-top: 22.5px;
+    }
+
+    &__circle {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        opacity: 0.1;
+    }
+
+    &__icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    &__name {
+        visibility: hidden;
+        margin-top: 10px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &__progress-bar {
+        margin-top: 30px;
+    }
+}
+
+// // SPECIFIC MODIFIERS
+.grid {
+    &_id_energy {
+
+        // inactive state
+        .grid__circle {
+            background-color: @primary3;
+        }
+
+        .grid__icon {
+            mask-image: url('/assets/img/energy.svg');
+            -webkit-mask-image: url('/assets/img/energy.svg');
+            background-color: @primary3;
+        }
+
+        // active state
+        &.grid_active {
+            background-color: @primary3;
+        }
+    }
+
+    &_id_range {
+
+        // inactive state
+        .grid__circle {
+            background-color: @secondary1;
+        }
+
+        .grid__icon {
+            mask-image: url('/assets/img/range.svg');
+            -webkit-mask-image: url('/assets/img/range.svg');
+            background-color: @secondary1;
+        }
+
+        // active state
+        &.grid_active {
+            background-color: @secondary1;
+        }
+    }
+
+    &_id_break-fluid {
+
+        // inactive state
+        .grid__circle {
+            background-color: @primary3;
+        }
+
+        .grid__icon {
+            mask-image: url('/assets/img/break_fluid.svg');
+            -webkit-mask-image: url('/assets/img/break_fluid.svg');
+            background-color: @primary3;
+        }
+
+        // active state
+        &.grid_active {
+            background-color: @primary3
+        }
+    }
+
+    &_id_tire-wear {
+
+        // inactive state
+        .grid__circle {
+            background-color: @secondary2;
+        }
+
+        .grid__icon {
+            mask-image: url('/assets/img/energy.svg');
+            -webkit-mask-image: url('/assets/img/energy.svg');
+            background-color: @secondary2;
+        }
+
+        // active state
+        &.grid_active {
+            background-color: @secondary2;
+        }
+    }
+}
+
+.progress-bar__percentage {
+    margin-top: 26px;
+    font-size: 24px;
+    font-weight: 700;
+}

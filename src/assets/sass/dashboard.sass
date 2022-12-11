@@ -1,6 +1,6 @@
 @use 'vars' as v
 @use 'fonts'
-// @use "sass:color"
+@use "sass:color"
 
 *
     box-sizing: border-box
@@ -36,7 +36,7 @@ input
     height: 100%
     background-color: v.$primary1
 
-    font-family: DM Sans
+    font-family: 'DM Sans'
     font-size: 14px
     font-weight: 500
     line-height: 18px
@@ -56,12 +56,10 @@ input
     &__controls
         margin-top: auto
     &__link
-        &:hover
-            filter: opacity(0.75)
         display: flex
         flex-direction: row
         align-content: center
-        
+
         border-radius: 6px
 
         width: 174px
@@ -71,12 +69,14 @@ input
 
         filter: opacity(0.5)
         background-color: transparent
+        &:hover
+            filter: opacity(0.75)
     &__img
         margin-right: 8px
     &_current-link
         filter: none
         background-color: v.$link-active
-   
+
 .header
     display: flex
     height: 78px
@@ -154,17 +154,31 @@ $header_inner_height: 46px
     width: 100%
 
 // Primary3     purple
-// secondary1   red
+// secondary1   light red
 // secondary2   yellow
+
+
+         
 
 .grid
     border-radius: 14px
     background-color: v.$primary1
-    &_active
-        .grid__logo
-            filter: brightness(98%) hue-rotate(-5deg) brightness(115%)
+    color: v.$text
+    // general modifiers
+    &.grid_active   // Здесь двойной селектор (.grid.grid_active) нужен, так как ниже идет правило, которое по специфичности перебьет в ином случае
         .grid__name
             visibility: visible
+        .grid__circle
+            background-color: v.$text
+            // opacity: 1
+            // filter: hue-rotate(-5deg) brightness(115%)
+        .grid__icon
+            background-color: v.$text
+        .progress__empty
+            background-color: v.$text
+            opacity: 0.1
+        .progress__current
+            background-color: v.$text
     &_3
         grid-column: span 3
         width: 232px
@@ -179,42 +193,111 @@ $header_inner_height: 46px
         flex-direction: column
         align-items: center
 
+    // elem
     &__logo
-        -webkit-mask-size: cover
-        -webkit-mask-image: url('/assets/img/range.svg')
-        mask-size: cover
-        mask-image: url('/assets/img/range.svg')
-        background-color: green
+        margin-top: 22.5px
+    &__circle
+        position: absolute
         width: 40px
         height: 40px
-
-        margin-top: 22.5px
+        border-radius: 50%
+        opacity: 0.1
+    &__icon
+        width: 40px
+        height: 40px
     &__name
         visibility: hidden
         margin-top: 10px
         font-size: 24px
         font-weight: 700
-    &__progress-bar
+    &__progress
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 100%
         margin-top: 30px
 
-#energy
-    &.grid_active
+
+// SPECIFIC MODIFIERS
+.grid
+    &_id_energy
+        // inactive state
+        .grid__circle
+            background-color: v.$primary3
+        .grid__icon
+            mask-image: url('/assets/img/energy.svg')
+            -webkit-mask-image: url('/assets/img/energy.svg')
+            background-color: v.$primary3
+        // active state
+        &.grid_active
+            background-color: v.$primary3
+
+    &_id_range
+        // inactive state
+        .grid__circle
+            background-color: v.$secondary1
+        .grid__icon
+            mask-image: url('/assets/img/range.svg')
+            -webkit-mask-image: url('/assets/img/range.svg')
+            background-color: v.$secondary1
+            // active state
+        &.grid_active
+            background-color: v.$secondary1
+
+    &_id_break-fluid
+        // inactive state
+        .grid__circle
+            background-color: v.$primary3
+        .grid__icon
+            mask-image: url('/assets/img/break_fluid.svg')
+            -webkit-mask-image: url('/assets/img/break_fluid.svg')
+            background-color: v.$primary3
+        // active state
+        &.grid_active
+            background-color: v.$primary3
+
+    &_id_tire-wear
+        // inactive state
+        .grid__circle
+            background-color: v.$secondary2
+        .grid__icon
+            mask-image: url('/assets/img/energy.svg')
+            -webkit-mask-image: url('/assets/img/energy.svg')
+            background-color: v.$secondary2
+        // active state
+        &.grid_active
+            background-color: v.$secondary2
+
+.progress
+    &__bar
+        position: absolute
+        width: 112px
+        height: 95px
+
+        // background-color: v.$background
+        -webkit-mask: url('/assets/img/progress_bar.svg') no-repeat
+        mask: url('/assets/img/progress_bar.svg') no-repeat
+        -webkit-mask-position: 50% 0
+        mask-position: 50% 0
+    &__empty
+        position: absolute
+        width: 100%
+        height: 100%
+        background-color: v.$background
+    &__current
+        position: absolute
+        width: 100%
+        height: 100%
+
         background-color: v.$primary3
-        .grid__logo
-            content: url('/assets/img/energy_active.svg')
-#range
-    &.grid_active
-        background-color: v.$secondary1
-        .grid__logo
-            content: url('/assets/img/range_active.svg')
-#break-fluid
-    &.grid_active
-        background-color: v.$primary3
-        .grid__logo
-            content: url('/assets/img/break_fluid_active.svg')
-#tire-wear
-    &.grid_active
-        background-color: v.$secondary2
-        color: v.$primary1
-        .grid__logo
-            content: url('/assets/img/tire_wear_active.svg')
+        -webkit-mask: url('/assets/img/progress_bar.svg') no-repeat
+        mask: url('/assets/img/progress_bar.svg') no-repeat
+        -webkit-mask-position: 50% 0
+        mask-position: 50% 0
+
+        transform-origin: 50% 56px
+        transform: rotate(-230deg)
+    &__percentage
+        margin-top: 36px
+        font-size: 24px
+        font-weight: 700
