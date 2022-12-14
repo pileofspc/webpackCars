@@ -163,7 +163,7 @@ let meters = {
 }
 
 for (let [key, value] of Object.entries(meters)) {
-    let meter = document.querySelector(`.grid_id_${key}`);
+    let meter = document.querySelector(`.${key}`);
     meter.querySelector(`.progress__percentage`).textContent = `${value}%`;
 
     let emptySVG = new SVGGenerator(arc, 100);
@@ -171,4 +171,51 @@ for (let [key, value] of Object.entries(meters)) {
 
     let currentSVG = new SVGGenerator(arc, value);
     currentSVG.render(meter.querySelector(`.progress__bar`), 'progress__current');
+}
+
+
+// Miles Statistics
+let milesStats = [15, 25, 32, 0, 10, 20, 5];
+let sum = milesStats.reduce((accumulator, value) => {
+    return accumulator + value;
+});
+let maxMiles = milesStats.reduce((accumulator, value) => {
+    if (accumulator < value) {
+        accumulator = value
+    }
+    return accumulator
+});
+
+
+let milesPercentages = milesStats.map((item) => {
+    return item/maxMiles * 100;
+});
+
+let chartItems = document.querySelectorAll(`.miles-stats__chart-item`);
+for (let i = 0; i < milesPercentages.length; i++) {
+    chartItems[i].querySelector('.miles-stats__column').style.height = `${milesPercentages[i]}%`;
+    chartItems[i].dataset.miles = milesStats[i];
+};
+
+let tooltip = document.querySelector('.tooltip');
+
+for (let item of chartItems) {
+    item.addEventListener('mouseover', (evt) => {
+        if (evt.target.classList.contains('miles-stats__spacer')) {
+            return
+        }
+        item.classList.add('miles-stats__chart-item_hovered');
+        tooltip.style.visibility = 'visible';
+        let time = item.querySelector(`.miles-stats__item-name`).textContent;
+        tooltip.querySelector('.tooltip__time').textContent = time;
+        tooltip.querySelector('.tooltip__value').textContent = `${item.dataset.miles}`;
+    });
+    item.addEventListener('mouseout', (evt) => {
+        item.classList.remove('miles-stats__chart-item_hovered');
+        tooltip.style.visibility = 'hidden';
+    });
+    item.addEventListener('mousemove', (evt) => {
+        tooltip.style.left = `${evt.pageX + 20}px`;
+        tooltip.style.top = `${evt.pageY}px`
+    });
 }
