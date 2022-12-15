@@ -173,32 +173,113 @@ for (let [key, value] of Object.entries(meters)) {
     currentSVG.render(meter.querySelector(`.progress__bar`), 'progress__current');
 }
 
-
 // Miles Statistics
-let milesStats = [15, 25, 32, 0, 10, 20, 5];
-let sum = milesStats.reduce((accumulator, value) => {
-    return accumulator + value;
-});
-let maxMiles = milesStats.reduce((accumulator, value) => {
-    if (accumulator < value) {
-        accumulator = value
-    }
-    return accumulator
-});
+let database = {
+    day: {
+        stats: [15, 25, 32, 0, 10, 20, 5],
+        subtitles: ['3 AM', '7 AM', '10 AM', '2 PM', '5 PM', '9 PM', '12 PM']
+    },
+    week: {
+        stats: [0, 12, 70, 5, 15, 53, 28],
+        subtitles: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    month: {
+        stats: [90, 67, 52, 23, 2, 81, 0],
+        subtitles: ['5', '10', '14', '18', '22', '26', '30'],
+    },
+}
 
-
-let milesPercentages = milesStats.map((item) => {
-    return item/maxMiles * 100;
-});
+class MilesModel {
+    constructor(db) {
+        Object.defineProperties(this, {
+            db: {
+                value: db,
+                enumerable: false
+            },
+        })
+    };
+    query(item) {
+        return this.db[item];
+    };
+    createEntry(entry) {
+        this[entry] = {
+            stats: this.query(entry).stats
+        };
+        this[entry].sum = this.getSum(this[entry]);
+        this[entry].max = this.getMax(this[entry]);
+        this[entry].percentages = this.getPercentagesArray(this[entry]);
+        this[entry].subtitles = this.query(entry).subtitles;
+    };
+    getSum(item) {
+        return item.stats.reduce((accumulator, value) => {
+            return accumulator + value;
+        });
+    };
+    getMax(item) {
+        return item.stats.reduce((accumulator, value) => {
+            if (accumulator < value) {
+                accumulator = value
+            }
+            return accumulator
+        });
+    };
+    getPercentagesArray(item) {
+        return item.stats.map((value) => {
+            return value/item.max * 100;
+        });
+    };
+};
+class MilesView {
+    constructor() {
+        this.chartItems = chartItems;
+        this.tooltip = tooltip;
+    };
+    updateRenderers(model) {
+        for (let entry in model) {
+            this[entry] = function() {
+                for (let i = 0; i < model[entry].percentages.length; i++) {
+                    this.chartItems[i].querySelector('.miles-stats__column').style.height = `${model[entry].percentages[i]}%`;
+                    this.chartItems[i].dataset.miles = model[entry].stats[i];
+                    document.querySelector('.miles-stats__miles').textContent = model[entry].sum + ' Miles';
+                    let subtitles = document.querySelectorAll('.miles-stats__item-name');
+                    for (let i = 0; i < subtitles.length; i++) {
+                        subtitles[i].textContent = model[entry].subtitles[i]
+                    }
+                }
+            }
+        }
+    };
+    // Тут создаются несколько методов для вывода
+}
+function control(model, view, button) {
+    model.createEntry(button.value);
+    view.updateRenderers(model);
+    view[button.value]();
+}
 
 let chartItems = document.querySelectorAll(`.miles-stats__chart-item`);
-for (let i = 0; i < milesPercentages.length; i++) {
-    chartItems[i].querySelector('.miles-stats__column').style.height = `${milesPercentages[i]}%`;
-    chartItems[i].dataset.miles = milesStats[i];
-};
-
 let tooltip = document.querySelector('.tooltip');
 
+let milesModel = new MilesModel(database);
+let milesView = new MilesView(milesModel);
+
+let milesTimespanButtons = document.querySelectorAll('.miles-stats input[type="radio"]');
+
+// Обновляем данные при загрузке страницы
+for (let button of milesTimespanButtons) {
+    if (button.checked) {
+        control(milesModel, milesView, button);
+        break
+    }
+};
+// При нажатии на радиокнопки
+for (let button of milesTimespanButtons) {
+    button.addEventListener('click', () => {
+        control(milesModel, milesView, button)
+    })
+};
+
+// Независимые от радиокнопок обработчики
 for (let item of chartItems) {
     item.addEventListener('mouseover', (evt) => {
         if (evt.target.classList.contains('miles-stats__spacer')) {
@@ -218,4 +299,4 @@ for (let item of chartItems) {
         tooltip.style.left = `${evt.pageX + 20}px`;
         tooltip.style.top = `${evt.pageY}px`
     });
-}
+};
