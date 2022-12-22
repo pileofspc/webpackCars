@@ -29,7 +29,7 @@
                         alt="">Services</a>
                 <a href="/calendar.html" class="link nav__link"><img class="nav__img" src="/assets/img/calendar_icon.svg"
                         alt="">Calendar</a>
-                <!-- <a href="/messages.html" class="link nav__link"><img class="nav__img" src="/assets/img/messages_icon.svg" alt="">Messages</a> -->
+                <a href="/messages.html" class="link nav__link"><img class="nav__img" src="/assets/img/messages_icon.svg" alt="">Messages</a>
             </div>
             <div class="nav__controls">
                 <a href="/settings.html" class="link nav__link"><img class="nav__img" src="/assets/img/settings_icon.svg"
@@ -57,6 +57,10 @@
             </div>
         </header>
         <section class="content">
+            <div class="tooltip">
+                <div class="tooltip__time">TIME</div>
+                <div class="tooltip__value">VALUE</div>
+            </div>
             <div class="grid grid_3 grid_meter energy">
                 <div class="grid__logo">
                     <div class="grid__circle"></div>
@@ -105,64 +109,127 @@
                     <div class="progress__percentage">45%</div>
                 </div>
             </div>
-            <div class="grid grid_6 miles-stats">
+
+
+            <div class="grid grid_6 stats">
                 <div class="tooltip">
                     <div class="tooltip__time">TIME</div>
                     <div class="tooltip__value">VALUE</div>
                 </div>
-                <div class="miles-stats__header">
-                    <span class="miles-stats__span">Miles</span> statistics
+                <div class="stats__header">
+                    <span class="stats__span">Miles</span> statistics
                 </div>
-                <div class="miles-stats__controls">
-                    <div class="miles-stats__timespan">
-                        <input class="miles-stats__day" id="miles-stats__day" type="radio" name="timespan" value="day" checked>
-                            <label for="miles-stats__day">Day</label>
-                        <input class="miles-stats__week" id="miles-stats__week" type="radio" name="timespan" value="week">
-                            <label for="miles-stats__week">Week</label>
-                        <input class="miles-stats__month" id="miles-stats__month" type="radio" name="timespan" value="month">
-                            <label for="miles-stats__month">Month</label>
+                <div class="stats__controls">
+                    <div class="stats__timespan">
+                        <input class="stats__day" id="stats__day" type="radio" name="timespan" value="day" checked>
+                            <label for="stats__day">Day</label>
+                        <input class="stats__week" id="stats__week" type="radio" name="timespan" value="week">
+                            <label for="stats__week">Week</label>
+                        <input class="stats__month" id="stats__month" type="radio" name="timespan" value="month">
+                            <label for="stats__month">Month</label>
                     </div>
-                    <div class="miles-stats__miles">0 Miles</div>
+                    <div class="stats__miles">0 Miles</div>
                 </div>
-                <div class="miles-stats__chart">
-                    <div class="miles-stats__chart-item">
-                        <div class="miles-stats__column"></div>
-                        <div class="miles-stats__spacer"></div>
-                        <div class="miles-stats__item-name">3 AM</div>
+                <div class="stats__chart">
+                    <div class="stats__chart-item">
+                        <div class="stats__column"></div>
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">3 AM</div>
                     </div>
-                    <div class="miles-stats__chart-item">
-                        <div class="miles-stats__column"></div>
-                        <div class="miles-stats__spacer"></div>
-                        <div class="miles-stats__item-name">7 AM</div>
+                    <div class="stats__chart-item">
+                        <div class="stats__column"></div>
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">7 AM</div>
                     </div>
-                    <div class="miles-stats__chart-item">
-                        <div class="miles-stats__column"></div>
-                        <div class="miles-stats__spacer"></div>
-                        <div class="miles-stats__item-name">10 AM</div>
+                    <div class="stats__chart-item">
+                        <div class="stats__column"></div>
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">10 AM</div>
                     </div>
-                    <div class="miles-stats__chart-item">
-                        <div class="miles-stats__column"></div>
-                        <div class="miles-stats__spacer"></div>
-                        <div class="miles-stats__item-name">2 PM</div>
+                    <div class="stats__chart-item">
+                        <div class="stats__column"></div>
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">2 PM</div>
                     </div>
-                    <div class="miles-stats__chart-item">
-                        <div class="miles-stats__column"></div>
-                        <div class="miles-stats__spacer"></div>
-                        <div class="miles-stats__item-name">5 PM</div>
+                    <div class="stats__chart-item">
+                        <div class="stats__column"></div>
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">5 PM</div>
                     </div>
-                    <div class="miles-stats__chart-item">
-                        <div class="miles-stats__column"></div>
-                        <div class="miles-stats__spacer"></div>
-                        <div class="miles-stats__item-name">9 PM</div>
+                    <div class="stats__chart-item">
+                        <div class="stats__column"></div>
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">9 PM</div>
                     </div>
-                    <div class="miles-stats__chart-item">
-                        <div class="miles-stats__column"></div>
-                        <div class="miles-stats__spacer"></div>
-                        <div class="miles-stats__item-name">12 PM</div>
+                    <div class="stats__chart-item">
+                        <div class="stats__column"></div>
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">12 PM</div>
                     </div>
                 </div>
             </div>
-            <div class="grid grid_6 content__el6"></div>
+
+
+
+
+
+
+
+            <div class="grid grid_6 stats stats_cars">
+                <div class="stats__header">
+                    <span class="stats__span">Cars</span> statistics
+                </div>
+                <div class="stats__controls">
+                    <div class="stats__timespan">
+                        <input class="stats__day" id="stats__day_cars" type="radio" name="timespan_2" value="day" checked>
+                            <label for="stats__day_cars">Day</label>
+                        <input class="stats__week" id="stats__week_cars" type="radio" name="timespan_2" value="week">
+                            <label for="stats__week_cars">Week</label>
+                        <input class="stats__month" id="stats__month_cars" type="radio" name="timespan_2" value="month">
+                            <label for="stats__month_cars">Month</label>
+                    </div>
+                    <div class="stats__miles">20 January 2022</div>
+                </div>
+                <div class="stats__chart">
+                    
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">3 AM</div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">7 AM</div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">10 AM</div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">2 PM</div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">5 PM</div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">9 PM</div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">12 PM</div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="stats__item-name">12 PM</div>
+                    </div>
+
+                    <div class="stats__graphics"></div>
+                </div>
+            </div>
+
+            <!-- <div class="grid grid_6 content__el6"></div> -->
             <div class="grid grid_4 content__el7"></div>
             <div class="grid grid_4 content__el8"></div>
             <div class="grid grid_4 content__el9"></div>
