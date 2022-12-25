@@ -21,7 +21,7 @@ class MilesModel {
         this[entry].sum = this.getSum(this[entry]);
         this[entry].max = this.getMax(this[entry]);
         this[entry].percentages = this.getPercentagesArray(this[entry]);
-        this[entry].subtitles = this.query(entry).subtitles;
+        this[entry].subtitles = this.getSubtitles(entry);
     };
     getSum(item) {
         return item.stats.reduce((accumulator, value) => {
@@ -40,6 +40,49 @@ class MilesModel {
         return item.stats.map((value) => {
             return value/item.max * 100;
         });
+    };
+    getSubtitles(itemName) {
+            let date = new Date();
+            let subtitles = [];
+            let counter = 0;
+
+            let timestampStep;
+            let scheme;
+            let func;
+            if (itemName.toLowerCase() === 'day') {
+                timestampStep = 1000*60*60;
+                scheme = [3, 4];
+                func = function(date) {
+                    return date.toLocaleTimeString().replace(/([\d])(:[\d]{2})(:[\d]{2})(.*)/, "$1$4");
+                }
+            }
+            if (itemName.toLowerCase() === 'week') {
+                timestampStep = 1000*60*60*24;
+                scheme = [1];
+                func = function(date) {
+                    return date.toString().slice(0, 3);
+                }
+            }
+            if (itemName.toLowerCase() === 'month') {
+                timestampStep = 1000*60*60*24;
+                scheme = [4, 4, 4, 4, 4, 5];
+                func = function(date) {
+                    return `${date.getDate()}/${date.getMonth() + 1}`;
+                }
+            }
+            if (timestampStep === undefined) {
+                return
+            }
+            
+            while (subtitles.length < 7) {
+                subtitles.unshift(func(date))
+                date = new Date(date - timestampStep * scheme[counter]);
+                counter++;
+                if (counter >= scheme.length) {
+                    counter = 0;
+                }
+            }
+            return subtitles
     };
 };
 class MilesView {
@@ -102,7 +145,10 @@ for (let item of chartItems) {
             return
         }
         item.classList.add('stats__chart-item_hovered');
+
         tooltip.style.visibility = 'visible';
+        document.documentElement.style.setProperty('--tooltip', 'var(--secondary3)');
+
         let time = item.querySelector(`.stats__item-name`).textContent;
         tooltip.querySelector('.tooltip__time').textContent = time;
         tooltip.querySelector('.tooltip__value').textContent = `${item.dataset.miles}`;

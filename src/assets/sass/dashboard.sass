@@ -13,17 +13,22 @@ input
     &:focus
         outline: none
 
+:root
+    --tooltip: var(--secondary3)
+    --secondary3: #{v.$secondary3}
+    --secondary4: #{v.$secondary4}
+
 // PAGE
 .page
     font-family: 'DM Sans', sans-serif
     background-color: v.$background
     color: v.$text
-    overflow-x: hidden
     &__sidebar
         position: fixed
         padding-left: 26px
     &__main
         margin-left: 248px
+        min-width: fit-content
 
 // BLOCKS
 .link
@@ -31,6 +36,7 @@ input
     text-decoration: inherit
 
 .sidebar
+    z-index: 500
     display: flex
     flex-direction: column
 
@@ -409,7 +415,7 @@ $header_inner_height: 46px
         width: 6px
         height: 6px
         border-radius: 50%
-        background-color: v.$secondary3
+        background-color: var(--tooltip)
 
 .stats_cars
     .stats__timespan
@@ -436,6 +442,7 @@ $header_inner_height: 46px
             display: block
 
     .stats__graphics
+        pointer-events: none
         position: absolute
         width: 100%
         height: 100%
@@ -445,3 +452,15 @@ $header_inner_height: 46px
                 stroke: v.$secondary4
             .data__gradient stop
                 stop-color: v.$secondary4
+
+.dot
+    display: none
+    position: absolute
+    background-color: white
+    left: 21px
+    top: 0
+
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background-color: v.$secondary4

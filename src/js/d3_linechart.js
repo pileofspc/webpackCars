@@ -1,4 +1,5 @@
 import * as d3 from 'd3'
+import { pointRadial } from 'd3';
 
 // Copyright 2021 Observable, Inc.
 // Released under the ISC license.
@@ -75,7 +76,7 @@ export default function LineChart(data, {
     gradient.append('stop')
         .attr('offset', 0)
         .attr('stop-color', color)
-        .attr('stop-opacity', 0.08);
+        .attr('stop-opacity', 0.1);
     // gradient.append('stop')
     //     .attr('offset', 0.9)
     //     .attr('stop-color', color)
@@ -95,6 +96,6 @@ export default function LineChart(data, {
     svg.append("path")
         .attr("fill", 'url(#Gradient)')
         .attr("d", area(I));
-  
+
     return svg.node();
   }
