@@ -1,0 +1,112 @@
+@use 'general';
+@use 'vars' as v;
+@use 'fonts';
+@use 'mixins' as m;
+@use 'sass:color';
+@use 'sass:string';
+
+html, .page, .page__main {
+    height: 100%;
+}
+
+@function pxVW($value) {
+    $width: 1339;
+    $result: calc($value / $width * 100);
+    $result: string.unquote($result + "vw");
+    @return $result;
+}
+
+@function pxVH($value) {
+    $height: 1024;
+    $result: calc($value / $height * 100);
+    $result: string.unquote($result + "vh");
+    @return $result;
+}
+
+.content-assets {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 30px;
+
+    &__name {
+        height: 40px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: pxVW(360) 1fr 1fr;
+        grid-template-rows: 1fr pxVH(314) 1fr;
+        gap: 20px;
+        margin-top: 20px;
+        flex-grow: 1;
+    }
+
+    &__car {
+        grid-row: span 3;
+    }
+
+    &__activity {
+        grid-column: span 2;
+    }
+
+    &__reminder {
+        grid-column: span 2;
+    }
+}
+
+.car {
+    position: relative;
+    background-color: transparent;
+    
+    &__bg {
+        position: absolute;
+        width: 100%;
+        height: 75%;
+        padding: 30px 25px;
+    }
+
+    &__stats {
+        display: grid;
+        grid-template-columns: 1fr 2px 1fr;
+        align-items: center;
+
+        row-gap: 25px;
+    }
+
+    &__stat {
+        position: relative;
+        // width: 130px;
+
+        margin: 0 auto;
+    }
+
+    &__stat-name {
+        // font-family: 'DM Sans';
+        font-size: 16px;
+        font-weight: 500;
+        color: v.$dark5;
+    }
+
+    &__stat-value {
+        // font-family: 'DM Sans';
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 4px;
+    }
+
+    &__img {
+        display: block;
+        margin-top: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 316px;
+    }
+
+    &__spacer {
+        height: 40px;
+        background-color: v.$spacers-lighter;
+    }
+}

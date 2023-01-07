@@ -1,153 +1,11 @@
+@use 'general'
 @use 'vars' as v
 @use 'fonts'
 @use 'mixins' as m
 @use "sass:color"
 
-*
-    box-sizing: border-box
-    padding: 0
-    margin: 0
-
-input
-    border: none
-    &:focus
-        outline: none
-
-:root
-    --tooltip: var(--secondary3)
-    --secondary3: #{v.$secondary3}
-    --secondary4: #{v.$secondary4}
-
-// PAGE
-.page
-    font-family: 'DM Sans', sans-serif
-    background-color: v.$background
-    color: v.$text
-    &__sidebar
-        position: fixed
-        padding-left: 26px
-    &__main
-        margin-left: 248px
-        min-width: fit-content
-
-// BLOCKS
-.link
-    color: inherit
-    text-decoration: inherit
-
-.sidebar
-    z-index: 500
-    display: flex
-    flex-direction: column
-
-    width: 248px
-    height: 100%
-    background-color: v.$primary1
-
-    font-family: 'DM Sans'
-    font-size: 14px
-    font-weight: 500
-    line-height: 18px
-    &__logo
-        display: flex
-        margin-top: 30px
-        margin-bottom: 35px
-    &__logo-img
-        display: block
-        width: 109px
-        height: auto
-
-.nav
-    display: flex
-    flex-direction: column
-    height: 100%
-    &__controls
-        margin-top: auto
-    &__link
-        display: flex
-        // flex-direction: row
-        align-content: center
-
-        border-radius: 6px
-
-        width: 174px
-        padding: 7px
-        padding-left: 8px
-        margin-bottom: 17px
-
-        filter: opacity(0.5)
-        background-color: transparent
-        &:hover
-            filter: opacity(0.75)
-    &__img
-        margin-right: 8px
-    &_current-link
-        filter: none
-        background-color: v.$link-active
-
-.header
-    display: flex
-    height: 78px
-    background-color: v.$primary1
-
-    padding-left: 30px
-    padding-right: 30px
-    &__searchbar
-        margin-top: auto
-        margin-bottom: auto
-    &__user
-        margin-left: auto
-        margin-top: auto
-        margin-bottom: auto
-
+$meter-transition: 0.2s ease-in
 $header_inner_height: 46px
-
-.searchbar
-    display: flex
-    width: 358px
-    height: $header_inner_height
-    background-color: v.$background
-    border-radius: 8px
-    &__icon
-        margin-left: auto
-        margin-right: auto
-        width: 20px
-        height: auto
-    &__form
-        margin-left: auto
-    &__input
-        width: 306px
-        height: 100%
-        background-color: transparent
-        caret-color: v.$caret-color
-
-        color: v.$text
-        font-family: 'DM Sans'
-        font-style: normal
-        font-weight: 500
-        font-size: 16px
-
-.user
-    display: flex
-    justify-content: flex-end
-    align-items: center
-
-    width: 110px
-    height: $header_inner_height
-    &__profile
-        margin-left: 39px
-
-.profile
-    position: relative
-    overflow: hidden
-    border-radius: 50%
-
-    width: $header_inner_height
-    height: $header_inner_height
-    &__img
-        height: 100%
-        width: auto
-        transform: translate(var(--avatar_translate, 0)) scale(var(--avatar_scale, 1))
 
 .content
     display: grid
@@ -161,133 +19,168 @@ $header_inner_height: 46px
     padding: 30px
     width: 100%
 
-// Primary3     purple
-// secondary1   light red
-// secondary2   yellow
-
-
-         
-
 .grid
     border-radius: 14px
     background-color: v.$primary1
     color: v.$text
+
     // general modifiers
     &_3
         grid-column: span 3
         width: 232px
+
     &_4
         grid-column: span 4
         width: 318px
+
     &_6
         grid-column: span 6
         width: 488px
+
     &_meter
         @include m.flexc
-    // elem
+        transition: $meter-transition
+
+    // elements
     &__logo
         margin-top: 22.5px
+
     &__circle
+        transition: $meter-transition
         position: absolute
         width: 40px
         height: 40px
         border-radius: 50%
         opacity: 0.1
+
     &__icon
+        transition: $meter-transition
         width: 40px
         height: 40px
+
     &__name
-        visibility: hidden
+        transition: $meter-transition
+        opacity: 0
         margin-top: 10px
         font-size: 24px
         font-weight: 700
+
     &__progress
         @include m.flexc
         width: 100%
         margin-top: 30px
+
     // АКТИВНОЕ СОСТОЯНИЕ
     &.grid_active   // Здесь двойной селектор (.grid.grid_active) нужен, так как ниже идет правило, которое по специфичности перебьет в ином случае
+
         .grid__name
-            visibility: visible
+            opacity: 1
+
         .grid__circle
             background-color: v.$text
+
         .grid__icon
             background-color: v.$text
+
         .progress__empty path
             stroke:  v.$text
             stroke-opacity: 0.1
+
         .progress__current path
             stroke:  v.$text
 
+    // Конкретные модификаторы
+    &_id_energy
 
-// SPECIFIC BLOCKS
-.energy
-    // inactive state
-    .grid__circle
-        background-color: v.$primary3
-    .grid__icon
-        mask-image: url('/assets/img/energy.svg')
-        -webkit-mask-image: url('/assets/img/energy.svg')
-        background-color: v.$primary3
-    .progress__current path
-        stroke: v.$primary3
-    // active state
-    &.grid_active
-        background-color: v.$primary3
+        // inactive state
+        .grid__circle
+            background-color: v.$primary3
 
-.range
-    // inactive state
-    .grid__circle
-        background-color: v.$secondary1
-    .grid__icon
-        mask-image: url('/assets/img/range.svg')
-        -webkit-mask-image: url('/assets/img/range.svg')
-        background-color: v.$secondary1
-    .progress__current path
-        stroke: v.$secondary1
+        .grid__icon
+            mask-image: url('/assets/img/energy.svg')
+            -webkit-mask-image: url('/assets/img/energy.svg')
+            background-color: v.$primary3
+
+        .progress__current path
+            stroke: v.$primary3
+            
         // active state
-    &.grid_active
-        background-color: v.$secondary1
+        &.grid_active
+            background-color: v.$primary3
 
-.break-fluid
-    // inactive state
-    .grid__circle
-        background-color: v.$primary3
-    .grid__icon
-        mask-image: url('/assets/img/break_fluid.svg')
-        -webkit-mask-image: url('/assets/img/break_fluid.svg')
-        background-color: v.$primary3
-    .progress__current path
-        stroke: v.$primary3
-    // active state
-    &.grid_active
-        background-color: v.$primary3
+    &_id_range
 
-.tire-wear
-    // inactive state
-    .grid__circle
-        background-color: v.$secondary2
-    .grid__icon
-        mask-image: url('/assets/img/energy.svg')
-        -webkit-mask-image: url('/assets/img/energy.svg')
-        background-color: v.$secondary2
-    .progress__current path
-        stroke: v.$secondary2
-    // active state
-    &.grid_active
-        background-color: v.$secondary2
+        // inactive state
+        .grid__circle
+            background-color: v.$secondary1
+
+        .grid__icon
+            mask-image: url('/assets/img/range.svg')
+            -webkit-mask-image: url('/assets/img/range.svg')
+            background-color: v.$secondary1
+
+        .progress__current path
+            stroke: v.$secondary1
+
+            // active state
+        &.grid_active
+            background-color: v.$secondary1
+
+    &_id_break-fluid
+
+        // inactive state
+        .grid__circle
+            background-color: v.$primary3
+
+        .grid__icon
+            mask-image: url('/assets/img/break_fluid.svg')
+            -webkit-mask-image: url('/assets/img/break_fluid.svg')
+            background-color: v.$primary3
+
+        .progress__current path
+            stroke: v.$primary3
+
+        // active state
+        &.grid_active
+            background-color: v.$primary3
+
+    &_id_tire-wear
+
+        // inactive state
+        .grid__circle
+            background-color: v.$secondary2
+
+        .grid__icon
+            mask-image: url('/assets/img/tire_wear.svg')
+            -webkit-mask-image: url('/assets/img/tire_wear.svg')
+            background-color: v.$secondary2
+
+        .progress__current path
+            stroke: v.$secondary2
+
+        // active state
+        &.grid_active
+            background-color: v.$secondary2
+
 
 .progress
+
+    path
+        transition: $meter-transition
+
     &__bar
         position: absolute
         width: 112px
         height: 95px
+        
     &__empty
         position: absolute
         path
             stroke: v.$background
+
     &__current
         position: absolute
+
     &__percentage
         margin-top: 36px
         font-size: 24px
@@ -374,54 +267,25 @@ $header_inner_height: 46px
         background-color: v.$spacers
 
     &__column
-        $height: 193px
-
         position: relative
         width: 28px
-        height: $height
+        // height: 193px
         background-color: v.$background
         margin-bottom: 7px
-        transition: background-color 0.05s
+        transition: 0.2s ease-in
 
     &__item-name
         color: v.$dark4
         font-size: 14px
         font-weight: 400
 
-.tooltip
-    visibility: hidden
-    position: absolute
-    border-radius: 5px
-    background-color: v.$tooltip
-
-    width: 58px
-    height: 32px
-    padding: 2px 8px
-    z-index: 1000
-
-    font-size: 10px
-    font-weight: 700
-    transform: translateX(10px)
-
-    &__value
-        position: relative
-        left: 9px
-
-    &__value::before
-        content: ''
-        position: absolute
-        left: -9px
-        top: 3px
-        width: 6px
-        height: 6px
-        border-radius: 50%
-        background-color: var(--tooltip)
-
 .stats_cars
+
     .stats__timespan
         background-color: v.$background2
         border-radius: 10px
         order: 2
+
         .stats__day, .stats__week, .stats__month
 
             + label:hover
@@ -446,10 +310,13 @@ $header_inner_height: 46px
         position: absolute
         width: 100%
         height: 100%
+
         svg
             position: absolute
+
             .data__line
                 stroke: v.$secondary4
+
             .data__gradient stop
                 stop-color: v.$secondary4
 
@@ -464,3 +331,23 @@ $header_inner_height: 46px
     height: 10px
     border-radius: 50%
     background-color: v.$secondary4
+
+.product-card
+    padding: 15px 27px
+    color: v.$dark1
+    font-family: "DM Sans"
+    font-size: 16px
+    font-weight: 700
+
+    &__recommendation
+        display: flex
+
+    &__recommendation-svg
+        margin-right: 10px
+
+        path
+            fill: v.$dark3
+
+    // modifiers
+    &_n1
+        background-color: v.$tertiary1

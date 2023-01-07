@@ -77,7 +77,15 @@ class CarsModel {
             timestampStep = 1000*60*60*24;
             scheme = [4, 4, 4, 4, 4, 5];
             func = function(date) {
-                return `${date.getDate()}/${date.getMonth() + 1}`;
+                let day = String(date.getDate());
+                if (day.length === 1) {
+                    day = `0${day}`
+                }
+                let month = String(date.getMonth() + 1);
+                if (month.length === 1) {
+                    month = `0${month}`
+                }
+                return `${day}/${month}`;
             }
         }
         if (timestampStep === undefined) {
@@ -235,7 +243,7 @@ for (let item of carsChartItems) {
         dot.style.top = y - dotHeight/2 + 'px';
 
         rectDot = getCoords(dot);
-        tooltip.style.left = rectDot.left + 10 + 'px';
+        tooltip.style.left = rectDot.left + 20 + 'px';
         tooltip.style.top = rectDot.top - tooltipHeight/2 + 'px';
     });
 };

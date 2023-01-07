@@ -1,0 +1,76 @@
+@use 'vars' as v;
+
+.product-card {
+    padding: 15px 27px;
+    color: v.$dark1;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-weight: 700;
+
+    &__recommendation {
+        display: flex;
+    }
+
+    &__recommendation-svg {
+        margin-right: 10px;
+
+        width: 24px;
+
+        path {
+            fill: v.$dark3;
+        }
+    }
+
+    &__img {
+        margin-top: 11px;
+    }
+
+    &__name {
+        margin-top: 11px;
+        font-family: 'DM Sans';
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    &__stats {
+        margin-top: 6px;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__stat:not(:first-child) {
+        margin-left: 16px;
+    }
+
+    &__stat2 {
+        color: v.$dark3;
+        font-family: 'DM Sans';
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__price {
+        margin-left: auto;
+
+        color: v.$dark3;
+        font-family: 'DM Sans';
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+
+    // modifiers
+    &_n1 {
+        background-color: v.$tertiary1;
+    }
+
+    &_n2 {
+        background-color: v.$tertiary2;
+    }
+
+    &_n3 {
+        background-color: v.$tertiary3;
+    }
+}

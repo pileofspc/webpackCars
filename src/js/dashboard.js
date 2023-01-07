@@ -1,10 +1,13 @@
 "use strict"
 
+import 'external-svg-loader'
+
 import '../assets/sass/dashboard.sass'
-// import '../assets/less/dashboard.less'
+import '../assets/sass/dashboard.scss'
+require.context('../assets/img/general/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
 require.context('../assets/img/dashboard/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
 
-import './dashboard_misc'
+import './misc'
 import './dashboard_meters'
 import './dashboard_miles'
 import './dashboard_cars'

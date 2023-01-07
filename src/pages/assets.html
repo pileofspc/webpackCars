@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="page">
+    <div class="sidebar page__sidebar">
+        <a class="logo sidebar__logo" href="/">
+            <img class="sidebar__logo-img" src="/assets/img/logo.svg" alt="">
+        </a>
+        <nav class="nav">
+            <div class="nav__main">
+                <a href="/dashboard.html" class="link nav__link"><img class="nav__img"
+                        src="/assets/img/dashboard_icon.svg" alt="">Dashboard</a>
+                <a href="/assets.html" class="link nav__link nav_current-link"><img class="nav__img" src="/assets/img/assets_icon.svg"
+                        alt="">Assets</a>
+                <a href="/booking.html" class="link nav__link"><img class="nav__img" src="/assets/img/booking_icon.svg"
+                        alt="">Booking</a>
+                <a href="/sell.html" class="link nav__link"><img class="nav__img" src="/assets/img/sellcars_icon.svg"
+                        alt="">Sell Cars</a>
+                <a href="/buy.html" class="link nav__link"><img class="nav__img" src="/assets/img/buycars_icon.svg"
+                        alt="">Buy Cars</a>
+                <a href="/services.html" class="link nav__link"><img class="nav__img"
+                        src="/assets/img/services_icon.svg" alt="">Services</a>
+                <a href="/calendar.html" class="link nav__link"><img class="nav__img"
+                        src="/assets/img/calendar_icon.svg" alt="">Calendar</a>
+                <a href="/messages.html" class="link nav__link"><img class="nav__img"
+                        src="/assets/img/messages_icon.svg" alt="">Messages</a>
+            </div>
+            <div class="nav__controls">
+                <a href="/settings.html" class="link nav__link"><img class="nav__img"
+                        src="/assets/img/settings_icon.svg" alt="">Settings</a>
+                <a href="/logout.html" class="link nav__link"><img class="nav__img" src="/assets/img/logout_icon.svg"
+                        alt="">Log out</a>
+            </div>
+        </nav>
+    </div>
+    <main class="main page__main">
+        <header class="header page__header">
+            <label class="searchbar header__searchbar">
+                <img src="/assets/img/search_icon.svg" alt="Search" class="searchbar__icon">
+                <form action="" method="get" class="searchbar__form">
+                    <input class="searchbar__input" type="text" placeholder="Search or type">
+                </form>
+            </label>
+            <div class="user header__user">
+                <a href="/bell.html" class="notification-bell user__notification-bell">
+                    <img src="/assets/img/notification-bell.svg" alt="Bell" class="notification-bell__img">
+                </a>
+                <a href="/profile.html" class="profile user__profile">
+                    <img src="/assets/img/avatar.jpg" alt="Avatar" class="profile__img">
+                </a>
+            </div>
+        </header>
+        <section class="content-assets">
+            <div class="tooltip">
+                <div class="tooltip__time">TIME</div>
+                <div class="tooltip__value">VALUE</div>
+            </div>
+            <div class="content-assets__name">Assets</div>
+            <div class="content-assets__grid">
+                <div class="grid car content-assets__car">
+                    <div class="grid car__bg">
+                        <div class="car__stats">
+                            <div class="car__stat car__fuel">
+                                <div class="car__stat-name">Fuel Usage</div>
+                                <div class="car__stat-value">2903.89 Ltr</div>
+                            </div>
+
+                            <div class="car__spacer"></div>
+
+                            <div class="car__stat car__km">
+                                <div class="car__stat-name">KM Driven</div>
+                                <div class="car__stat-value">2900 km</div>
+                            </div>
+                            <div class="car__stat car__cost">
+                                <div class="car__stat-name">Total Cost</div>
+                                <div class="car__stat-value">$3,000,290</div>
+                            </div>
+
+                            <div class="car__spacer"></div>
+
+                            <div class="car__stat car__topspeed">
+                                <div class="car__stat-name">Top Speed</div>
+                                <div class="car__stat-value">110 km/h</div>
+                            </div>
+                        </div>
+                        <img class="car__img" src="/assets/img/assets__car1.png" alt="Car">
+                    </div>
+                </div>
+                <div class="grid content-assets__activity"></div>
+                <div class="grid content-assets__noties"></div>
+                <div class="grid content-assets__sensors"></div>
+                <div class="grid content-assets__reminder"></div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

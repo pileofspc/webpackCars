@@ -1,5 +1,18 @@
 import global from './dashboard_global'
 
+// Ховер эффекты
+let grids = document.querySelectorAll('.grid_meter');
+let currentGridActive = grids[0];
+currentGridActive.classList.add('grid_active');
+
+for (let grid of grids) {
+    grid.addEventListener('mouseenter', () => {
+        currentGridActive.classList.remove('grid_active');
+        grid.classList.add('grid_active');
+        currentGridActive = grid;
+    })
+}
+
 // Прогресс бары
 function radToDeg(rad) {
     return rad*180/Math.PI
@@ -123,7 +136,7 @@ class SVGGenerator {
 }
 
 for (let [key, value] of Object.entries(global.database.meters)) {
-    let meter = document.querySelector(`.${key}`);
+    let meter = document.querySelector(`.grid_id_${key}`);
     meter.querySelector(`.progress__percentage`).textContent = `${value}%`;
 
     let emptySVG = new SVGGenerator(arc, 100);

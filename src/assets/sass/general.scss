@@ -1,0 +1,240 @@
+@use 'vars' as v;
+@use 'fonts';
+@use 'mixins' as m;
+@use "sass:color";
+
+$meter-transition: 0.2s ease-in;
+$header_inner_height: 46px;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+:root {
+    --tooltip: var(--secondary3);
+    --secondary3: #{v.$secondary3};
+    --secondary4: #{v.$secondary4};
+}
+
+// PAGE
+.page {
+    font-family: 'DM Sans', sans-serif;
+    background-color: v.$background;
+    color: v.$text;
+
+    &__sidebar {
+        position: fixed;
+        padding-left: 26px;
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        margin-left: 248px;
+        min-width: fit-content;
+    }
+}
+
+// BLOCKS
+.link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.sidebar {
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+
+    width: 248px;
+    height: 100%;
+    background-color: v.$primary1;
+
+    font-family: 'DM Sans';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+
+    &__logo {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 35px;
+    }
+
+    &__logo-img {
+        display: block;
+        width: 109px;
+        height: auto;
+    }
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__controls {
+        margin-top: auto;
+    }
+
+    &__link {
+        display: flex;
+        // flex-direction: row;
+        align-content: center;
+
+        border-radius: 6px;
+
+        width: 174px;
+        padding: 7px;
+        padding-left: 8px;
+        margin-bottom: 17px;
+
+        filter: opacity(0.5);
+        background-color: transparent;
+
+        &:hover {
+            filter: opacity(0.75);
+        }
+    }
+
+    &__img {
+        margin-right: 8px;
+    }
+
+    &_current-link {
+        filter: none;
+        background-color: v.$link-active;
+        
+        &:hover {
+            filter: brightness(1.1);
+        }
+    }
+}
+
+.header {
+    display: flex;
+    height: 78px;
+    background-color: v.$primary1;
+
+    padding-left: 30px;
+    padding-right: 30px;
+
+    &__searchbar {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    &__user {
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.searchbar {
+    display: flex;
+    width: 358px;
+    height: $header_inner_height;
+    background-color: v.$background;
+    border-radius: 8px;
+
+    &__icon {
+        margin-left: auto;
+        margin-right: auto;
+        width: 20px;
+        height: auto;
+    }
+
+    &__form {
+        margin-left: auto;
+    }
+
+    &__input {
+        width: 306px;
+        height: 100%;
+        background-color: transparent;
+        caret-color: v.$caret-color;
+
+        color: v.$text;
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
+
+.user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 110px;
+    height: $header_inner_height;
+
+    &__profile {
+        margin-left: 39px;
+    }
+}
+
+.profile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+
+    width: $header_inner_height;
+    height: $header_inner_height;
+
+    &__img {
+        height: 100%;
+        width: auto;
+        transform: translate(var(--avatar_translate, 0)) scale(var(--avatar_scale, 1)); // ПОПРАВИТЬ ОШИБКУ
+    }
+}
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    border-radius: 5px;
+    background-color: v.$tooltip;
+
+    width: 58px;
+    height: 32px;
+    padding: 2px 8px;
+    z-index: 1000;
+
+    font-size: 10px;
+    font-weight: 700;
+    pointer-events: none;
+
+    &__value {
+        position: relative;
+        left: 9px;
+    }
+
+    &__value::before {
+        content: '';
+        position: absolute;
+        left: -9px;
+        top: 3px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--tooltip);
+    }
+}
+
+.grid {
+    border-radius: 14px;
+    background-color: v.$primary1;
+    color: v.$text;
+}
