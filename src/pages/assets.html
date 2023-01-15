@@ -9,37 +9,6 @@
 </head>
 
 <body class="page">
-    <div class="sidebar page__sidebar">
-        <a class="logo sidebar__logo" href="/">
-            <img class="sidebar__logo-img" src="/assets/img/logo.svg" alt="">
-        </a>
-        <nav class="nav">
-            <div class="nav__main">
-                <a href="/dashboard.html" class="link nav__link"><img class="nav__img"
-                        src="/assets/img/dashboard_icon.svg" alt="">Dashboard</a>
-                <a href="/assets.html" class="link nav__link nav_current-link"><img class="nav__img" src="/assets/img/assets_icon.svg"
-                        alt="">Assets</a>
-                <a href="/booking.html" class="link nav__link"><img class="nav__img" src="/assets/img/booking_icon.svg"
-                        alt="">Booking</a>
-                <a href="/sell.html" class="link nav__link"><img class="nav__img" src="/assets/img/sellcars_icon.svg"
-                        alt="">Sell Cars</a>
-                <a href="/buy.html" class="link nav__link"><img class="nav__img" src="/assets/img/buycars_icon.svg"
-                        alt="">Buy Cars</a>
-                <a href="/services.html" class="link nav__link"><img class="nav__img"
-                        src="/assets/img/services_icon.svg" alt="">Services</a>
-                <a href="/calendar.html" class="link nav__link"><img class="nav__img"
-                        src="/assets/img/calendar_icon.svg" alt="">Calendar</a>
-                <a href="/messages.html" class="link nav__link"><img class="nav__img"
-                        src="/assets/img/messages_icon.svg" alt="">Messages</a>
-            </div>
-            <div class="nav__controls">
-                <a href="/settings.html" class="link nav__link"><img class="nav__img"
-                        src="/assets/img/settings_icon.svg" alt="">Settings</a>
-                <a href="/logout.html" class="link nav__link"><img class="nav__img" src="/assets/img/logout_icon.svg"
-                        alt="">Log out</a>
-            </div>
-        </nav>
-    </div>
     <main class="main page__main">
         <header class="header page__header">
             <label class="searchbar header__searchbar">
@@ -57,6 +26,37 @@
                 </a>
             </div>
         </header>
+        <div class="sidebar page__sidebar">
+            <a class="logo sidebar__logo" href="/">
+                <img class="sidebar__logo-img" src="/assets/img/logo.svg" alt="">
+            </a>
+            <nav class="nav">
+                <div class="nav__main">
+                    <a href="/dashboard.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/dashboard_icon.svg" alt="">Dashboard</a>
+                    <a href="/assets.html" class="link nav__link nav_current-link"><img class="nav__img"
+                            src="/assets/img/assets_icon.svg" alt="">Assets</a>
+                    <a href="/booking.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/booking_icon.svg" alt="">Booking</a>
+                    <a href="/sell.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/sellcars_icon.svg" alt="">Sell Cars</a>
+                    <a href="/buy.html" class="link nav__link"><img class="nav__img" src="/assets/img/buycars_icon.svg"
+                            alt="">Buy Cars</a>
+                    <a href="/services.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/services_icon.svg" alt="">Services</a>
+                    <a href="/calendar.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/calendar_icon.svg" alt="">Calendar</a>
+                    <a href="/messages.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/messages_icon.svg" alt="">Messages</a>
+                </div>
+                <div class="nav__controls">
+                    <a href="/settings.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/settings_icon.svg" alt="">Settings</a>
+                    <a href="/logout.html" class="link nav__link"><img class="nav__img"
+                            src="/assets/img/logout_icon.svg" alt="">Log out</a>
+                </div>
+            </nav>
+        </div>
         <section class="content-assets">
             <div class="tooltip">
                 <div class="tooltip__time">TIME</div>
@@ -65,7 +65,9 @@
             <div class="content-assets__name">Assets</div>
             <div class="content-assets__grid">
                 <div class="grid car content-assets__car">
-                    <div class="grid car__bg">
+                    <div class="grid car__bg"></div>
+
+                    <div class="car__wrapper">
                         <div class="car__stats">
                             <div class="car__stat car__fuel">
                                 <div class="car__stat-name">Fuel Usage</div>
@@ -93,7 +95,59 @@
                         <img class="car__img" src="/assets/img/assets__car1.png" alt="Car">
                     </div>
                 </div>
-                <div class="grid content-assets__activity"></div>
+                <div class="grid content-assets__activity activity">
+                    <div class="activity__top-bar">
+                        <div class="activity__name">Activity</div>
+                        <a class="activity__view-all link" href="#">View All</a>
+                    </div>
+                    <div class="stats2">
+                        <div class="stats2__graphics">
+                            <div class="stats2__svg"></div>
+                            <div class="stats2__columns">
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                                <div class="stats2__column"></div>
+                            </div>
+                            <div class="stats2__spacers">
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                                <div class="stats2__spacer"></div>
+                            </div>
+                        </div>
+                        <div class="stats2__names">
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                            <div class="stats2__item-name">12/9</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="grid content-assets__noties"></div>
                 <div class="grid content-assets__sensors"></div>
                 <div class="grid content-assets__reminder"></div>

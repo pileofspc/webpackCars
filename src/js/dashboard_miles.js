@@ -1,6 +1,6 @@
 
 // Miles Statistics
-import global from './dashboard_global';
+import global from './global';
 
 class MilesModel {
     constructor(db) {

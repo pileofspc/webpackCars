@@ -17,7 +17,9 @@ $header_inner_height: 46px
     grid-template-rows: 266px 332px 236px
 
     padding: 30px
-    width: 100%
+    // width: 100%
+
+    margin-left: 248px
 
 .grid
     border-radius: 14px
@@ -186,98 +188,110 @@ $header_inner_height: 46px
         font-size: 24px
         font-weight: 700
 
+// .stats
+//     @include m.flexc
+//     font-size: 20px
+//     font-weight: 400
+//     padding: 15px 35px
+
+//     &__header
+//         align-self: flex-start
+//         margin-bottom: 24px
+
+//     &__span
+//         font-weight: 700
+
+//     &__controls
+//         display: flex
+//         justify-content: space-between
+//         align-items: flex-end
+//         width: 100%
+
+//         margin-bottom: 14px
+
+//     &__timespan
+//         display: flex
+//         justify-content: space-between
+
+//     &__miles
+//         font-size: 14px
+//         font-weight: 700
+//         color: v.$text-inactive
+
+//     &__day, &__week, &__month
+//         appearance: none
+
+//         + label
+//             font-size: 10px
+//             font-weight: 700
+//             padding: 3.5px 12px
+//             border-radius: 24px
+//             color: v.$dark5
+//             margin: 0 2px
+        
+//         + label:hover
+//             outline: 2px solid v.$secondary3
+//             background-color: v.$secondary3transparent
+//             cursor: pointer
+
+//         &:checked + label
+//             background-color: v.$secondary3
+//             color: v.$text
+
+//     &__chart
+//         display: flex
+//         justify-content: space-between
+//         width: 100%
+//         flex-grow: 1
+
+//     &__chart-item
+//         @include m.flexc
+//         position: relative
+//         justify-content: flex-end
+//         align-items: center
+//         width: 40px
+
+//         &:last-child
+//             .stats__spacer
+//                 display: none
+        
+//         &_hovered
+//             .stats__column
+//                 background-color: v.$secondary3
+
+//     &__spacer
+//         position: absolute
+//         content: ''
+//         right: -12px
+//         bottom: 25px
+//         width: 2px
+//         height: 193px
+//         background-color: v.$spacers
+
+//     &__column
+//         position: relative
+//         width: 28px
+//         // height: 193px
+//         background-color: v.$background
+//         margin-bottom: 7px
+//         transition: 0.2s ease-in
+
+//     &__item-name
+//         color: v.$dark4
+//         font-size: 14px
+//         font-weight: 400
+
 .stats
-    @include m.flexc
-    font-size: 20px
-    font-weight: 400
-    padding: 15px 35px
-
-    &__header
-        align-self: flex-start
-        margin-bottom: 24px
-
-    &__span
-        font-weight: 700
-
-    &__controls
-        display: flex
-        justify-content: space-between
-        align-items: flex-end
-        width: 100%
-
-        margin-bottom: 14px
-
-    &__timespan
-        display: flex
-        justify-content: space-between
-
-    &__miles
-        font-size: 14px
-        font-weight: 700
-        color: v.$text-inactive
-
-    &__day, &__week, &__month
-        appearance: none
-
-        + label
-            font-size: 10px
-            font-weight: 700
-            padding: 3.5px 12px
-            border-radius: 24px
-            color: v.$dark5
-            margin: 0 2px
-        
-        + label:hover
-            outline: 2px solid v.$secondary3
-            background-color: v.$secondary3transparent
-            cursor: pointer
-
-        &:checked + label
-            background-color: v.$secondary3
-            color: v.$text
-
-    &__chart
-        display: flex
-        justify-content: space-between
-        width: 100%
-        flex-grow: 1
-
-    &__chart-item
-        @include m.flexc
-        position: relative
-        justify-content: flex-end
-        align-items: center
-        width: 40px
-
-        &:last-child
-            .stats__spacer
-                display: none
-        
-        &_hovered
-            .stats__column
-                background-color: v.$secondary3
-
-    &__spacer
-        position: absolute
-        content: ''
-        right: -12px
-        bottom: 25px
-        width: 2px
-        height: 193px
-        background-color: v.$spacers
-
     &__column
-        position: relative
-        width: 28px
-        // height: 193px
-        background-color: v.$background
-        margin-bottom: 7px
         transition: 0.2s ease-in
 
-    &__item-name
-        color: v.$dark4
-        font-size: 14px
-        font-weight: 400
+    &__chart-item 
+
+        &:last-child .stats__spacer 
+            display: none
+
+        &_hovered .stats__column
+            background-color: v.$secondary3
 
 .stats_cars
 

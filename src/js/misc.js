@@ -1,4 +1,4 @@
-import global from './dashboard_global'
+import global from './global'
 
 // Notification bell
 let unreadBellPath = '/assets/img/notification-bell_active.svg';
