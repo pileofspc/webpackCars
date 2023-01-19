@@ -46,6 +46,7 @@
 
     &__activity {
         grid-column: span 2;
+        overflow: hidden;
     }
 
     &__reminder {
@@ -129,18 +130,12 @@
         justify-content: space-between;
     }
 
-    &__name {
-        font-size: 20px;
-        font-weight: 500;
-    }
-
     &__view-all {
         color: v.$white1;
     }
-    
 }
 
-.stats2 {
+.stats-activity {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -197,5 +192,73 @@
         font-size: 12px;
         font-weight: 500;
         color: v.$dark4;
+    }
+
+    &__svg {
+        .data__line {
+            color: v.$primary3;
+        }
+        .data__gradient {
+            color: v.$primary3;
+        }
+    }
+}
+
+.marker {
+    position: absolute;
+    bottom: 0;
+    height: 160px;
+    transition: left 0.1s linear;
+
+    &__bg {
+        background: linear-gradient(v.$primary3transparent, transparent);
+        border-radius: 10px;
+        width: 41px;
+        height: 100%;
+    }
+}
+
+.dot {
+    display: block;
+    background-color: v.$primary3;
+    border: 2px solid v.$dot;
+    height: 11px;
+    width: 11px;
+
+    transform: translateX(-50%);
+
+    transition: top 0.1s linear;
+}
+
+.noties {
+    padding: 13px 20px;
+
+    &__header {
+        margin-bottom: 20px;
+    }
+
+    &__main {
+
+    }
+}
+
+.notification {
+    display: flex;
+    gap: 14px;
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: v.$notifications;
+        box-shadow: 0px 2px 4px v.$notifications-shadow;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+    }
+
+    &__icon-svg {
+
     }
 }

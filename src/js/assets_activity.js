@@ -11,37 +11,37 @@ class ActivityData {
                 value: db,
                 enumerable: false
             },
+            columns: {
+                value: 12,
+                enumerable: false
+            }
         })
-        this.columns = 12;
+        
     };
     query(item) {
         return this.db.activity[item]
     };
     createEntry(entry) {
-        this[entry] = {
-            stats: this.query(entry).stats,
-            points: this.getPointsArray(entry),
-        };
+        this[entry] = {};
+        this[entry].stats = this.query(entry).stats;
+        this[entry].points = this.getPointsArray(entry);
         this[entry].subtitles = this.getSubtitles(entry);
-        this[entry].datasetArray = this[entry].stats.filter((value, index, array) => {
-            if (index === 0 || index === array.length - 1) {
-                return false
-            } else {
-                return true
-            }
-        });
+        this[entry].datasetArray = this[entry].stats.slice();
+        // this[entry].datasetArray.pop();
+        // this[entry].datasetArray.shift();
     };
     getPointsArray(itemName) {
         let points = [];
         for (let value of this.query(itemName).stats) {
             points.push({y: value});
         }
-        this.normalizeX(points);
+        this.setX(points);
         return points
     };
-    normalizeX(coords) {
+    setX(coords) {
+        // В данном случае не важно какое расстояние между точками, т.к оно везде одинаковое
         let gap = 52.25;
-        let endGap = gap/2;
+        let endGap = gap;
         let accum = 0;
         coords.forEach((value, index, array) => {
             value.x = accum;
@@ -62,31 +62,23 @@ class ActivityData {
         let func;
         if (itemName.toLowerCase() === 'day') {
             timestampStep = 1000*60*60;
-            scheme = [3, 4];
+            scheme = [1];
             func = function(date) {
-                return date.toLocaleTimeString().replace(/([\d])(:[\d]{2})(:[\d]{2})(.*)/, "$1$4");
+                return dateFNS.format(date, 'h aa');
             }
         }
         if (itemName.toLowerCase() === 'week') {
             timestampStep = 1000*60*60*24;
             scheme = [1];
             func = function(date) {
-                return date.toString().slice(0, 3);
+                return dateFNS.format(date, 'EEE');
             }
         }
         if (itemName.toLowerCase() === 'month') {
             timestampStep = 1000*60*60*24;
-            scheme = [4, 4, 4, 4, 4, 5];
+            scheme = [2, 3, 3];
             func = function(date) {
-                let day = String(date.getDate());
-                if (day.length === 1) {
-                    day = `0${day}`
-                }
-                let month = String(date.getMonth() + 1);
-                if (month.length === 1) {
-                    month = `0${month}`
-                }
-                return `${day}/${month}`;
+                return dateFNS.format(date, 'dd/MM')
             }
         }
         if (timestampStep === undefined) {
@@ -104,81 +96,138 @@ class ActivityData {
         return subtitles
     }
 };
+
 class ActivityView {
     constructor() {
-        this.activity = document.querySelector('.activity');
+        this.root = document.querySelector('.activity');
+        this.marker = this.root.querySelector('.marker');
+        this.dot = this.marker.querySelector('.dot');
+        this.graphics = this.root.querySelector('.stats-activity__graphics');
+        this.columns = this.root.querySelectorAll('.stats-activity__column');
+        this.subtitles = this.root.querySelectorAll('.stats-activity__item-name');
         this.data = new ActivityData(global.database);
+        this.currentSVG = null;
+        this.currentPath = null;
         this.tooltip = global.tooltip;
+        this.readyForAnimation = true;
     };
     updateRenderers() {
         for (let entry in this.data) {
             this[entry] = function() {
-                if (this.data[entry].datasetArray.length !== this.chartItems.length) {
+                if (this.data[entry].datasetArray.length !== this.columns.length) {
                     throw new Error('Массивы не равны по длине');
                 }
                 for (let i = 0; i < this.data[entry].datasetArray.length; i++) {
-                    this.chartItems[i].dataset.value = this.data[entry].datasetArray[i];
-                    
-                    this.carsStats.querySelector('.stats__miles').textContent = date.format(new Date(), 'd MMMM yyyy');
-                    let subtitles = this.carsStats.querySelectorAll('.stats__item-name');
-                    for (let i = 0; i < subtitles.length; i++) {
-                        subtitles[i].textContent = this.data[entry].subtitles[i]
-                    }
+                    this.columns[i].dataset.value = this.data[entry].datasetArray[i];
+                }
+                for (let i = 0; i < this.subtitles.length; i++) {
+                    this.subtitles[i].textContent = this.data[entry].subtitles[i]
                 }
 
+                // Пробуем удалить старую SVG
                 try {
-                    document.querySelector('.stats2__svg').remove();
+                    document.querySelector('.stats-activity__svg').remove();
                 } catch {}
+
+                // Получаем высоту и ширину нужного контейнера и устанавливаем их в d3:
+                let width = parseFloat(window.getComputedStyle(this.graphics).width);
+                let height = parseFloat(window.getComputedStyle(this.graphics).height);
+
                 let SVG = LineChart(this.data[entry].points, {
                     x: d => d.x,
                     y: d => d.y,
-                    width: 418,
-                    height: 200,
+                    width: width,
+                    height: height,
                 });
-                SVG.classList.add('stats2__svg');
-                carsStats.querySelector('.stats2__svg-container').append(SVG);
+                SVG.classList.add('stats-activity__svg');
+                this.root.querySelector('.stats-activity__svg-container').append(SVG);
                 this.currentSVG = SVG;
+                this.currentPath = this.currentSVG.querySelector('.data__line');
             }
         }
     };
     // Тут создаются несколько методов для вывода
+    animateMarker(evt) {
+        // this.tooltip.style.visibility = 'visible';
+        let x = evt.clientX - getCoords(this.graphics).left;
+        const markerWidth = parseFloat(window.getComputedStyle(this.marker).width);
+        const graphicsWidth = parseFloat(window.getComputedStyle(this.graphics).width);
+
+        let atLeftBorder = x < markerWidth / 2;
+        let atRightBorder = x > graphicsWidth - markerWidth / 2;
+
+        if (!atLeftBorder && !atRightBorder) {
+            this.marker.style.left = `${x - markerWidth / 2}px`;
+            this.dot.style.top = `${findY(this.currentPath, x) + 16}px`;
+        } else {
+            if (atLeftBorder) {
+                this.marker.style.left = `0px`;
+                this.dot.style.top = `${findY(this.currentPath, markerWidth / 2) + 16}px`;
+            };
+            if (atRightBorder) {
+                this.marker.style.left = `${graphicsWidth - markerWidth}px`;
+                this.dot.style.top = `${findY(this.currentPath, graphicsWidth - markerWidth / 2) + 16}px`;
+            }
+        };
+    }
+    
+    handleListeners() {
+        let lastEVT;
+        this.graphics.addEventListener('mousemove', (evt) => {
+            lastEVT = evt;
+            if (this.readyForAnimation) {
+                this.animateMarker(evt);
+
+                this.readyForAnimation = false;
+                setTimeout(() => {
+                    this.readyForAnimation = true;
+                    this.animateMarker(lastEVT);
+                }, 100);
+            };
+        });
+        this.graphics.addEventListener('mouseenter', (evt) => {
+            // this.tooltip.style.visibility = 'visible';
+            // console.log(evt)
+            // this.marker.style.left = evt.;
+        });
+        this.graphics.addEventListener('mouseleave', () => {
+            // this.tooltip.style.visibility = '';
+            // this.marker.style.left = '50px';
+        });
+
+        for (let column of this.columns) {
+            column.addEventListener('mouseenter', () => {
+                // this.tooltip.querySelector('.tooltip__time').textContent = column.dataset.value;
+            })
+        }
+    }
+
+    initialState() {
+        // Добавлено, чтобы сразу работал transition
+        this.marker.style.left = `0px`;
+        let evt = {
+            clientX: 0
+        };
+        this.animateMarker(evt);
+
+    }
 };
-function controlActivity(view, button) {
-    view.data.createEntry(button.value);
+function controlActivity(view, value = 'month') {
+    view.data.createEntry(value);
     view.updateRenderers();
-    view[button.value]();
-
-    path = view.currentSVG.querySelector('path');
+    view[value]();
+    view.handleListeners();
+    view.initialState();
 };
-let path;
 
-let tooltip = global.tooltip;
+// let tooltip = global.tooltip;
 // let carsStats = document.querySelector('.stats_cars')
 // let carsChartItems = carsStats.querySelectorAll(`.stats_cars .stats__chart-item`);
 // let carsTimespanButtons = carsStats.querySelectorAll(`.stats_cars input[type="radio"]`);
 
 // let carsModel = new CarsModel(global.database);
-let carsView = new ActivityView();
-
-
-
-// // При нажатии на радиокнопки
-// for (let button of carsTimespanButtons) {
-//     button.addEventListener('click', () => {
-//         controlCars(carsModel, carsView, button)
-//     })
-// // Обновляем данные при загрузке страницы
-//     if (button.checked) {
-//         controlCars(carsModel, carsView, button)
-//     }
-// };
-
-
-// // Тултип и подсветка элементов, на которые наведен курсор
-// let dot = document.querySelector('.dot');
-// let dotHeight = parseFloat(window.getComputedStyle(dot).height);
-// let tooltipHeight = parseFloat(window.getComputedStyle(tooltip).height);
-// let chart = document.querySelector('.stats_cars .stats__chart');
+let activityView = new ActivityView();
+controlActivity(activityView)
 
 function findY(path, x) {
     var pathLength = path.getTotalLength()
@@ -217,6 +266,28 @@ function getCoords(elem) {
         left: box.left + window.pageXOffset
     };
 }
+
+
+
+// // При нажатии на радиокнопки
+// for (let button of carsTimespanButtons) {
+//     button.addEventListener('click', () => {
+//         controlCars(carsModel, carsView, button)
+//     })
+// // Обновляем данные при загрузке страницы
+//     if (button.checked) {
+//         controlCars(carsModel, carsView, button)
+//     }
+// };
+
+
+// // Тултип и подсветка элементов, на которые наведен курсор
+// let dot = document.querySelector('.dot');
+// let dotHeight = parseFloat(window.getComputedStyle(dot).height);
+// let tooltipHeight = parseFloat(window.getComputedStyle(tooltip).height);
+// let chart = document.querySelector('.stats_cars .stats__chart');
+
+
 
 // for (let item of carsChartItems) {
 //     item.addEventListener('mouseenter', (evt) => {

@@ -1,5 +1,6 @@
 const base =  require('./webpack.config.base.js');
 const {merge} = require('webpack-merge');
+const { tr } = require('date-fns/locale');
 
 let newOptions = {
     mode: 'development',
@@ -24,7 +25,7 @@ let newOptions = {
                     {
                         loader: 'css-loader',
                         options: {
-                            url: false,
+                            url: true,
                         }
                     },
                     // {

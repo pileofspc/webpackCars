@@ -4,6 +4,7 @@
 $primary1:              rgb(36, 39, 49);
 $primary2:              rgb(224, 228, 231);
 $primary3:              rgb(161, 98, 247);
+$primary3transparent:   rgba($primary3, 70%);
 
 $secondary1:            rgb(255, 99, 112);
 $secondary2:            rgb(246, 204, 13);
@@ -18,7 +19,7 @@ $tertiary3:             rgb(244, 227, 229);
 
 
 
-
+$white:                 rgb(255, 255, 255);
 $white1:                rgb(224, 228, 231);
 $dark1:                 rgb(36, 39, 49);
 $dark3:                 rgb(114, 118, 124);
@@ -33,7 +34,23 @@ $text:                  rgb(255, 255, 255);
 $text-inactive:         rgba(255, 255, 255, 0.5);
 $link-active:           rgb(41, 46, 61);
 
+$dot:                   $white;
 $tooltip:               rgb(40, 43, 50);
+
+$notifications:         rgb(43, 46, 56);
+$notifications-shadow:  rgba(14, 14, 14, 0.2);
 
 $spacers:               rgb(40, 44, 47);
 $spacers-lighter:       rgb(51, 54, 66);
+
+
+// ----------------------------------------------
+// FONTS
+// ----------------------------------------------
+
+$ff-primary: 'DM Sans', sans-serif;
+// $f-title-13M: ;
+
+// font-size: 13px;
+// font-weight: 500;
+// line-height: 17px;

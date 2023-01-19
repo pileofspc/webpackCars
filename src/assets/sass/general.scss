@@ -41,7 +41,7 @@ html, .page {
 }
 
 .page {
-    font-family: 'DM Sans', sans-serif;
+    font-family: v.$ff-primary;
     background-color: v.$background;
     color: v.$text;
 
@@ -159,7 +159,7 @@ html, .page {
 
 .searchbar {
     display: flex;
-    width: 358px;
+    max-width: 358px;
     height: $header_inner_height;
     background-color: v.$background;
     border-radius: 8px;
@@ -372,4 +372,22 @@ html, .page {
         font-size: 14px;
         font-weight: 400;
     }
+}
+
+.dot {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 21px;
+    top: 0;
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: v.$secondary4;
+}
+
+.block-header {
+    font-weight: 500;
+    font-size: 20px;
 }
