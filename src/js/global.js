@@ -46,7 +46,7 @@ export default {
         meters: {
             'energy': 0,
             'range': 20,
-            'break-fluid': 50,
+            'brake-fluid': 50,
             'tire-wear': 80
         },
         unreadNotifications: true,

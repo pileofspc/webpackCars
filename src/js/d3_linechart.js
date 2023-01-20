@@ -62,8 +62,9 @@ export default function LineChart(data, {
     const svg = d3.create("svg")
         .attr("width", width)
         .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+        .attr("viewBox", [0, 0, width, height]);
+        // .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+        // .attr("style", "height: auto");
     
     const gradient = svg.append("defs")
         .append("linearGradient")

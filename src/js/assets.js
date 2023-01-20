@@ -2,9 +2,9 @@
 
 import 'external-svg-loader'
 
-import '../assets/sass/assets.scss'
-require.context('../assets/img/general/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
-require.context('../assets/img/assets/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
+import '/src/assets/sass/assets.scss'
+require.context('/src/assets/img/general/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
+require.context('/src/assets/img/assets/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
 
 import './misc'
 
