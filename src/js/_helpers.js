@@ -54,3 +54,27 @@ export function getCoords(elem) {
 export function isNumber(n) {
     return !isNaN(parseFloat(n)) && !isNaN(n - 0)
 };
+
+export function throttle(func, throttleTime) {
+    let isReady = true;
+    let savedArgs;
+    let savedThis;
+    
+    return function throttled(...args) {
+        if (isReady) {
+            func.apply(this, args);
+            isReady = false;
+            savedArgs = savedThis = null;
+
+            setTimeout(() => {
+                isReady = true;
+                if (savedArgs) {
+                    throttled.apply(savedThis, savedArgs);
+                }
+            }, throttleTime);
+        } else {
+            savedArgs = args;
+            savedThis = this;
+        }
+    }
+}

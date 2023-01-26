@@ -1,7 +1,7 @@
 import LineChart from './d3_linechart';
 import global from './global';
 import * as date from 'date-fns';
-import { findY, getCoords } from './_functions';
+import { findY, getCoords } from './_helpers';
 
 // CARS Statistics
 //  Попробовал реализовать MVC, но пока не получилось - не понимаю, где что должно быть. Если в модели должна быть только логика
@@ -158,6 +158,7 @@ class CarsView {
                     height: 200,
                 });
                 carsSVG.classList.add('stats__svg');
+                carsSVG.setAttribute('preserveAspectRatio', 'none');
                 carsStats.querySelector('.stats__graphics').append(carsSVG);
             }
         }

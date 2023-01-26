@@ -1,3 +1,4 @@
+@use 'reset';
 @use 'vars' as v;
 @use 'fonts';
 @use 'mixins' as m;
@@ -37,7 +38,7 @@ html, .page {
 }
 
 .page__main {
-    height: 1024px;
+    // height: 1024px;
 }
 
 .page {
@@ -47,12 +48,13 @@ html, .page {
 
     &__sidebar {
         position: fixed;
-        padding-left: 26px;
+        top: 0;
+        padding: 0 26px;
     }
 
     &__main {
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
 
         // Вроде не нужно:
         // min-width: fit-content;
@@ -159,7 +161,7 @@ html, .page {
 
 .searchbar {
     display: flex;
-    max-width: 358px;
+    // max-width: 358px;
     height: $header_inner_height;
     background-color: v.$background;
     border-radius: 8px;
@@ -167,8 +169,8 @@ html, .page {
     &__icon {
         margin-left: auto;
         margin-right: auto;
-        width: 20px;
-        height: auto;
+        // width: 20px;
+        // height: auto;
     }
 
     &__form {
@@ -176,14 +178,12 @@ html, .page {
     }
 
     &__input {
-        width: 306px;
+        // width: 306px;
         height: 100%;
         background-color: transparent;
         caret-color: v.$caret-color;
 
         color: v.$text;
-        font-family: 'DM Sans';
-        font-style: normal;
         font-weight: 500;
         font-size: 16px;
     }
@@ -199,6 +199,10 @@ html, .page {
 
     &__profile {
         margin-left: 39px;
+    }
+
+    > * {
+        flex-shrink: 0;
     }
 }
 
@@ -337,13 +341,6 @@ html, .page {
         align-items: center;
         width: 40px;
 
-        // &:last-child .stats__spacer {
-        //     display: none;
-        // }
-
-        // &_hovered .stats__column {
-        //     background-color: v.$secondary3;
-        // }
     }
 
     &__spacer {
@@ -389,3 +386,4 @@ html, .page {
     font-weight: 500;
     font-size: 20px;
 }
+

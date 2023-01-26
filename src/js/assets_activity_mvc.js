@@ -1,7 +1,7 @@
 import LineChart from './d3_linechart';
 import global from './global';
 import * as dateFNS from 'date-fns';
-import { findY, getCoords, throttle } from './_helpers';
+import { findY, getCoords } from './_functions';
 
 
 
@@ -162,11 +162,9 @@ class ActivityView {
             }
         }
     };
-    // 
-    // Тут создаются несколько методов для вывода
-    // 
 
-    animateMarker = throttle((evt) => {
+    // Тут создаются несколько методов для вывода
+    animateMarker(evt) {
         function percentage(value) {
             if (typeof value !== 'number' || isNaN(value)) {
                 throw new Error('В percentage попало не число!')
@@ -176,7 +174,6 @@ class ActivityView {
 
         const markerWidth = parseFloat(window.getComputedStyle(this.marker).width);
         const graphicsWidth = parseFloat(window.getComputedStyle(this.graphics).width);
-        
 
         let x;
 
@@ -190,23 +187,21 @@ class ActivityView {
             };
         }
 
-        let someMargin = 16;
-
         let atLeftBorder = x < markerWidth / 2;
         let atRightBorder = x > graphicsWidth - markerWidth / 2;
 
         if (!atLeftBorder && !atRightBorder) {
             this.marker.style.left = `${x - markerWidth / 2}px`;
-            this.dot.style.top = `${findY(this.currentPath, percentage(x)) + someMargin}px`;
+            this.dot.style.top = `${findY(this.currentPath, percentage(x)) + 16}px`;
         } else {
             if (atLeftBorder) {
                 this.marker.style.left = `0px`;
-                this.dot.style.top = `${findY(this.currentPath, percentage(markerWidth / 2)) + someMargin}px`;
+                this.dot.style.top = `${findY(this.currentPath, percentage(markerWidth / 2)) + 16}px`;
 
             };
             if (atRightBorder) {
                 this.marker.style.left = `${graphicsWidth - markerWidth}px`;
-                this.dot.style.top = `${findY(this.currentPath, percentage(graphicsWidth - markerWidth / 2)) + someMargin}px`;
+                this.dot.style.top = `${findY(this.currentPath, percentage(graphicsWidth - markerWidth / 2)) + 16}px`;
             }
         };
 
@@ -255,11 +250,25 @@ class ActivityView {
         }
 
         this.lastPercentage = x / graphicsWidth;
-    }, 100);
+    };
 
     handleListeners() {
-        this.graphics.addEventListener('mousemove', this.animateMarker);
-        window.addEventListener('resize', this.animateMarker);
+        let lastEVT;
+
+        const callback = (evt) => {
+            lastEVT = evt;
+            if (this.readyForAnimation) {
+                this.animateMarker(evt);
+
+                this.readyForAnimation = false;
+                setTimeout(() => {
+                    this.readyForAnimation = true;
+                    this.animateMarker(lastEVT);
+                }, 100);
+            };
+        };
+        this.graphics.addEventListener('mousemove', callback);
+        window.addEventListener('resize', callback);
 
         for (let column of this.columns) {
             column.addEventListener('mouseenter', () => {
@@ -292,4 +301,4 @@ function controlActivity(view, value = 'month') {
 
 // let carsModel = new CarsModel(global.database);
 let activityView = new ActivityView();
-controlActivity(activityView);
+controlActivity(activityView)

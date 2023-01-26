@@ -11,7 +11,7 @@ $header_inner_height: 46px
     display: grid
     column-gap: 25px
     row-gap: 25px
-    justify-items: center
+    // justify-items: center
 
     grid-template-columns: repeat(12, 1fr)
     grid-template-rows: 266px 332px 236px
@@ -29,15 +29,12 @@ $header_inner_height: 46px
     // general modifiers
     &_3
         grid-column: span 3
-        width: 232px
 
     &_4
         grid-column: span 4
-        width: 318px
 
     &_6
         grid-column: span 6
-        width: 488px
 
     &_meter
         @include m.flexc
@@ -333,6 +330,8 @@ $header_inner_height: 46px
 
     .stats__svg
         position: absolute
+        width: 100%
+        height: 100%
 
         .data__line
             color: v.$secondary4
