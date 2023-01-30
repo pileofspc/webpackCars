@@ -4,14 +4,8 @@
 @use 'mixins' as m;
 @use "sass:color";
 
-$meter-transition: 0.2s ease-in;
-$header_inner_height: 46px;
-
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
+$header-height: 78px;
+$header-inner-height: 46px;
 
 input {
     border: none;
@@ -31,17 +25,10 @@ input {
 
 // PAGE
 
-html, .page {
+.page {
     margin: 0 auto;
     max-width: 1339px;
-    height: 100%;
-}
 
-.page__main {
-    // height: 1024px;
-}
-
-.page {
     font-family: v.$ff-primary;
     background-color: v.$background;
     color: v.$text;
@@ -51,14 +38,11 @@ html, .page {
         top: 0;
         padding: 0 26px;
     }
+}
 
-    &__main {
-        // display: flex;
-        // flex-direction: column;
-
-        // Вроде не нужно:
-        // min-width: fit-content;
-    }
+._first-screen {
+    height: calc(100vh - $header-height);
+    overflow: hidden;
 }
 
 // BLOCKS
@@ -73,10 +57,9 @@ html, .page {
     flex-direction: column;
 
     width: 248px;
-    height: 100%;
+    height: 100vh;
     background-color: v.$primary1;
 
-    font-family: 'DM Sans';
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
@@ -137,49 +120,73 @@ html, .page {
 }
 
 .header {
-    display: flex;
-    height: 78px;
     background-color: v.$primary1;
-
-    padding-left: 30px;
-    padding-right: 30px;
-
     margin-left: 248px;
-    flex-shrink: 0;
 
-    &__searchbar {
-        margin-top: auto;
-        margin-bottom: auto;
+    &__inner {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+
+        box-sizing: content-box;
+        height: $header-inner-height;
+        padding: calc(($header-height - $header-inner-height) / 2) 30px;
     }
 
     &__user {
         margin-left: auto;
-        margin-top: auto;
-        margin-bottom: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-basis: 110px;
+
+        > * {
+            flex-shrink: 0;
+        }
+    }
+
+    & .header__notification-bell {
+        width: calc(20/46 * $header-inner-height);
+        height: auto;
+    }
+
+    & .header__profile {
+        height: $header-inner-height;
+        width: $header-inner-height;
+    }
+
+    & .header__searchbar {
+        height: $header-inner-height;
     }
 }
 
 .searchbar {
     display: flex;
-    // max-width: 358px;
-    height: $header_inner_height;
+    align-items: center;
+
+    min-width: 188px;
+    width: 358px;
+    height: 46px;
+    padding: 0 18px;
+
     background-color: v.$background;
     border-radius: 8px;
 
     &__icon {
-        margin-left: auto;
-        margin-right: auto;
-        // width: 20px;
-        // height: auto;
+        margin-right: 16px;
+        width: 20px;
+        height: 20px;
     }
 
     &__form {
-        margin-left: auto;
+        flex-grow: 1;
     }
 
     &__input {
-        // width: 306px;
-        height: 100%;
+        width: 100%;
+
         background-color: transparent;
         caret-color: v.$caret-color;
 
@@ -189,35 +196,24 @@ html, .page {
     }
 }
 
-.user {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    width: 110px;
-    height: $header_inner_height;
-
-    &__profile {
-        margin-left: 39px;
-    }
-
-    > * {
-        flex-shrink: 0;
+.notification-bell {
+    width: 20px;
+    height: 24px;
+    &__img {
+        height: 100%;
+        width: 100%;
     }
 }
 
 .profile {
-    position: relative;
+    width: 46px;
+    height: 46px;
     overflow: hidden;
     border-radius: 50%;
 
-    width: $header_inner_height;
-    height: $header_inner_height;
-
     &__img {
         height: 100%;
-        width: auto;
-        transform: translate(var(--avatar_translate, 0)) scale(var(--avatar_scale, 1)); // ПОПРАВИТЬ ОШИБКУ
+        width: 100%;
     }
 }
 
