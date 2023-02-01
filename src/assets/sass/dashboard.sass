@@ -5,43 +5,82 @@
 @use "sass:color"
 
 $meter-transition: 0.2s ease-in
+$flex-basis-multiplier: 1.5
+// $product-card-height: 236px
 
-.content
+.content .active
+    // Активное состояние элементов:
+    &.meter
+        .meter__name
+            opacity: 1
+
+        .meter__circle
+            background-color: v.$text
+
+        .meter__icon
+            background-color: v.$text
+
+        .progress__empty path
+            stroke:  v.$text
+            stroke-opacity: 0.1
+
+        .progress__current path
+            stroke:  v.$text
+
+    // Конкретные элементы в активном состоянии
+    &.meter_id_energy
+        background-color: v.$primary3
+
+    &.meter_id_range
+        background-color: v.$secondary1
+
+    &.meter_id_brake-fluid
+        background-color: v.$primary3
+
+    &.meter_id_tire-wear
+        background-color: v.$secondary2
+
+
+.content-dashboard
     display: grid
     gap: 25px
-    // justify-items: center
-
     grid-template-columns: repeat(12, 1fr)
-    grid-template-rows: 4fr 5fr 3fr
-
+    grid-template-rows: repeat(12, 1fr)
     padding: 30px
-    // width: 100%
-
     margin-left: 248px
 
-.grid
-    border-radius: 14px
-    background-color: v.$primary1
-    color: v.$text
+    > *
+        overflow: hidden
 
-    // general modifiers
-    &_3
+    &__meter
         grid-column: span 3
+        grid-row: span 4
 
-    &_4
-        grid-column: span 4
-
-    &_6
+    &__stats
         grid-column: span 6
+        grid-row: span 5
+    
+    &__product-card
+        grid-column: span 4
+        grid-row: span 3
+        min-height: 236px
 
-    &_meter
-        // min-width: 150px
-        @include m.flexc
-        transition: $meter-transition
 
-    // elements
+.meter
+    $logo-height: 38px
+    $logo-margin-bottom: 10px
+    $name-height: 31px
+    $name-margin-bottom: 30px
+
+    @include m.flexc
+    justify-content: center
+    // Не получилось здесь поставить min-content, поэтому поставил на глаз значение
+    min-height: 200px
+    padding: 20px
+    transition: $meter-transition
+
     &__logo
-        margin-top: 22.5px
+        flex-basis: calc(($logo-height + $logo-margin-bottom) * $flex-basis-multiplier)
 
     &__circle
         transition: $meter-transition
@@ -59,64 +98,33 @@ $meter-transition: 0.2s ease-in
     &__name
         transition: $meter-transition
         opacity: 0
-        margin-top: 10px
+        flex-basis: calc(($name-height + $name-margin-bottom) * $flex-basis-multiplier)
         font-size: 24px
         font-weight: 700
 
     &__progress
         @include m.flexc
         width: 100%
-        margin-top: 30px
 
-    // АКТИВНОЕ СОСТОЯНИЕ
-    &.grid_active   // Здесь двойной селектор (.grid.grid_active) нужен, так как ниже идет правило, которое по специфичности перебьет в ином случае
-
-        .grid__name
-            opacity: 1
-
-        .grid__circle
-            background-color: v.$text
-
-        .grid__icon
-            background-color: v.$text
-
-        .progress__empty path
-            stroke:  v.$text
-            stroke-opacity: 0.1
-
-        .progress__current path
-            stroke:  v.$text
-
-    // Конкретные модификаторы
+    // Конкретные элементы
     &_id_energy
-
-        // inactive state
-        .grid__circle
+        .meter__circle
             background-color: v.$primary3
 
-        .grid__icon
-            // mask-image: url('/assets/img/energy.svg')
-            // -webkit-mask-image: url('/assets/img/energy.svg')
+        .meter__icon
             mask-image: url('/src/assets/img/dashboard/meters/energy.svg')
             -webkit-mask-image: url('/src/assets/img/dashboard/meters/energy.svg')
             background-color: v.$primary3
 
         .progress__current path
             stroke: v.$primary3
-            
-        // active state
-        &.grid_active
-            background-color: v.$primary3
+
 
     &_id_range
-
-        // inactive state
-        .grid__circle
+        .meter__circle
             background-color: v.$secondary1
 
-        .grid__icon
-            // mask-image: url('/assets/img/range.svg')
-            // -webkit-mask-image: url('/assets/img/range.svg')
+        .meter__icon
             mask-image: url('/src/assets/img/dashboard/meters/range.svg')
             -webkit-mask-image: url('/src/assets/img/dashboard/meters/range.svg')
             background-color: v.$secondary1
@@ -124,17 +132,12 @@ $meter-transition: 0.2s ease-in
         .progress__current path
             stroke: v.$secondary1
 
-            // active state
-        &.grid_active
-            background-color: v.$secondary1
 
     &_id_brake-fluid
-
-        // inactive state
-        .grid__circle
+        .meter__circle
             background-color: v.$primary3
 
-        .grid__icon
+        .meter__icon
             mask-image: url('/src/assets/img/dashboard/meters/brake-fluid.svg')
             -webkit-mask-image: url('/src/assets/img/dashboard/meters/brake-fluid.svg')
             background-color: v.$primary3
@@ -142,19 +145,11 @@ $meter-transition: 0.2s ease-in
         .progress__current path
             stroke: v.$primary3
 
-        // active state
-        &.grid_active
-            background-color: v.$primary3
-
     &_id_tire-wear
-
-        // inactive state
-        .grid__circle
+        .meter__circle
             background-color: v.$secondary2
 
-        .grid__icon
-            // mask-image: url('/assets/img/tire_wear.svg')
-            // -webkit-mask-image: url('/assets/img/tire_wear.svg')
+        .meter__icon
             mask-image: url('/src/assets/img/dashboard/meters/tire_wear.svg')
             -webkit-mask-image: url('/src/assets/img/dashboard/meters/tire_wear.svg')
             background-color: v.$secondary2
@@ -162,18 +157,14 @@ $meter-transition: 0.2s ease-in
         .progress__current path
             stroke: v.$secondary2
 
-        // active state
-        &.grid_active
-            background-color: v.$secondary2
-
 
 .progress
-
+    position: relative
     path
         transition: $meter-transition
 
     &__bar
-        position: absolute
+        position: relative
         width: 112px
         height: 95px
         
@@ -186,16 +177,17 @@ $meter-transition: 0.2s ease-in
         position: absolute
 
     &__percentage
-        margin-top: 36px
+        position: absolute
+        top: 36px
         font-size: 24px
         font-weight: 700
 
+    
 .stats
     &__column
         transition: 0.2s ease-in
 
     &__chart-item 
-
         &:last-child .stats__spacer 
             display: none
 
@@ -203,13 +195,13 @@ $meter-transition: 0.2s ease-in
             background-color: v.$secondary3
 
 .stats_cars
+    $graphics-height: 90%
     .stats__timespan
         background-color: v.$background2
         border-radius: 10px
         order: 2
 
         .stats__day, .stats__week, .stats__month
-
             + label:hover
                 outline: 2px solid v.$secondary4
                 background-color: v.$secondary4transparent
@@ -224,17 +216,22 @@ $meter-transition: 0.2s ease-in
         flex-grow: 1
 
         .stats__spacer
-            position: static
             display: block
+            position: static
+            height: $graphics-height
+
+        .stats__item-name
+            margin-top: auto
 
     .stats__graphics
-        pointer-events: none
         position: absolute
+        display: flex
+        justify-content: space-between
+        height: $graphics-height
         width: 100%
-        height: 100%
 
     .stats__svg
-        position: absolute
+        // position: absolute
         width: 100%
         height: 100%
 
@@ -243,22 +240,3 @@ $meter-transition: 0.2s ease-in
 
         .data__gradient
             color: v.$secondary4
-
-.product-card
-    padding: 15px 27px
-    color: v.$dark1
-    font-size: 16px
-    font-weight: 700
-
-    &__recommendation
-        display: flex
-
-    &__recommendation-svg
-        margin-right: 10px
-
-        path
-            fill: v.$dark3
-
-    // modifiers
-    &_n1
-        background-color: v.$tertiary1

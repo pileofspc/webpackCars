@@ -1,14 +1,14 @@
 import global from './global'
 
 // Ховер эффекты
-let grids = document.querySelectorAll('.grid_meter');
+let grids = document.querySelectorAll('.meter');
 let currentGridActive = grids[0];
-currentGridActive.classList.add('grid_active');
+currentGridActive.classList.add('active');
 
 for (let grid of grids) {
     grid.addEventListener('mouseenter', () => {
-        currentGridActive.classList.remove('grid_active');
-        grid.classList.add('grid_active');
+        currentGridActive.classList.remove('active');
+        grid.classList.add('active');
         currentGridActive = grid;
     })
 }
@@ -136,7 +136,7 @@ class SVGGenerator {
 }
 
 for (let [key, value] of Object.entries(global.database.meters)) {
-    let meter = document.querySelector(`.grid_id_${key}`);
+    let meter = document.querySelector(`.meter_id_${key}`);
     meter.querySelector(`.progress__percentage`).textContent = `${value}%`;
 
     let emptySVG = new SVGGenerator(arc, 100);

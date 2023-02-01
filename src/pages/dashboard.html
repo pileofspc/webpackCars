@@ -62,56 +62,58 @@
     </header>
 
     <main class="main page__main">
-        <section class="content _first-screen">
+        <section class="content content-dashboard _first-screen">
             <div class="tooltip">
                 <div class="tooltip__time">TIME</div>
                 <div class="tooltip__value">VALUE</div>
             </div>
-            <div class="grid grid_3 grid_meter grid_id_energy">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
+            <div class="meter meter_id_energy content-dashboard__meter content__grid-item">
+
+                <div class="meter__logo">
+                    <div class="meter__circle"></div>
+                    <div class="meter__icon"></div>
                 </div>
-                <h2 class="grid__name">Energy</h2>
-                <div class="progress progress_circular grid__progress">
+                <h2 class="meter__name">Energy</h2>
+                <div class="progress meter__progress">
+                    <div class="progress__bar"></div>
+                    <div class="progress__percentage">45%</div>
+                </div>
+
+            </div>
+            <div class="meter meter_id_range content-dashboard__meter content__grid-item">
+                <div class="meter__logo">
+                    <div class="meter__circle"></div>
+                    <div class="meter__icon"></div>
+                </div>
+                <h2 class="meter__name">Range</h2>
+                <div class="progress progress_circular meter__progress">
                     <div class="progress__bar"></div>
                     <div class="progress__percentage">45%</div>
                 </div>
             </div>
-            <div class="grid grid_3 grid_meter grid_id_range">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
+            <div class="meter meter_id_brake-fluid content-dashboard__meter content__grid-item">
+                <div class="meter__logo">
+                    <div class="meter__circle"></div>
+                    <div class="meter__icon"></div>
                 </div>
-                <h2 class="grid__name">Range</h2>
-                <div class="progress progress_circular grid__progress">
+                <h2 class="meter__name">Brake fluid</h2>
+                <div class="progress meter__progress">
                     <div class="progress__bar"></div>
                     <div class="progress__percentage">45%</div>
                 </div>
             </div>
-            <div class="grid grid_3 grid_meter grid_id_brake-fluid">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
+            <div class="meter meter_id_tire-wear content-dashboard__meter content__grid-item">
+                <div class="meter__logo">
+                    <div class="meter__circle"></div>
+                    <div class="meter__icon"></div>
                 </div>
-                <h2 class="grid__name">Brake fluid</h2>
-                <div class="progress grid__progress">
+                <h2 class="meter__name">Tire wear</h2>
+                <div class="progress meter__progress">
                     <div class="progress__bar"></div>
                     <div class="progress__percentage">45%</div>
                 </div>
             </div>
-            <div class="grid grid_3 grid_meter grid_id_tire-wear">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
-                </div>
-                <h2 class="grid__name">Tire wear</h2>
-                <div class="progress grid__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="grid grid_6 stats">
+            <div class="stats content-dashboard__stats content__grid-item">
                 <div class="stats__header">
                     <span class="stats__span">Miles</span> statistics
                 </div>
@@ -164,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid_6 stats stats_cars">
+            <div class="stats stats_cars content-dashboard__stats content__grid-item">
                 <div class="stats__header">
                     <span class="stats__span">Cars</span> statistics
                 </div>
@@ -221,11 +223,10 @@
                         <div class="dot"></div>
                         <div class="stats__item-name">12 PM</div>
                     </div>
-                    <div class="stats__graphics">
-                    </div>
+                    <div class="stats__graphics"></div>
                 </div>
             </div>
-            <div class="grid grid_4 product-card product-card_n1">
+            <div class="product-card product-card_n1 content-dashboard__product-card content__grid-item">
                 <div class="product-card__recommendation">
                     <svg class="product-card__recommendation-svg"
                         data-src="assets/img/product-card__recommendation-img.svg"></svg>
@@ -245,7 +246,7 @@
                 </div>
             </div>
 
-            <div class="grid grid_4 product-card product-card_n2">
+            <div class="product-card product-card_n2 content-dashboard__product-card content__grid-item">
                 <div class="product-card__recommendation">
                     <svg class="product-card__recommendation-svg"
                         data-src="assets/img/product-card__recommendation-img.svg"></svg>
@@ -265,7 +266,7 @@
                 </div>
             </div>
 
-            <div class="grid grid_4 product-card product-card_n3">
+            <div class="product-card product-card_n3 content-dashboard__product-card content__grid-item">
                 <div class="product-card__recommendation">
                     <svg class="product-card__recommendation-svg"
                         data-src="assets/img/product-card__recommendation-img.svg"></svg>
@@ -285,237 +286,8 @@
                 </div>
             </div>
         </section>
-
-
     </main>
 
-
-    <!-- <main class="main2 page__main2">
-
-        <section class="content">
-            <div class="tooltip">
-                <div class="tooltip__time">TIME</div>
-                <div class="tooltip__value">VALUE</div>
-            </div>
-            <div class="grid grid_3 grid_meter grid_id_energy">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
-                </div>
-                <h2 class="grid__name">Energy</h2>
-                <div class="progress progress_circular grid__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="grid grid_3 grid_meter grid_id_range">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
-                </div>
-                <h2 class="grid__name">Range</h2>
-                <div class="progress progress_circular grid__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="grid grid_3 grid_meter grid_id_brake-fluid">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
-                </div>
-                <h2 class="grid__name">Brake fluid</h2>
-                <div class="progress grid__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="grid grid_3 grid_meter grid_id_tire-wear">
-                <div class="grid__logo">
-                    <div class="grid__circle"></div>
-                    <div class="grid__icon"></div>
-                </div>
-                <h2 class="grid__name">Tire wear</h2>
-                <div class="progress grid__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="grid grid_6 stats">
-                <div class="stats__header">
-                    <span class="stats__span">Miles</span> statistics
-                </div>
-                <div class="stats__controls">
-                    <div class="stats__timespan">
-                        <input class="stats__day" id="stats__day" type="radio" name="timespan" value="day" checked>
-                        <label for="stats__day">Day</label>
-                        <input class="stats__week" id="stats__week" type="radio" name="timespan" value="week">
-                        <label for="stats__week">Week</label>
-                        <input class="stats__month" id="stats__month" type="radio" name="timespan" value="month">
-                        <label for="stats__month">Month</label>
-                    </div>
-                    <div class="stats__miles">0 Miles</div>
-                </div>
-                <div class="stats__chart">
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__spacer"></div>
-                        <div class="stats__item-name">3 AM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__spacer"></div>
-                        <div class="stats__item-name">7 AM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__spacer"></div>
-                        <div class="stats__item-name">10 AM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__spacer"></div>
-                        <div class="stats__item-name">2 PM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__spacer"></div>
-                        <div class="stats__item-name">5 PM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__spacer"></div>
-                        <div class="stats__item-name">9 PM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__spacer"></div>
-                        <div class="stats__item-name">12 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid_6 stats stats_cars">
-                <div class="stats__header">
-                    <span class="stats__span">Cars</span> statistics
-                </div>
-                <div class="stats__controls">
-                    <div class="stats__timespan">
-                        <input class="stats__day" id="stats__day_cars" type="radio" name="timespan_2" value="day"
-                            checked>
-                        <label for="stats__day_cars">Day</label>
-                        <input class="stats__week" id="stats__week_cars" type="radio" name="timespan_2" value="week">
-                        <label for="stats__week_cars">Week</label>
-                        <input class="stats__month" id="stats__month_cars" type="radio" name="timespan_2" value="month">
-                        <label for="stats__month_cars">Month</label>
-                    </div>
-                    <div class="stats__miles">20 January 2022</div>
-                </div>
-                <div class="stats__chart">
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">3 AM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">7 AM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">10 AM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">2 PM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">5 PM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">9 PM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">12 PM</div>
-                    </div>
-                    <div class="stats__chart-item">
-                        <div class="stats__spacer"></div>
-                        <div class="dot"></div>
-                        <div class="stats__item-name">12 PM</div>
-                    </div>
-                    <div class="stats__graphics">
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid_4 product-card product-card_n1">
-                <div class="product-card__recommendation">
-                    <svg class="product-card__recommendation-svg"
-                        data-src="assets/img/product-card__recommendation-img.svg"></svg>
-                    <span class="product-card__recommendation-percentage">64% Recommend</span>
-                </div>
-                <img src="assets/img/car.png" alt="Product Image" class="product-card__img">
-                <div class="product-card__name">Mini Cooper</div>
-                <div class="product-card__stats">
-                    <svg class="product-card__stat product-card__stat1"
-                        data-src="assets/img/product-card__stat-1.svg"></svg>
-                    <div class="product-card__stat product-card__stat2">132k</div>
-                    <svg class="product-card__stat product-card__stat3"
-                        data-src="assets/img/product-card__stat-3.svg"></svg>
-                    <svg class="product-card__stat product-card__stat4"
-                        data-src="assets/img/product-card__stat-4.svg"></svg>
-                    <div class="product-card__price">$32/h</div>
-                </div>
-            </div>
-
-            <div class="grid grid_4 product-card product-card_n2">
-                <div class="product-card__recommendation">
-                    <svg class="product-card__recommendation-svg"
-                        data-src="assets/img/product-card__recommendation-img.svg"></svg>
-                    <span class="product-card__recommendation-percentage">64% Recommend</span>
-                </div>
-                <img class="product-card__img" src="assets/img/car2.png" alt="Product Image">
-                <div class="product-card__name">Porsche 911 Carrera</div>
-                <div class="product-card__stats">
-                    <svg class="product-card__stat product-card__stat1"
-                        data-src="assets/img/product-card__stat-1.svg"></svg>
-                    <div class="product-card__stat product-card__stat2">132k</div>
-                    <svg class="product-card__stat product-card__stat3"
-                        data-src="assets/img/product-card__stat-3.svg"></svg>
-                    <svg class="product-card__stat product-card__stat4"
-                        data-src="assets/img/product-card__stat-4.svg"></svg>
-                    <div class="product-card__price">$32/h</div>
-                </div>
-            </div>
-
-            <div class="grid grid_4 product-card product-card_n3">
-                <div class="product-card__recommendation">
-                    <svg class="product-card__recommendation-svg"
-                        data-src="assets/img/product-card__recommendation-img.svg"></svg>
-                    <span class="product-card__recommendation-percentage">64% Recommend</span>
-                </div>
-                <img class="product-card__img" src="assets/img/car3.png" alt="Product Image">
-                <div class="product-card__name">Porsche 911 Carrera</div>
-                <div class="product-card__stats">
-                    <svg class="product-card__stat product-card__stat1"
-                        data-src="assets/img/product-card__stat-1.svg"></svg>
-                    <div class="product-card__stat product-card__stat2">132k</div>
-                    <svg class="product-card__stat product-card__stat3"
-                        data-src="assets/img/product-card__stat-3.svg"></svg>
-                    <svg class="product-card__stat product-card__stat4"
-                        data-src="assets/img/product-card__stat-4.svg"></svg>
-                    <div class="product-card__price">$32/h</div>
-                </div>
-            </div>
-        </section>
-    </main> -->
 </body>
 
 </html>

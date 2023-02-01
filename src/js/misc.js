@@ -11,3 +11,11 @@ if (global.database.unreadNotifications) {
     let bell = document.querySelector('.notification-bell__img');
     bell.setAttribute('src', bellPath)
 }
+
+
+// Это нужно чтобы при изменении размеров окна тултип не уезжал за пределы экрана
+window.addEventListener('resize', (evt) => {
+    global.tooltip.style.top = '';
+    global.tooltip.style.left = ''
+    global.tooltip.style.visibility = 'hidden'
+})

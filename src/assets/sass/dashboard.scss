@@ -1,9 +1,12 @@
 @use 'vars' as v;
 
 .product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     padding: 15px 27px;
     color: v.$dark1;
-    font-family: "DM Sans";
     font-size: 16px;
     font-weight: 700;
 
@@ -13,7 +16,6 @@
 
     &__recommendation-svg {
         margin-right: 10px;
-
         width: 24px;
 
         path {
@@ -21,20 +23,12 @@
         }
     }
 
-    &__img {
-        margin-top: 11px;
-    }
-
     &__name {
-        margin-top: 11px;
-        font-family: 'DM Sans';
         font-size: 20px;
         font-weight: 700;
     }
 
     &__stats {
-        margin-top: 6px;
-
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -46,19 +40,15 @@
 
     &__stat2 {
         color: v.$dark3;
-        font-family: 'DM Sans';
         font-size: 14px;
         font-weight: 500;
     }
 
     &__price {
         margin-left: auto;
-
         color: v.$dark3;
-        font-family: 'DM Sans';
         font-size: 14px;
         font-weight: 500;
-
     }
 
     // modifiers

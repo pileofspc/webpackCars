@@ -24,6 +24,12 @@ input {
 }
 
 // PAGE
+html, body {
+    // width: 100%;
+}
+body {
+    // width: 600px;
+}
 
 .page {
     margin: 0 auto;
@@ -43,6 +49,14 @@ input {
 ._first-screen {
     height: calc(100vh - $header-height);
     overflow: hidden;
+}
+
+.content {
+    &__grid-item {
+        border-radius: 14px;
+        background-color: v.$primary1;
+        color: v.$text;
+    }
 }
 
 // BLOCKS
@@ -247,15 +261,6 @@ input {
     }
 }
 
-.grid {
-    border-radius: 14px;
-    background-color: v.$primary1;
-    color: v.$text;
-}
-
-
-
-
 .stats {
     display: flex;
     flex-direction: column;
@@ -277,7 +282,7 @@ input {
     &__controls {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
         width: 100%;
 
         margin-bottom: 14px;
@@ -336,6 +341,7 @@ input {
         justify-content: flex-end;
         align-items: center;
         width: 40px;
+        // width: 11.8%;
 
     }
 
@@ -345,7 +351,7 @@ input {
         right: -12px;
         bottom: 25px;
         width: 2px;
-        height: 193px;
+        height: 85%;
         background-color: v.$spacers;
     }
 

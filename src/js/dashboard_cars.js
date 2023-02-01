@@ -229,6 +229,7 @@ for (let item of carsChartItems) {
         rectDot = getCoords(dot);
         tooltip.style.left = rectDot.left + 20 + 'px';
         tooltip.style.top = rectDot.top - tooltipHeight/2 + 'px';
+        tooltip.style.visibility = 'visible';
     });
 };
 
@@ -238,4 +239,22 @@ chart.addEventListener('mouseenter', (evt) => {
 });
 chart.addEventListener('mouseleave', (evt) => {
     tooltip.style.visibility = 'hidden';
+});
+
+
+
+
+function equalizeHeight(mainEl, el2) {
+    const mainHeight = window.getComputedStyle(mainEl).height;
+    // const height2 = window.getComputedStyle(el2).height;
+    el2.style.height = mainHeight;
+}
+
+
+// Не могу нормально через css сделать чтобы два элемента были одной высоты, поэтому делаю здесь
+let spacer = document.querySelector('.stats_cars .stats__spacer');
+let graphics = document.querySelector('.stats__graphics');
+equalizeHeight(spacer, graphics);
+window.addEventListener('resize', (evt) => {
+    equalizeHeight(spacer, graphics);
 });
