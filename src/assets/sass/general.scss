@@ -24,13 +24,6 @@ input {
 }
 
 // PAGE
-html, body {
-    // width: 100%;
-}
-body {
-    // width: 600px;
-}
-
 .page {
     margin: 0 auto;
     max-width: 1339px;
@@ -48,7 +41,7 @@ body {
 
 ._first-screen {
     height: calc(100vh - $header-height);
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .content {
@@ -285,7 +278,7 @@ body {
         align-items: center;
         width: 100%;
 
-        margin-bottom: 14px;
+        margin-bottom: 20px;
     }
 
     &__timespan {
@@ -342,16 +335,11 @@ body {
         align-items: center;
         width: 40px;
         // width: 11.8%;
-
     }
 
     &__spacer {
-        position: absolute;
-        content: '';
-        right: -12px;
-        bottom: 25px;
         width: 2px;
-        height: 85%;
+        height: 90%;
         background-color: v.$spacers;
     }
 
@@ -375,8 +363,9 @@ body {
     display: none;
     position: absolute;
     background-color: white;
-    left: 21px;
+    left: 50%;
     top: 0;
+    transform: translateX(-50%);
 
     width: 10px;
     height: 10px;

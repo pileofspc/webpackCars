@@ -131,6 +131,8 @@ class CarsView {
         this.carsStats = carsStats;
         this.chartItems = carsChartItems;
         this.tooltip = global.tooltip;
+        this.svgHeight = 200;
+        this.svgWidth = 418;
     };
     updateRenderers(model) {
         for (let entry in model) {
@@ -140,6 +142,7 @@ class CarsView {
                 }
                 for (let i = 0; i < model[entry].datasetArray.length; i++) {
                     this.chartItems[i].dataset.value = model[entry].datasetArray[i];
+                    // this.chartItems[i].dataset.number = i;
                     
                     this.carsStats.querySelector('.stats__miles').textContent = date.format(new Date(), 'd MMMM yyyy');
                     let subtitles = this.carsStats.querySelectorAll('.stats__item-name');
@@ -154,8 +157,8 @@ class CarsView {
                 let carsSVG = LineChart(model[entry].points, {
                     x: d => d.x,
                     y: d => d.y,
-                    width: 418,
-                    height: 200,
+                    width: this.svgWidth,
+                    height: this.svgHeight,
                 });
                 carsSVG.classList.add('stats__svg');
                 carsSVG.setAttribute('preserveAspectRatio', 'none');
@@ -201,28 +204,37 @@ for (let button of carsTimespanButtons) {
 let dot = document.querySelector('.dot');
 let dotHeight = parseFloat(window.getComputedStyle(dot).height);
 let tooltipHeight = parseFloat(window.getComputedStyle(tooltip).height);
-let chart = document.querySelector('.stats_cars .stats__chart');
+const chart = document.querySelector('.stats_cars .stats__chart');
+const subtitles = document.querySelectorAll('.stats_cars .stats__item-name');
+const graphics = document.querySelector('.stats_cars .stats__graphics');
 
-for (let item of carsChartItems) {
+for (let i = 0; i < carsChartItems.length; i++) {
+    let item = carsChartItems[i];
     item.addEventListener('mouseenter', (evt) => {
         item.classList.add('stats__chart-item_hovered');
 
-        let time = item.querySelector(`.stats__item-name`).textContent;
+        let time = subtitles[i].textContent;
+        let value = item.dataset.value;
         tooltip.querySelector('.tooltip__time').textContent = time;
-        tooltip.querySelector('.tooltip__value').textContent = `${item.dataset.value}`;
+        tooltip.querySelector('.tooltip__value').textContent = value;
     });
     item.addEventListener('mouseleave', (evt) => {
         item.classList.remove('stats__chart-item_hovered');
         item.querySelector('.dot').style.display = 'none';
     });
     item.addEventListener('mouseenter', (evt) => {
+        const svg = document.querySelector('.stats_cars .stats__svg');
+        const actualSvgHeight = parseFloat(window.getComputedStyle(svg).height);
+        // graphics используется потому, что он не меняется во время использования фичей на странице
+        const actualGraphicsWidth = parseFloat(window.getComputedStyle(graphics).width);
         let dot = item.querySelector('.dot');
         dot.style.display = 'block';
 
         let rectDot = dot.getBoundingClientRect();
         let rectChart = chart.getBoundingClientRect();
         let x = (rectDot.left + rectDot.right)/2 - rectChart.left;
-        let y = findY(path, x);
+        let percentageX = `${x / actualGraphicsWidth * 100}%`;
+        let y = findY(path, percentageX) / carsView.svgHeight * actualSvgHeight;
 
         dot.style.top = y - dotHeight/2 + 'px';
 
@@ -239,22 +251,4 @@ chart.addEventListener('mouseenter', (evt) => {
 });
 chart.addEventListener('mouseleave', (evt) => {
     tooltip.style.visibility = 'hidden';
-});
-
-
-
-
-function equalizeHeight(mainEl, el2) {
-    const mainHeight = window.getComputedStyle(mainEl).height;
-    // const height2 = window.getComputedStyle(el2).height;
-    el2.style.height = mainHeight;
-}
-
-
-// Не могу нормально через css сделать чтобы два элемента были одной высоты, поэтому делаю здесь
-let spacer = document.querySelector('.stats_cars .stats__spacer');
-let graphics = document.querySelector('.stats__graphics');
-equalizeHeight(spacer, graphics);
-window.addEventListener('resize', (evt) => {
-    equalizeHeight(spacer, graphics);
 });

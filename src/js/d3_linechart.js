@@ -24,26 +24,26 @@ export default function LineChart(data, {
     yFormat, // a format specifier string for the y-axis
     yLabel, // a label for the y-axis
     color = "currentColor" // fill color of area
-  } = {}) {
+} = {}) {
     // Compute values.
     const X = d3.map(data, x);
     const Y = d3.map(data, y);
     const I = d3.range(X.length);
-  
+
     // Compute which data points are considered defined.
     if (defined === undefined) defined = (d, i) => !isNaN(X[i]) && !isNaN(Y[i]);
     const D = d3.map(data, defined);
-  
+
     // Compute default domains.
     if (xDomain === undefined) xDomain = d3.extent(X);
     if (yDomain === undefined) yDomain = [0, d3.max(Y)];
-  
+
     // Construct scales and axes.
     const xScale = xType(xDomain, xRange);
     const yScale = yType(yDomain, yRange);
     const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0);
     const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
-  
+
     // Construct an area generator.
     const area = d3.area()
         .defined(i => D[i])
@@ -58,22 +58,22 @@ export default function LineChart(data, {
         .curve(curve)
         .x(i => xScale(X[i]))
         .y(i => yScale(Y[i]));
-  
+
     const svg = d3.create("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("viewBox", [0, 0, width, height]);
-        // .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
-        // .attr("style", "height: auto");
-    
+    // .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+    // .attr("style", "height: auto");
+
     const gradient = svg.append("defs")
         .append("linearGradient")
-            .attr("id", 'Gradient')
-            .attr('x1', '0')
-            .attr('y1', '0')
-            .attr('x2', '0')
-            .attr('y2', '1')
-            .classed('data__gradient', true);;
+        .attr("id", 'Gradient')
+        .attr('x1', '0')
+        .attr('y1', '0')
+        .attr('x2', '0')
+        .attr('y2', '1')
+        .classed('data__gradient', true);;
     gradient.append('stop')
         .attr('offset', 0)
         .attr('stop-color', color)
@@ -86,7 +86,7 @@ export default function LineChart(data, {
         .attr('offset', 1)
         .attr('stop-color', color)
         .attr('stop-opacity', 0);
-  
+
     // Line
     svg.append("path")
         .attr("fill", 'transparent')
@@ -99,4 +99,4 @@ export default function LineChart(data, {
         .attr("d", area(I));
 
     return svg.node();
-  }
+}

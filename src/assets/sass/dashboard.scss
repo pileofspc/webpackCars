@@ -1,4 +1,315 @@
+@use 'general';
 @use 'vars' as v;
+@use 'fonts';
+@use 'mixins' as m;
+@use "sass:color";
+
+
+$meter-transition: 0.2s ease-in;
+$flex-basis-multiplier: 1.5;
+
+.content .active {
+    // Активное состояние элементов:
+    &.meter {
+        .meter__name {
+            opacity: 1;
+        }
+
+        .meter__circle {
+            background-color: v.$text;
+        }
+
+        .meter__icon {
+            background-color: v.$text;
+        }
+
+        .progress__empty path {
+            stroke: v.$text;
+            stroke-opacity: 0.1;
+        }
+
+        .progress__current path {
+            stroke: v.$text;
+        }
+    }
+
+    // Конкретные элементы в активном состоянии
+    &.meter_id_energy {
+        background-color: v.$primary3;
+    }
+
+    &.meter_id_range {
+        background-color: v.$secondary1;
+    }
+
+    &.meter_id_brake-fluid {
+        background-color: v.$primary3;
+    }
+
+    &.meter_id_tire-wear {
+        background-color: v.$secondary2;
+    }
+}
+
+
+.content-dashboard {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    padding: 30px;
+    margin-left: 248px;
+
+    >* {
+        overflow: hidden;
+    }
+
+    &__meter {
+        grid-column: span 3;
+        grid-row: span 4;
+    }
+
+    &__stats {
+        grid-column: span 6;
+        grid-row: span 5;
+    }
+
+    &__product-card {
+        grid-column: span 4;
+        grid-row: span 3;
+        min-height: 236px;
+    }
+}
+
+.meter {
+    $logo-height: 38px;
+    $logo-margin-bottom: 10px;
+    $name-height: 31px;
+    $name-margin-bottom: 30px;
+
+    @include m.flexc;
+    justify-content: center;
+    // Не получилось здесь поставить min-content, поэтому поставил на глаз значение
+    min-height: 200px;
+    padding: 20px;
+    transition: $meter-transition;
+
+    &__logo {
+        flex-basis: calc(($logo-height + $logo-margin-bottom) * $flex-basis-multiplier);
+    }
+
+    &__circle {
+        transition: $meter-transition;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        opacity: 0.1;
+    }
+
+    &__icon {
+        transition: $meter-transition;
+        width: 40px;
+        height: 40px;
+    }
+
+    &__name {
+        transition: $meter-transition;
+        opacity: 0;
+        flex-basis: calc(($name-height + $name-margin-bottom) * $flex-basis-multiplier);
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &__progress {
+        @include m.flexc;
+        width: 100%;
+    }
+
+    // Конкретные элементы
+    &_id_energy {
+        .meter__circle {
+            background-color: v.$primary3;
+        }
+
+        .meter__icon {
+            mask-image: url('/src/assets/img/dashboard/meters/energy.svg');
+            -webkit-mask-image: url('/src/assets/img/dashboard/meters/energy.svg');
+            background-color: v.$primary3;
+        }
+
+        .progress__current path {
+            stroke: v.$primary3;
+        }
+    }
+
+
+    &_id_range {
+        .meter__circle {
+            background-color: v.$secondary1;
+        }
+
+        .meter__icon {
+            mask-image: url('/src/assets/img/dashboard/meters/range.svg');
+            -webkit-mask-image: url('/src/assets/img/dashboard/meters/range.svg');
+            background-color: v.$secondary1;
+        }
+
+        .progress__current path {
+            stroke: v.$secondary1;
+        }
+    }
+
+
+    &_id_brake-fluid {
+        .meter__circle {
+            background-color: v.$primary3;
+        }
+
+        .meter__icon {
+            mask-image: url('/src/assets/img/dashboard/meters/brake-fluid.svg');
+            -webkit-mask-image: url('/src/assets/img/dashboard/meters/brake-fluid.svg');
+            background-color: v.$primary3;
+        }
+
+        .progress__current path {
+            stroke: v.$primary3;
+        }
+    }
+
+    &_id_tire-wear {
+        .meter__circle {
+            background-color: v.$secondary2;
+        }
+
+        .meter__icon {
+            mask-image: url('/src/assets/img/dashboard/meters/tire_wear.svg');
+            -webkit-mask-image: url('/src/assets/img/dashboard/meters/tire_wear.svg');
+            background-color: v.$secondary2;
+        }
+
+        .progress__current path {
+            stroke: v.$secondary2;
+        }
+    }
+}
+
+.progress {
+    position: relative;
+
+    path {
+        transition: $meter-transition;
+    }
+
+    &__bar {
+        position: relative;
+        width: 112px;
+        height: 95px;
+    }
+
+    &__empty {
+        position: absolute;
+
+        path {
+            stroke: v.$background;
+        }
+    }
+
+    &__current {
+        position: absolute;
+    }
+
+    &__percentage {
+        position: absolute;
+        top: 36px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+
+.stats {
+    &__column {
+        transition: 0.2s ease-in;
+    }
+
+    &__chart-item {
+        &:last-child .stats__spacer {
+            display: none;
+        }
+        &_hovered .stats__column {
+            background-color: v.$secondary3;
+        }
+    }
+}
+
+.stats_cars {
+    .stats__timespan {
+        background-color: v.$background2;
+        border-radius: 10px;
+        order: 2;
+
+        .stats__day,
+        .stats__week,
+        .stats__month {
+            + label:hover {
+                outline: 2px solid v.$secondary4;
+                background-color: v.$secondary4transparent;
+            }
+
+            &:checked + label {
+                background-color: v.$secondary4;
+            }
+        }
+    }
+
+    .stats__chart {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stats__chart-item {
+        flex-grow: 1;
+
+        .stats__spacer {
+            display: block;
+            position: static;
+            flex-grow: 1;
+        }
+
+        .stats__item-name {
+            margin-top: auto;
+        }
+    }
+
+    .stats__graphics {
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+    }
+
+
+    .stats__names {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .stats__svg {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        .data__line {
+            color: v.$secondary4;
+        }
+
+        .data__gradient {
+            color: v.$secondary4;
+        }
+    }
+}
 
 .product-card {
     display: flex;

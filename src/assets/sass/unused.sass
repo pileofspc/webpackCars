@@ -6,7 +6,6 @@
 
 $meter-transition: 0.2s ease-in
 $flex-basis-multiplier: 1.5
-// $product-card-height: 236px
 
 .content .active
     // Активное состояние элементов:
@@ -195,7 +194,6 @@ $flex-basis-multiplier: 1.5
             background-color: v.$secondary3
 
 .stats_cars
-    $graphics-height: 90%
     .stats__timespan
         background-color: v.$background2
         border-radius: 10px
@@ -211,6 +209,8 @@ $flex-basis-multiplier: 1.5
 
     .stats__chart
         position: relative
+        display: flex
+        flex-direction: column
 
     .stats__chart-item
         flex-grow: 1
@@ -218,20 +218,24 @@ $flex-basis-multiplier: 1.5
         .stats__spacer
             display: block
             position: static
-            height: $graphics-height
+            height: 100%
 
         .stats__item-name
             margin-top: auto
 
     .stats__graphics
-        position: absolute
+        position: relative
+        display: flex
+        flex-grow: 1
+
+    
+    .stats__names
         display: flex
         justify-content: space-between
-        height: $graphics-height
-        width: 100%
 
     .stats__svg
-        // position: absolute
+        pointer-events: none
+        position: absolute
         width: 100%
         height: 100%
 

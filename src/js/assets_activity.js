@@ -117,6 +117,8 @@ class ActivityView {
 
         this.currentSVG = null;
         this.currentPath = null;
+        this.svgWidth = 632;
+        this.svgHeight = 137;
         this.tooltip = this.root.querySelector('.tooltip_activity');
         // Ширина находится здесь только потому, что на ней стоит width: max-content, что означает,
         // что она не меняется, когда сталкивается с границей контейнера
@@ -148,8 +150,8 @@ class ActivityView {
                 let SVG = LineChart(this.data[entry].points, {
                     x: d => d.x,
                     y: d => d.y,
-                    width: 632,
-                    height: 137,
+                    width: this.svgWidth,
+                    height: this.svgHeight,
                 });
                 SVG.classList.add('stats-activity__svg');
 
@@ -176,6 +178,7 @@ class ActivityView {
 
         const markerWidth = parseFloat(window.getComputedStyle(this.marker).width);
         const graphicsWidth = parseFloat(window.getComputedStyle(this.graphics).width);
+        const actualSvgHeight = parseFloat(window.getComputedStyle(this.currentSVG).height);
         
 
         let x;
@@ -190,23 +193,24 @@ class ActivityView {
             };
         }
 
-        let someMargin = 16;
+        // Не понимаю откуда этот марджин берется
+        let someMargin = -2;
 
         let atLeftBorder = x < markerWidth / 2;
         let atRightBorder = x > graphicsWidth - markerWidth / 2;
 
         if (!atLeftBorder && !atRightBorder) {
             this.marker.style.left = `${x - markerWidth / 2}px`;
-            this.dot.style.top = `${findY(this.currentPath, percentage(x)) + someMargin}px`;
+            this.dot.style.top = `${(findY(this.currentPath, percentage(x)) + someMargin) / this.svgHeight * actualSvgHeight}px`;
         } else {
             if (atLeftBorder) {
                 this.marker.style.left = `0px`;
-                this.dot.style.top = `${findY(this.currentPath, percentage(markerWidth / 2)) + someMargin}px`;
+                this.dot.style.top = `${(findY(this.currentPath, percentage(markerWidth / 2)) + someMargin) / this.svgHeight * actualSvgHeight}px`;
 
             };
             if (atRightBorder) {
                 this.marker.style.left = `${graphicsWidth - markerWidth}px`;
-                this.dot.style.top = `${findY(this.currentPath, percentage(graphicsWidth - markerWidth / 2)) + someMargin}px`;
+                this.dot.style.top = `${(findY(this.currentPath, percentage(graphicsWidth - markerWidth / 2)) + someMargin) / this.svgHeight * actualSvgHeight}px`;
             }
         };
 
@@ -251,7 +255,6 @@ class ActivityView {
                 // + gap - ну и добавляем отступ
                 this.tooltip.style.right = `${window.innerWidth - getCoords(this.graphics).left - x + markerWidth / 2 + gap}px`;
             };
-
         }
 
         this.lastPercentage = x / graphicsWidth;

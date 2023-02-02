@@ -69,33 +69,33 @@
             <div class="content-assets__grid">
                 <div class="content__grid-item car content-assets__car">
                     <div class="content__grid-item car__bg"></div>
-
                     <div class="car__wrapper">
                         <div class="car__stats">
-                            <div class="car__stat car__fuel">
+                            <div class="car__stat">
                                 <div class="car__stat-name">Fuel Usage</div>
                                 <div class="car__stat-value">2903.89 Ltr</div>
                             </div>
 
                             <div class="car__spacer"></div>
 
-                            <div class="car__stat car__km">
+                            <div class="car__stat">
                                 <div class="car__stat-name">KM Driven</div>
                                 <div class="car__stat-value">2900 km</div>
                             </div>
-                            <div class="car__stat car__cost">
+                            <div class="car__stat">
                                 <div class="car__stat-name">Total Cost</div>
                                 <div class="car__stat-value">$3,000,290</div>
                             </div>
 
                             <div class="car__spacer"></div>
 
-                            <div class="car__stat car__topspeed">
+                            <div class="car__stat">
                                 <div class="car__stat-name">Top Speed</div>
                                 <div class="car__stat-value">110 km/h</div>
                             </div>
                         </div>
                         <img class="car__img" src="assets/img/assets__car1.png" alt="Car">
+                        
                     </div>
                 </div>
                 <div class="content__grid-item content-assets__activity activity">
@@ -103,13 +103,13 @@
                         <div class="tooltip__time">Traveled Last Month</div>
                         <div class="tooltip__value">VALUE</div>
                     </div>
-                    <div class="activity__top-bar">
+                    <div class="activity__header">
                         <div class="block-header">Activity</div>
                         <a class="activity__view-all link" href="#">View All</a>
                     </div>
                     <div class="stats-activity">
                         <div class="stats-activity__graphics">
-                            <div class="marker">
+                            <div class="marker stats-activity__marker">
                                 <div class="marker__bg"></div>
                                 <div class="dot marker__dot"></div>
                             </div>
@@ -161,7 +161,7 @@
                 <div class="content__grid-item content-assets__noties noties">
                     <h2 class="block-header noties__header"> Noties</h2>
                     <div class="noties__main">
-                        <div class="notification">
+                        <a class="link notification noties__notification" href="#">
                             <div class="notification__icon">
                                 <svg class="notification__icon-svg"
                                     data-src="assets/img/notification_message.svg"></svg>
@@ -169,12 +169,54 @@
                             <div class="notification__text">
                                 <div class="notification__title">Monday, 6th Apirl 2020</div>
                                 <div class="notification__subtitle">Book for General Service</div>
-                                <div class="notification__status">COMPLETED</div>
+                                <span class="notification__status notification__status_completed">COMPLETED</span>
                             </div>
-                        </div>
+                        </a>
+                        <a class="link notification noties__notification" href="#">
+                            <div class="notification__icon">
+                                <svg class="notification__icon-svg"
+                                    data-src="assets/img/notification_warning.svg"></svg>
+                            </div>
+                            <div class="notification__text">
+                                <div class="notification__title">Monday, 6th Apirl 2020</div>
+                                <div class="notification__subtitle">Book for General Service</div>
+                                <span class="notification__status">14:07-21/11/2021</span>
+                            </div>
+                        </a>
+                        <a class="link notification noties__notification" href="#">
+                            <div class="notification__icon">
+                                <svg class="notification__icon-svg"
+                                    data-src="assets/img/notification_maintenance.svg"></svg>
+                            </div>
+                            <div class="notification__text">
+                                <div class="notification__title">Monday, 6th Apirl 2020</div>
+                                <div class="notification__subtitle">Book for General Service</div>
+                                <span class="notification__status">14:07-21/11/2021</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="content__grid-item content-assets__sensors sensors"></div>
+                <div class="content__grid-item content-assets__sensors sensors">
+                    <div class="sensors__header">
+                        <div class="block-header">Available Sensors</div>
+                        <a class="link sensors__select" href="#">
+                            <span class="sensors__select-text">Assets</span>
+                            <div class="arrow sensors__arrow sensors__arrow_open"></div>
+                        </a>
+                        
+                    </div>
+                    <form class="sensors__main">
+                        <div class="sensor sensors__sensor">
+                            <label class="sensor__label">
+                                <input class="sensor__checkbox" type="checkbox" name="">Asset - Fuel Consumed<span class="sensor__unit">(km)</span>
+                            </label>
+                            <a href="#" class="sensor__graphic">
+                                <svg class="sensor__graphic-svg" data-src="assets/img/sensor__graphic-svg.svg"></svg>
+                            </a>
+                        </div>
+                    </form>
+                    <div class="sensors__button"></div>
+                </div>
                 <div class="content__grid-item content-assets__reminder reminder"></div>
             </div>
         </section>
