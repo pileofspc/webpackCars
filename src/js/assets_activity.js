@@ -179,8 +179,13 @@ class ActivityView {
         const markerWidth = parseFloat(window.getComputedStyle(this.marker).width);
         const graphicsWidth = parseFloat(window.getComputedStyle(this.graphics).width);
         const actualSvgHeight = parseFloat(window.getComputedStyle(this.currentSVG).height);
-        
 
+        // Не понимаю откуда этот марджин берется, вроде это высота точки
+        // да, это высота, поправил в css, тут пока оставил, можно убрать наверное
+        const someMargin = 0;
+        const leftmostX = markerWidth / 2;
+        const rightmostX = graphicsWidth - markerWidth / 2;
+        
         let x;
 
         if (!evt) {
@@ -193,24 +198,21 @@ class ActivityView {
             };
         }
 
-        // Не понимаю откуда этот марджин берется
-        let someMargin = -2;
-
-        let atLeftBorder = x < markerWidth / 2;
-        let atRightBorder = x > graphicsWidth - markerWidth / 2;
+        let atLeftBorder = x < leftmostX;
+        let atRightBorder = x > rightmostX;
 
         if (!atLeftBorder && !atRightBorder) {
             this.marker.style.left = `${x - markerWidth / 2}px`;
-            this.dot.style.top = `${(findY(this.currentPath, percentage(x)) + someMargin) / this.svgHeight * actualSvgHeight}px`;
+            this.dot.style.top = `${findY(this.currentPath, percentage(x)) / this.svgHeight * actualSvgHeight + someMargin}px`;
         } else {
             if (atLeftBorder) {
                 this.marker.style.left = `0px`;
-                this.dot.style.top = `${(findY(this.currentPath, percentage(markerWidth / 2)) + someMargin) / this.svgHeight * actualSvgHeight}px`;
+                this.dot.style.top = `${findY(this.currentPath, percentage(leftmostX)) / this.svgHeight * actualSvgHeight + someMargin}px`;
 
             };
             if (atRightBorder) {
                 this.marker.style.left = `${graphicsWidth - markerWidth}px`;
-                this.dot.style.top = `${(findY(this.currentPath, percentage(graphicsWidth - markerWidth / 2)) + someMargin) / this.svgHeight * actualSvgHeight}px`;
+                this.dot.style.top = `${findY(this.currentPath, percentage(rightmostX)) / this.svgHeight * actualSvgHeight + someMargin}px`;
             }
         };
 
@@ -225,6 +227,7 @@ class ActivityView {
         }
 
         let gap = markerWidth / 2;
+        const windowRightBorder = document.documentElement.clientWidth;
 
         if (this.part === 'left') {
             // Случай, если мы в левой части (тултип ЕЩЕ НЕ столкнулся с правым краем)
@@ -247,13 +250,13 @@ class ActivityView {
                 // - graphicsWidth - приходим в правый край
                 // + markerWidth - влево до левого края маркера
                 // + gap - еще влево на величину отступа
-                this.tooltip.style.right = `${window.innerWidth - getCoords(this.graphics).left - graphicsWidth + markerWidth + gap}px`;
+                this.tooltip.style.right = `${windowRightBorder - getCoords(this.graphics).left - graphicsWidth + markerWidth + gap}px`;
             } else {
                 // window.innerWidth - getCoords(this.graphics).left - это мы приходим в левый край контейнера graphics
                 // - x - это мы сдвигаемся вправо до середины маркера (туда же, где сейчас курсор)
                 // + markerWidth / 2 - это сдвигаемся до левого края маркера
                 // + gap - ну и добавляем отступ
-                this.tooltip.style.right = `${window.innerWidth - getCoords(this.graphics).left - x + markerWidth / 2 + gap}px`;
+                this.tooltip.style.right = `${windowRightBorder - getCoords(this.graphics).left - x + markerWidth / 2 + gap}px`;
             };
         }
 
@@ -274,7 +277,11 @@ class ActivityView {
     initialState() {
         // Добавлено, чтобы сразу работал transition
         this.marker.style.left = `0px`;
-        this.animateMarker();
+        window.addEventListener('load', () => {
+            // Не понимаю почему не работает. Если поставить большой таймаут, то работает, 
+            // видимо не успевают примениться стили, хотя на большом троттлинге в хроме всё отлично
+            this.animateMarker();
+        })
 
         this.tooltip.style.top = `${getCoords(this.graphics).top - 20}px`;
         this.tooltip.querySelector('.tooltip__value').textContent = this.columns[0].dataset.value;

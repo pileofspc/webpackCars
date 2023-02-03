@@ -10,12 +10,4 @@ import './misc'
 
 
 import './assets_activity'
-
-
-
-
-
-// прототипы __proto__ и prototype
-// 1.15 + 2.30
-// Math.max.apply(null, arr)
-// new Array.prototype.constructor(1, 2)
+import './assets_sensors'

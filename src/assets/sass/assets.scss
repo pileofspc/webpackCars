@@ -37,6 +37,7 @@
     }
 }
 
+// Переопределение, надо переделать
 .dot {
     display: block;
     background-color: v.$primary3;
@@ -44,7 +45,7 @@
     height: 11px;
     width: 11px;
 
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 
     transition: top var(--transition);
 }
@@ -127,18 +128,29 @@
     font-weight: 500;
 
     &__label {
+        cursor: pointer;
         font-size: 13px;
         font-weight: 500;
         display: flex;
         align-items: center;
     }
 
+    &__unit {
+        color: v.$dark3;
+    }
+
     &__checkbox {
+        position: absolute;
+        opacity: 0;
+    }
+
+    &__custom-checkbox {
         margin-right: 10px;
-        
-        &:checked {
-            accent-color: red;
-        }
+    }
+
+    &__checkbox:checked ~ &__label-text,
+    &__checkbox:checked ~ &__unit {
+        color: v.$secondary1;
     }
 }
 
@@ -360,6 +372,9 @@
 }
 
 .sensors {
+    display: flex;
+    flex-direction: column;
+
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -372,7 +387,7 @@
         font-weight: 500;
 
         padding-bottom: 20px;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
         border-bottom: 1px solid v.$spacers-header;
     }
 
@@ -393,5 +408,48 @@
         }
     }
 
+    &__main {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    &__button {
+        padding: 2.5px 12px;
+        margin-top: 15px;
+        align-self: flex-start;
+
+
+        font-family: 'Poppins';
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+.reminder {
+    padding: 16px 20px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid v.$spacers-header;
+    }
+
+    &__add {
+        font-family: 'DM Sans';
+        font-size: 14px;
+        font-weight: 500;
+        padding: 6px 12px;
+    }
 }

@@ -23,6 +23,52 @@ input {
     --avatar_translate: 0, 0;
 }
 
+html, body {
+    min-width: min-content;
+}
+
+.custom-checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid rgba(51, 54, 66, 1);
+
+    &__checkmark {
+        visibility: hidden;
+    }
+
+    // checked state
+    // работает только после настоящего чекбокса
+    input[type="checkbox"]:checked + & {
+        background-color: v.$secondary1;
+        border: none;
+
+        .custom-checkbox__checkmark {
+            visibility: visible;
+        }
+    }
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    color: v.$white;
+    cursor: pointer;
+
+    &_secondary1 {
+        background-color: v.$secondary1;
+    }
+
+    &_primary3 {
+        background-color: v.$primary3;
+    }
+}
+
 // PAGE
 .page {
     margin: 0 auto;
