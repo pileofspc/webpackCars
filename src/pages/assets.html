@@ -9,6 +9,46 @@
 </head>
 
 <body class="page">
+    <!-- <div class="modal modal-add-new-reminder">
+        <div class="modal-window modal__window">
+            <div class="modal-window__header modal__header">
+                <span class="block-header">HEADER</span>
+                <svg class="modal__close-button" data-src="assets/img/close-button.svg" data-cache="disabled"></svg>
+            </div>
+            <div class="modal__content">
+                <form class="modal-add-new-reminder__form">
+                    <div class="modal-add-new-reminder__field modal-add-new-reminder__field_description">
+                        <label class="modal-add-new-reminder__label" for="modal-add-new-reminder__description">
+                            Description
+                        </label>
+                        <input class="modal-add-new-reminder__input" type="text" name="reminder-description" id="modal-add-new-reminder__description">    
+                    </div>
+                    
+                    <div class="modal-add-new-reminder__field modal-add-new-reminder__field_due">
+                        <label class="modal-add-new-reminder__label" for="modal-add-new-reminder__due">
+                            Due
+                        </label>
+                        <input class="modal-add-new-reminder__input" type="text" name="reminder-due" id="modal-add-new-reminder__due">
+                    </div>
+
+                    <div class="modal-add-new-reminder__field modal-add-new-reminder__field_overdue">
+                        <label class="modal-add-new-reminder__label" for="modal-add-new-reminder__overdue">
+                            Overdue
+                        </label>
+                        <input class="modal-add-new-reminder__input" type="text" name="reminder-overdue" id="modal-add-new-reminder__overdue">
+                    </div>
+
+                    <div class="modal-add-new-reminder__field modal-add-new-reminder__field_notify">
+                        <label class="modal-add-new-reminder__label" for="modal-add-new-reminder__notify">
+                            Notify
+                        </label>
+                        <input class="modal-add-new-reminder__input" type="text" name="reminder-notify" id="modal-add-new-reminder__notify">
+                    </div>
+                    <button class="modal-add-new-reminder__submit" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div> -->
 
     <div class="sidebar page__sidebar">
         <a class="logo sidebar__logo" href="./">
@@ -41,25 +81,25 @@
             </div>
         </nav>
     </div>
-    <main class="main page__main">
-        <header class="header page__header">
-            <div class="header__inner">
-                <label class="searchbar header__searchbar">
-                    <img src="assets/img/searchbar__icon.svg" alt="Search" class="searchbar__icon">
-                    <form action="" method="get" class="searchbar__form">
-                        <input class="searchbar__input" type="text" placeholder="Search or type">
-                    </form>
-                </label>
-                <div class="header__user">
-                    <a href="bell.html" class="notification-bell header__notification-bell">
-                        <img src="assets/img/notification-bell.svg" alt="Bell" class="notification-bell__img">
-                    </a>
-                    <a href="profile.html" class="profile header__profile">
-                        <img src="assets/img/avatar.jpg" alt="Avatar" class="profile__img">
-                    </a>
-                </div>
+    <header class="header page__header">
+        <div class="header__inner">
+            <label class="searchbar header__searchbar">
+                <img src="assets/img/searchbar__icon.svg" alt="Search" class="searchbar__icon">
+                <form action="" method="get" class="searchbar__form">
+                    <input class="searchbar__input" type="text" placeholder="Search or type">
+                </form>
+            </label>
+            <div class="header__user">
+                <a href="bell.html" class="notification-bell header__notification-bell">
+                    <img src="assets/img/notification-bell.svg" alt="Bell" class="notification-bell__img">
+                </a>
+                <a href="profile.html" class="profile header__profile">
+                    <img src="assets/img/avatar.jpg" alt="Avatar" class="profile__img">
+                </a>
             </div>
-        </header>
+        </div>
+    </header>
+    <main class="main page__main">
         <section class="content-assets _first-screen">
             <div class="tooltip">
                 <div class="tooltip__time">TIME</div>
@@ -199,18 +239,18 @@
                 <div class="content__grid-item content-assets__sensors sensors">
                     <div class="sensors__header">
                         <div class="block-header">Available Sensors</div>
-                        <a class="link sensors__select" href="#">
+                        <a class="link sensors__select-button" href="#">
                             <span class="sensors__select-text">Assets</span>
-                            <div class="arrow sensors__arrow sensors__arrow_open"></div>
+                            <div class="arrow sensors__arrow"></div>
                         </a>
                         
                     </div>
-                    <form class="sensors__main">
+                    <form class="sensors__main" method="POST">
                         <div class="sensors__list">
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
-                                    <input class="checkbox sensor__checkbox" type="checkbox" name="">
-                                    <div class="custom-checkbox sensor__custom-checkbox">
+                                    <input class="checkbox sensor__checkbox" type="checkbox" name="fuel">
+                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
                                         <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
                                     </div>
                                     <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
@@ -222,8 +262,8 @@
     
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
-                                    <input class="checkbox sensor__checkbox" type="checkbox" name="">
-                                    <div class="custom-checkbox sensor__custom-checkbox">
+                                    <input class="checkbox sensor__checkbox" type="checkbox" name="fuel2">
+                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
                                         <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
                                     </div>
                                     <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
@@ -235,8 +275,8 @@
     
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
-                                    <input class="checkbox sensor__checkbox" type="checkbox" name="">
-                                    <div class="custom-checkbox sensor__custom-checkbox">
+                                    <input class="checkbox sensor__checkbox" type="checkbox" name="fuel3">
+                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
                                         <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
                                     </div>
                                     <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
@@ -248,8 +288,8 @@
     
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
-                                    <input class="checkbox sensor__checkbox" type="checkbox" name="">
-                                    <div class="custom-checkbox sensor__custom-checkbox">
+                                    <input class="checkbox sensor__checkbox" type="checkbox" name="fuel4">
+                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1  sensor__custom-checkbox">
                                         <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
                                     </div>
                                     <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
@@ -261,8 +301,8 @@
     
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
-                                    <input class="checkbox sensor__checkbox" type="checkbox" name="">
-                                    <div class="custom-checkbox sensor__custom-checkbox">
+                                    <input class="checkbox sensor__checkbox" type="checkbox" name="fuel5">
+                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
                                         <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
                                     </div>
                                     <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
@@ -272,14 +312,48 @@
                                 </a>
                             </div>
                         </div>
-                        <button class="button button_secondary1 sensors__button">See all</button>
+                        <button class="button button_bgcolor_secondary1 sensors__button" type="submit">See all</button>
                     </form>
                 </div>
                 <div class="content__grid-item content-assets__reminder reminder">
                     <div class="reminder__header">
                         <div class="block-header">Reminder</div>
-                        <button class="button button_primary3 reminder__add">+ Add new</button>
+                        <button class="button button_bgcolor_primary3 reminder__add">+ Add new</button>
                     </div>
+                    <table class="reminder__table">
+                        <thead class="reminder__table-header">
+                            <tr>
+                                <td>Description</td>
+                                <td>Due</td>
+                                <td>Overdue</td>
+                                <td>Notify</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Urgent Safety Recall</td>
+                                <td>06/04/2022</td>
+                                <td>08/04/2022</td>
+                                <td>David Demo</td>
+                                <td>Completed</td>
+                            </tr>
+                            <tr>
+                                <td>Urgent Safety Recall</td>
+                                <td>06/04/2022</td>
+                                <td>08/04/2022</td>
+                                <td>David Demo</td>
+                                <td>Completed</td>
+                            </tr>
+                            <!-- <tr>
+                                <td>Urgent Safety Recall</td>
+                                <td>06/04/2022</td>
+                                <td>08/04/2022</td>
+                                <td>David Demo</td>
+                                <td>Completed</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>

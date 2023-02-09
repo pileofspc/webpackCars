@@ -6,6 +6,8 @@
 @use 'sass:color';
 @use 'sass:string';
 
+$transition: 0.2s linear;
+
 @function pxVW($value) {
     $width: 1339;
     $result: calc($value / $width * 100);
@@ -124,28 +126,33 @@
 .sensor {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 13px;
     font-weight: 500;
 
     &__label {
-        cursor: pointer;
         font-size: 13px;
         font-weight: 500;
         display: flex;
         align-items: center;
+        cursor: pointer;
     }
 
     &__unit {
         color: v.$dark3;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     &__checkbox {
         position: absolute;
         opacity: 0;
+        cursor: pointer;
     }
 
     &__custom-checkbox {
         margin-right: 10px;
+        flex-shrink: 0;
     }
 
     &__checkbox:checked ~ &__label-text,
@@ -159,33 +166,51 @@
     flex-direction: column;
     padding: 30px;
     margin-left: 248px;
+    $header-height: 40px;
+    $header-margin-bottom: 20px;
 
     &__name {
-        height: 40px;
+        height: $header-height;
         font-size: 30px;
         font-weight: 700;
-        margin-bottom: 20px;
+        margin-bottom: $header-margin-bottom;
     }
 
     &__grid {
         display: grid;
-        grid-template-columns: 4fr 4fr 4fr;
-        grid-template-rows: 4fr 5fr 3fr;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, minmax(min-content, 1fr));
         gap: 20px;
+
+        min-height: 0;
         flex-grow: 1;
     }
 
     &__car {
-        grid-row: span 3;
+        grid-row: span 12;
+        grid-column: span 4;
     }
 
     &__activity {
-        grid-column: span 2;
+        grid-row: span 4;
+        grid-column: span 8;
         overflow: hidden;
+        min-height: 170px;
+    }
+
+    &__noties {
+        grid-row: span 5;
+        grid-column: span 4;
+    }
+
+    &__sensors {
+        grid-row: span 5;
+        grid-column: span 4;
     }
 
     &__reminder {
-        grid-column: span 2;
+        grid-row: span 3;
+        grid-column: span 8;
     }
 }
 
@@ -391,14 +416,31 @@
         border-bottom: 1px solid v.$spacers-header;
     }
 
-    &__select {
+    &__select-button {
+        position: relative;
         font-size: 12px;
         font-weight: 500;
         color: v.$dark4;
         display: flex;
     }
 
+    &__select {
+        position: absolute;
+        top: 20px;
+        right: -10px;
+        cursor: default;
+        width: max-content;
+        transition: max-height 0.4s ease;
+
+        max-height: 1px;
+    }
+
+    &__select_open {
+        max-height: 400px;
+    }
+
     &__arrow {
+        transition: transform $transition;
         transform-origin: center 15%;
         transform: translate(80%, 40%) rotate(90deg);
 
@@ -436,6 +478,8 @@
 
 .reminder {
     padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
 
     &__header {
         display: flex;
@@ -452,4 +496,81 @@
         font-weight: 500;
         padding: 6px 12px;
     }
+
+    &__table {
+        flex-grow: 1;
+    }
+
+    &__table-header {
+        color: v.$dark4;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__table-row {
+        font-size: 13px;
+        font-weight: 500;
+    }
+}
+
+
+.modal-add-new-reminder {
+    &__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__label {
+        color: v.$dark4;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    &__input {
+        border-radius: 3px;
+        border: 1px solid rgba(51, 54, 66, 1);
+        background-color: transparent;
+        color: inherit;
+        padding: 5px;
+
+        &::-webkit-calendar-picker-indicator {
+            filter: invert(100%);
+            cursor: pointer;
+        }
+    }
+
+    &__field_description {
+        grid-column: span 2;
+    }
+
+    &__field_notify {
+        grid-column: span 2;
+    }
+
+    &__submit {
+        grid-column: span 2;
+        margin-top: 20px;
+
+        background-color: v.$primary3;
+        border: none;
+        border-radius: 5px;
+        color: inherit;
+        cursor: pointer;
+        padding: 5px;
+    }
+}
+
+.select {
+    padding: 10px;
+    background-color: v.$background;
+    border: 2px solid v.$spacers;
+    border-radius: 10px;
+    overflow: hidden;
 }

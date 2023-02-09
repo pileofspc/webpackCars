@@ -56,22 +56,27 @@ $flex-basis-multiplier: 1.5;
     display: grid;
     gap: 25px;
     grid-template-columns: repeat(12, 1fr);
+    // Пока оставляю так, не знаю как нормально сделать, чтобы сжимались
+    // блоки meter
+    // grid-template-rows: repeat(12, minmax(min-content, 1fr));
     grid-template-rows: repeat(12, 1fr);
     padding: 30px;
     margin-left: 248px;
 
-    >* {
+    > * {
         overflow: hidden;
     }
 
     &__meter {
         grid-column: span 3;
         grid-row: span 4;
+        min-height: 200px;
     }
 
     &__stats {
         grid-column: span 6;
         grid-row: span 5;
+        min-height: 185px;
     }
 
     &__product-card {
@@ -89,13 +94,12 @@ $flex-basis-multiplier: 1.5;
 
     @include m.flexc;
     justify-content: center;
-    // Не получилось здесь поставить min-content, поэтому поставил на глаз значение
-    min-height: 200px;
     padding: 20px;
     transition: $meter-transition;
 
     &__logo {
         flex-basis: calc(($logo-height + $logo-margin-bottom) * $flex-basis-multiplier);
+        // margin-bottom: 10px;
     }
 
     &__circle {
@@ -119,6 +123,7 @@ $flex-basis-multiplier: 1.5;
         flex-basis: calc(($name-height + $name-margin-bottom) * $flex-basis-multiplier);
         font-size: 24px;
         font-weight: 700;
+        // margin-bottom: 30px;
     }
 
     &__progress {
@@ -243,6 +248,10 @@ $flex-basis-multiplier: 1.5;
     }
 }
 
+.stats_miles {
+    
+}
+
 .stats_cars {
     .stats__timespan {
         background-color: v.$background2;
@@ -278,9 +287,9 @@ $flex-basis-multiplier: 1.5;
             flex-grow: 1;
         }
 
-        .stats__item-name {
-            margin-top: auto;
-        }
+        // .stats__item-name {
+        //     margin-top: auto;
+        // }
     }
 
     .stats__graphics {
@@ -293,6 +302,8 @@ $flex-basis-multiplier: 1.5;
     .stats__names {
         display: flex;
         justify-content: space-between;
+        width: 95%;
+        align-self: center;
     }
 
     .stats__svg {

@@ -38,6 +38,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "air-datepicker": "^3.3.5",
     "d3": "^7.7.0",
     "date-fns": "^2.29.3",
     "external-svg-loader": "^1.6.1"

@@ -130,7 +130,7 @@ let tooltip = global.tooltip;
 let milesModel = new MilesModel(global.database);
 let milesView = new MilesView(milesModel);
 
-let milesTimespanButtons = stats.querySelectorAll('input[type="radio"]');
+let milesTimespanButtons = stats.querySelectorAll('.stats_miles input[type="radio"]');
 
 // Обновляем данные при загрузке страницы
 for (let button of milesTimespanButtons) {

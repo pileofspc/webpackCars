@@ -42,14 +42,16 @@ html, body {
         visibility: hidden;
     }
 
-    // checked state
-    // работает только после настоящего чекбокса
-    input[type="checkbox"]:checked + & {
-        background-color: v.$secondary1;
-        border: none;
-
-        .custom-checkbox__checkmark {
-            visibility: visible;
+    &_bgcolor_secondary1 {
+        // checked state
+        // работает только после настоящего чекбокса
+        input[type="checkbox"]:checked + & {
+            background-color: v.$secondary1;
+            border: none;
+    
+            .custom-checkbox__checkmark {
+                visibility: visible;
+            }
         }
     }
 }
@@ -60,11 +62,11 @@ html, body {
     color: v.$white;
     cursor: pointer;
 
-    &_secondary1 {
+    &_bgcolor_secondary1 {
         background-color: v.$secondary1;
     }
 
-    &_primary3 {
+    &_bgcolor_primary3 {
         background-color: v.$primary3;
     }
 }
@@ -87,7 +89,6 @@ html, body {
 
 ._first-screen {
     height: calc(100vh - $header-height);
-    // overflow: hidden;
 }
 
 .content {
@@ -424,3 +425,47 @@ html, body {
     font-size: 20px;
 }
 
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: v.$modal-bg;
+
+    &__window {
+        background-color: v.$primary1;
+        padding: 15px;
+        border-radius: 14px;
+        // width: 300px;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid v.$spacers-header;
+    }
+
+    &__close-button {
+        cursor: pointer;
+        width: 15px;
+    }
+
+    &__content {
+        margin-top: 10px;
+    }
+
+}
+
+
+
+.datepicker {
+    z-index: 10000!important;
+}
