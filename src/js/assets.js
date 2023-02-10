@@ -8,7 +8,6 @@ require.context('/src/assets/img/assets/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
 
 import './misc';
 
-// import './modal';
 import './assets_activity';
 import './assets_sensors';
 import './assets_reminder';

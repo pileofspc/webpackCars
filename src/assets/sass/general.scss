@@ -6,6 +6,7 @@
 
 $header-height: 78px;
 $header-inner-height: 46px;
+$select-transition: 0.4s ease;
 
 input {
     border: none;
@@ -25,6 +26,42 @@ input {
 
 html, body {
     min-width: min-content;
+}
+
+.datepicker {
+    z-index: 10000!important;
+}
+
+.select {
+    padding: 10px;
+    background-color: v.$background;
+    border: 2px solid v.$spacers;
+    border-radius: 10px;
+    overflow: hidden;
+    width: max-content;
+    // width: 150px;
+
+    transition: max-height $select-transition;
+    max-height: 1px;
+
+    &__apply-button {
+        margin-top: 10px;
+    }
+
+    &_open {
+        max-height: 400px;
+    }
+}
+
+.arrow {
+    transition: transform $select-transition;
+    transform-origin: center 15%;
+    transform: translate(80%, 40%) rotate(90deg);
+
+    // При открытом селекте
+    &_open {
+        transform: translate(80%, 40%);
+    }
 }
 
 .custom-checkbox {
@@ -53,6 +90,28 @@ html, body {
                 visibility: visible;
             }
         }
+    }
+}
+
+
+
+.radio {
+    margin: 0;
+}
+
+.custom-radio-button {
+
+}
+
+.radio-item {
+    &__label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__radio {
+        margin-right: 10px;
     }
 }
 
@@ -443,7 +502,6 @@ html, body {
         background-color: v.$primary1;
         padding: 15px;
         border-radius: 14px;
-        // width: 300px;
     }
 
     &__header {
@@ -460,12 +518,8 @@ html, body {
 
     &__content {
         margin-top: 10px;
+
+        max-height: 80vh;
+        overflow: auto;
     }
-
-}
-
-
-
-.datepicker {
-    z-index: 10000!important;
 }

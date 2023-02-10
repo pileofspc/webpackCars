@@ -54,6 +54,7 @@ export class ModalAddNewReminder extends Modal {
             dateFormat: 'dd/MM/yy',
             autoClose: true
             });
+            
         new AirDatepicker(this.overdueDate, {
             classes: 'datepicker',
             dateFormat: 'dd/MM/yy',

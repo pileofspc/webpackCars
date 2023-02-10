@@ -159,6 +159,10 @@ $transition: 0.2s linear;
     &__checkbox:checked ~ &__unit {
         color: v.$secondary1;
     }
+
+    &__graphic-svg {
+        color: v.$sensor__graphic-svg;
+    }
 }
 
 .content-assets {
@@ -416,7 +420,7 @@ $transition: 0.2s linear;
         border-bottom: 1px solid v.$spacers-header;
     }
 
-    &__select-button {
+    &__select-root {
         position: relative;
         font-size: 12px;
         font-weight: 500;
@@ -426,28 +430,13 @@ $transition: 0.2s linear;
 
     &__select {
         position: absolute;
-        top: 20px;
+        top: calc(100% + 5px);
         right: -10px;
         cursor: default;
-        width: max-content;
-        transition: max-height 0.4s ease;
-
-        max-height: 1px;
     }
 
-    &__select_open {
-        max-height: 400px;
-    }
-
-    &__arrow {
-        transition: transform $transition;
-        transform-origin: center 15%;
-        transform: translate(80%, 40%) rotate(90deg);
-
-        // При открытом селекте
-        &_open {
-            transform: translate(80%, 40%);
-        }
+    &__radio-item:not(:first-child) {
+        margin-top: 10px;
     }
 
     &__main {
@@ -491,7 +480,6 @@ $transition: 0.2s linear;
     }
 
     &__add {
-        font-family: 'DM Sans';
         font-size: 14px;
         font-weight: 500;
         padding: 6px 12px;
@@ -567,10 +555,17 @@ $transition: 0.2s linear;
     }
 }
 
-.select {
-    padding: 10px;
-    background-color: v.$background;
-    border: 2px solid v.$spacers;
-    border-radius: 10px;
-    overflow: hidden;
+
+
+
+.modal-sensors-see-all {
+    &__group-name {
+        color: v.$dark4;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__item {
+        margin-left: 20px;
+    }
 }

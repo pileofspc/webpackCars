@@ -4,6 +4,8 @@ import { pointRadial } from 'd3';
 // Copyright 2021 Observable, Inc.
 // Released under the ISC license.
 // https://observablehq.com/@d3/line-chart
+let counter = 1;
+
 export default function LineChart(data, {
     x = ([x]) => x, // given d in data, returns the (temporal) x-value
     y = ([, y]) => y, // given d in data, returns the (quantitative) y-value
@@ -68,7 +70,7 @@ export default function LineChart(data, {
 
     const gradient = svg.append("defs")
         .append("linearGradient")
-        .attr("id", 'Gradient')
+        .attr("id", `Gradient${counter}`)
         .attr('x1', '0')
         .attr('y1', '0')
         .attr('x2', '0')
@@ -95,8 +97,9 @@ export default function LineChart(data, {
         .classed('data__line', true);
     // Underlying Gradient
     svg.append("path")
-        .attr("fill", 'url(#Gradient)')
+        .attr("fill", `url(#Gradient${counter})`)
         .attr("d", area(I));
 
+    counter++;
     return svg.node();
-}
+};

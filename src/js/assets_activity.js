@@ -161,6 +161,31 @@ class ActivityView {
                 this.root.querySelector('.stats-activity__graphics').prepend(SVG);
                 this.currentSVG = SVG;
                 this.currentPath = this.currentSVG.querySelector('.data__line');
+
+
+                // let testPoints = [
+                //     {x: 0, y: 5},
+                //     {x: 10, y: 15},
+                //     {x: 20, y: 3115},
+                //     {x: 30, y: 35},
+                //     {x: 40, y: 475},
+                //     {x: 50, y: 5225},
+                //     {x: 60, y: 265},
+                // ];
+                // let SVG2 = LineChart(testPoints, {
+                //     x: d => d.x,
+                //     y: d => d.y,
+                //     width: this.svgWidth,
+                //     height: this.svgHeight,
+                // });
+                // SVG2.classList.add('stats-activity__svg');
+                // SVG2.classList.add('stats-activity__svg2');
+
+                // // это нужно, чтобы при изменении ширины элемента правильно работали анимации
+                // SVG2.setAttribute('preserveAspectRatio', 'none');
+
+                // this.root.querySelector('.stats-activity__graphics').prepend(SVG2);
+                // console.log(this.data[entry].points)
             }
         }
     };

@@ -1,4 +1,4 @@
-import { ModalAddNewReminder } from "./modal_addNewReminder";
+import { ModalAddNewReminder } from "./components/modal_addNewReminder";
 
 let modal = new ModalAddNewReminder();
 

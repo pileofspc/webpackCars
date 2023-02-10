@@ -9,6 +9,26 @@
 </head>
 
 <body class="page">
+    <!-- <div class="test">
+        <div class="modal-sensors-see-all__group">
+            <div class="modal-sensors-see-all__group-name">ASSETS</div>
+            <div class="modal-sensors-see-all__item">ASSET - FUEL</div>
+            <div class="modal-sensors-see-all__item">ASSET - FUEL</div>
+            <div class="modal-sensors-see-all__item">ASSET - FUEL</div>
+            <div class="modal-sensors-see-all__item">ASSET - FUEL</div>
+        </div>
+        <div class="modal-sensors-see-all__group">
+            <div class="modal-sensors-see-all__group-name">CARS</div>
+            <div class="modal-sensors-see-all__item">car - first</div>
+            <div class="modal-sensors-see-all__item">car - second</div>
+            <div class="modal-sensors-see-all__item">car - third</div>
+            <div class="modal-sensors-see-all__item">car - fourth</div>
+        </div>
+    </div> -->
+
+
+
+
     <!-- <div class="modal modal-add-new-reminder">
         <div class="modal-window modal__window">
             <div class="modal-window__header modal__header">
@@ -135,7 +155,7 @@
                             </div>
                         </div>
                         <img class="car__img" src="assets/img/assets__car1.png" alt="Car">
-                        
+
                     </div>
                 </div>
                 <div class="content__grid-item content-assets__activity activity">
@@ -239,81 +259,120 @@
                 <div class="content__grid-item content-assets__sensors sensors">
                     <div class="sensors__header">
                         <div class="block-header">Available Sensors</div>
-                        <a class="link sensors__select-button" href="#">
-                            <span class="sensors__select-text">Assets</span>
+                        <a class="link select-root sensors__select-root" href="#">
+                            <span class="select-root__name">Assets</span>
                             <div class="arrow sensors__arrow"></div>
+
+                            <!-- <div class="select sensors__select">
+                                <form class="select__form" action="">
+                                    <div class="sensor sensors__sensor">
+                                        <label class="sensor__label">
+                                            <input class="checkbox sensor__checkbox" type="checkbox" name="fuel">
+                                                <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
+                                                    <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
+                                                </div>
+                                                <span class="sensor__label-text">Asset</span><span class="sensor__unit">(km)</span>
+                                        </label>
+                                        <a href="#" class="sensor__graphic">
+                                            <svg class="sensor__graphic-svg" data-src="assets/img/sensor__graphic-svg.svg"></svg>
+                                        </a>
+                                    </div>
+                                    <button class="select__button">Apply</button>
+                                </form>
+                            </div> -->
+
                         </a>
-                        
+
                     </div>
                     <form class="sensors__main" method="POST">
                         <div class="sensors__list">
-                            <div class="sensor sensors__sensor">
+                            <!-- <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
                                     <input class="checkbox sensor__checkbox" type="checkbox" name="fuel">
-                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
-                                        <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
+                                    <div
+                                        class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
+                                        <svg class="custom-checkbox__checkmark"
+                                            data-src="assets/img/checkmark.svg"></svg>
                                     </div>
-                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
+                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span
+                                        class="sensor__unit">(km)</span>
                                 </label>
                                 <a href="#" class="sensor__graphic">
-                                    <svg class="sensor__graphic-svg" data-src="assets/img/sensor__graphic-svg.svg"></svg>
+                                    <svg class="sensor__graphic-svg"
+                                        data-src="assets/img/sensor__graphic-svg.svg"></svg>
                                 </a>
                             </div>
-    
+
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
                                     <input class="checkbox sensor__checkbox" type="checkbox" name="fuel2">
-                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
-                                        <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
+                                    <div
+                                        class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
+                                        <svg class="custom-checkbox__checkmark"
+                                            data-src="assets/img/checkmark.svg"></svg>
                                     </div>
-                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
+                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span
+                                        class="sensor__unit">(km)</span>
                                 </label>
                                 <a href="#" class="sensor__graphic">
-                                    <svg class="sensor__graphic-svg" data-src="assets/img/sensor__graphic-svg.svg"></svg>
+                                    <svg class="sensor__graphic-svg"
+                                        data-src="assets/img/sensor__graphic-svg.svg"></svg>
                                 </a>
                             </div>
-    
+
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
                                     <input class="checkbox sensor__checkbox" type="checkbox" name="fuel3">
-                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
-                                        <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
+                                    <div
+                                        class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
+                                        <svg class="custom-checkbox__checkmark"
+                                            data-src="assets/img/checkmark.svg"></svg>
                                     </div>
-                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
+                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span
+                                        class="sensor__unit">(km)</span>
                                 </label>
                                 <a href="#" class="sensor__graphic">
-                                    <svg class="sensor__graphic-svg" data-src="assets/img/sensor__graphic-svg.svg"></svg>
+                                    <svg class="sensor__graphic-svg"
+                                        data-src="assets/img/sensor__graphic-svg.svg"></svg>
                                 </a>
                             </div>
-    
+
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
                                     <input class="checkbox sensor__checkbox" type="checkbox" name="fuel4">
-                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1  sensor__custom-checkbox">
-                                        <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
+                                    <div
+                                        class="custom-checkbox custom-checkbox_bgcolor_secondary1  sensor__custom-checkbox">
+                                        <svg class="custom-checkbox__checkmark"
+                                            data-src="assets/img/checkmark.svg"></svg>
                                     </div>
-                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
+                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span
+                                        class="sensor__unit">(km)</span>
                                 </label>
                                 <a href="#" class="sensor__graphic">
-                                    <svg class="sensor__graphic-svg" data-src="assets/img/sensor__graphic-svg.svg"></svg>
+                                    <svg class="sensor__graphic-svg"
+                                        data-src="assets/img/sensor__graphic-svg.svg"></svg>
                                 </a>
                             </div>
-    
+
                             <div class="sensor sensors__sensor">
                                 <label class="sensor__label">
                                     <input class="checkbox sensor__checkbox" type="checkbox" name="fuel5">
-                                    <div class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
-                                        <svg class="custom-checkbox__checkmark" data-src="assets/img/checkmark.svg"></svg>
+                                    <div
+                                        class="custom-checkbox custom-checkbox_bgcolor_secondary1 sensor__custom-checkbox">
+                                        <svg class="custom-checkbox__checkmark"
+                                            data-src="assets/img/checkmark.svg"></svg>
                                     </div>
-                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span class="sensor__unit">(km)</span>
+                                    <span class="sensor__label-text">Asset - Fuel Consumed</span><span
+                                        class="sensor__unit">(km)</span>
                                 </label>
                                 <a href="#" class="sensor__graphic">
-                                    <svg class="sensor__graphic-svg" data-src="assets/img/sensor__graphic-svg.svg"></svg>
+                                    <svg class="sensor__graphic-svg"
+                                        data-src="assets/img/sensor__graphic-svg.svg"></svg>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
-                        <button class="button button_bgcolor_secondary1 sensors__button" type="submit">See all</button>
                     </form>
+                    <button class="button button_bgcolor_secondary1 sensors__button" type="submit">See all</button>
                 </div>
                 <div class="content__grid-item content-assets__reminder reminder">
                     <div class="reminder__header">
@@ -359,4 +418,5 @@
         </section>
     </main>
 </body>
+
 </html>

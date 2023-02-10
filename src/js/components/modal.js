@@ -1,8 +1,8 @@
-// import * as SVGLoader from 'external-svg-loader'
+import { htmlToElement } from '../_helpers';
+
 export class Modal {
     constructor() {
-        this.parent = document.createElement('div');
-        this.html = 
+        this.modal = htmlToElement(
             `<div class="modal">
                 <div class="modal-window modal__window">
                     <div class="modal-window__header modal__header">
@@ -11,9 +11,8 @@ export class Modal {
                     </div>
                     <div class="modal__content"></div>
                 </div>
-            </div>`;
-        this.parent.innerHTML = this.html;
-        this.modal = this.parent.querySelector('.modal');
+            </div>`
+        );
         this.headerSpan = this.modal.querySelector('.block-header');
         this.closeButton = this.modal.querySelector('.modal__close-button');
         this.content = this.modal.querySelector('.modal__content');
