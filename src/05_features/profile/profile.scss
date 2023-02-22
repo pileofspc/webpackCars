@@ -1,0 +1,13 @@
+@use '/src/07_shared/vars' as v;
+
+.profile {
+    width: 46px;
+    height: 46px;
+    overflow: hidden;
+    border-radius: 50%;
+
+    &__img {
+        height: 100%;
+        width: 100%;
+    }
+}

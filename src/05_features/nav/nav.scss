@@ -1,0 +1,43 @@
+@use '/src/07_shared/vars' as v;
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__controls {
+        margin-top: auto;
+    }
+
+    &__link {
+        display: flex;
+        align-content: center;
+
+        border-radius: 6px;
+
+        width: 174px;
+        padding: 7px;
+        padding-left: 8px;
+        margin-bottom: 17px;
+
+        filter: opacity(0.5);
+        background-color: transparent;
+
+        &:hover {
+            filter: opacity(0.75);
+        }
+    }
+
+    &__img {
+        margin-right: 8px;
+    }
+
+    &_current-link {
+        filter: none;
+        background-color: v.$link-active;
+        
+        &:hover {
+            filter: brightness(1.1);
+        }
+    }
+}

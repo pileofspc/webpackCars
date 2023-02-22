@@ -1,7 +1,7 @@
-const base =  require('./webpack.config.base.js');
-const {merge} = require('webpack-merge');
+const base = require('./webpack.config.base.js');
+const { merge } = require('webpack-merge');
 
-const functions = require('./user_scripts/functions.js');
+const helpers = require('./webpack-helpers/helpers.js');
 
 let newOptions = {
     mode: 'production',
@@ -11,10 +11,10 @@ let newOptions = {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {
-                  loader: 'babel-loader',
-                  options: {
-                    presets: ['@babel/preset-env'],
-                  }
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                    }
                 }
             },
             {
@@ -39,7 +39,7 @@ let newOptions = {
                                     }),
                                 ],
                             },
-                            
+
                         }
                     },
                     'postcss-loader',
@@ -69,7 +69,7 @@ let newOptions = {
                                     }),
                                 ],
                             },
-                            
+
                         }
                     },
                     // 'resolve-url-loader',
@@ -85,5 +85,5 @@ let newOptions = {
 
 exports = module.exports = merge(base, newOptions);
 
-let css = functions.getCssPlugin(exports);
+let css = helpers.getCssPlugin(exports);
 css.options.filename = css.options.filename.replace('[name]', '[name].[contenthash]');

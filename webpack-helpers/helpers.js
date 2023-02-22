@@ -1,10 +1,11 @@
 const path = require('path');
 const fs = require('fs');
+const { compileString } = require('sass');
 
 
 
 function getFilesOfExt(filepath, ...ext) {
-    return fs.readdirSync(filepath, {withFileTypes: true}).filter((dirEnt) => {
+    return fs.readdirSync(filepath, { withFileTypes: true }).filter((dirEnt) => {
         let lowerCaseName = dirEnt.name.toLowerCase();
         let result = false;
         for (let i = 0; i < ext.length; i++) {
@@ -14,9 +15,28 @@ function getFilesOfExt(filepath, ...ext) {
             }
         }
         return result
-    }).map((dirEnt)=>{
+    }).map((dirEnt) => {
         return dirEnt.name;
     });
+};
+
+function getFolders(filepath) {
+    return fs.readdirSync(filepath, { withFileTypes: true }).filter((dirEnt) => {
+        return !dirEnt.isFile();
+    }).map((dirEnt) => {
+        return dirEnt.name;
+    });
+};
+
+function exists(filePath) {
+    let result;
+    try {
+        fs.accessSync(filePath);
+        result = true;
+    } catch {
+        result = false;
+    }
+    return result
 }
 
 function getCssPlugin(exp) {
@@ -29,5 +49,7 @@ function getCssPlugin(exp) {
 
 exports = module.exports = {
     getFilesOfExt,
+    getFolders,
+    exists,
     getCssPlugin,
 }

@@ -1,0 +1,67 @@
+@use '/src/assets/sass/reset';
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/fonts';
+
+
+$header-height: 78px;
+$header-inner-height: 46px;
+$select-transition: 0.4s ease;
+
+input {
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+:root {
+    --tooltip: var(--secondary3);
+    --secondary3: #{v.$secondary3};
+    --secondary4: #{v.$secondary4};
+
+    --avatar_translate: 0, 0;
+}
+
+html, body {
+    min-width: min-content;
+}
+
+// PAGE
+.page {
+    margin: 0 auto;
+    max-width: 1339px;
+
+    font-family: v.$ff-primary;
+    background-color: v.$background;
+    color: v.$text;
+
+    &__sidebar {
+        position: fixed;
+        top: 0;
+        padding: 0 26px;
+    }
+}
+
+._first-screen {
+    height: calc(100vh - $header-height);
+}
+
+.content {
+    &__grid-item {
+        border-radius: 14px;
+        background-color: v.$primary1;
+        color: v.$text;
+    }
+}
+
+// BLOCKS
+.link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.block-header {
+    font-weight: 500;
+    font-size: 20px;
+}

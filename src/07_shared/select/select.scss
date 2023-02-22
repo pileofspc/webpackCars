@@ -1,0 +1,22 @@
+@use '../vars' as v;
+
+.select {
+    padding: 10px;
+    background-color: v.$background;
+    border: 2px solid v.$spacers;
+    border-radius: 10px;
+    overflow: hidden;
+    width: max-content;
+    // width: 150px;
+
+    transition: max-height v.$select-transition;
+    max-height: 1px;
+
+    &__apply-button {
+        margin-top: 10px;
+    }
+
+    &_open {
+        max-height: 400px;
+    }
+}

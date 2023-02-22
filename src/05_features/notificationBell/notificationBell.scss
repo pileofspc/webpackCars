@@ -1,0 +1,10 @@
+@use '/src/07_shared/vars' as v;
+
+.notification-bell {
+    width: 20px;
+    height: 24px;
+    &__img {
+        height: 100%;
+        width: 100%;
+    }
+}

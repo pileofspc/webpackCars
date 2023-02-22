@@ -1,6 +1,5 @@
 const base =  require('./webpack.config.base.js');
 const {merge} = require('webpack-merge');
-const { tr } = require('date-fns/locale');
 
 let newOptions = {
     mode: 'development',

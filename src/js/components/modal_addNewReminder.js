@@ -43,6 +43,7 @@ export class ModalAddNewReminder extends Modal {
         this.submit = this.modal.querySelector('.modal-add-new-reminder__submit');
 
         this.form.addEventListener('submit', (evt) => {
+            evt.preventDefault();
             this.modal.remove();
         });
 
@@ -60,5 +61,10 @@ export class ModalAddNewReminder extends Modal {
             dateFormat: 'dd/MM/yy',
             autoClose: true
         });
+
+        let regexp = /^\d{2}\/\d{2}\/\d{2}$/g;
+        let pattern = '^\\d{2}/\\d{2}/\\d{2}$';
+        this.dueDate.setAttribute('pattern', pattern);
+        this.dueDate.setAttribute('required', '');
     }
 }

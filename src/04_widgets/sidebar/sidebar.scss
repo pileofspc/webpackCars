@@ -1,0 +1,27 @@
+@use '/src/07_shared/vars' as v;
+
+.sidebar {
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+
+    width: 248px;
+    height: 100vh;
+    background-color: v.$primary1;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+
+    &__logo {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 35px;
+    }
+
+    &__logo-img {
+        display: block;
+        width: 109px;
+        height: auto;
+    }
+}

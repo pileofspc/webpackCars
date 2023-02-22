@@ -1,0 +1,35 @@
+@use '/src/07_shared/vars' as v;
+
+.searchbar {
+    display: flex;
+    align-items: center;
+
+    min-width: 188px;
+    width: 358px;
+    height: 46px;
+    padding: 0 18px;
+
+    background-color: v.$background;
+    border-radius: 8px;
+
+    &__icon {
+        margin-right: 16px;
+        width: 20px;
+        height: 20px;
+    }
+
+    &__form {
+        flex-grow: 1;
+    }
+
+    &__input {
+        width: 100%;
+
+        background-color: transparent;
+        caret-color: v.$caret-color;
+
+        color: v.$text;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}

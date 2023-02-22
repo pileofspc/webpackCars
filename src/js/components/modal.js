@@ -17,12 +17,12 @@ export class Modal {
         this.closeButton = this.modal.querySelector('.modal__close-button');
         this.content = this.modal.querySelector('.modal__content');
 
-        this.modal.addEventListener('click', (evt) => {
+        this.modal.addEventListener('pointerdown', (evt) => {
             if (evt.currentTarget === evt.target) {
                 this.modal.remove();
             }
         });
-        this.closeButton.addEventListener('click', (evt) => {
+        this.closeButton.addEventListener('pointerdown', (evt) => {
             this.modal.remove();
         });
     };
