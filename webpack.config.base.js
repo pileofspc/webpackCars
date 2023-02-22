@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 // Import webpack helpers
 const helpers = require('./webpack-helpers/helpers.js');
@@ -93,6 +94,16 @@ module.exports = exports = {
     module: {
         rules: [
             {
+                test: /\.m?jsx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-react'],
+                    }
+                }
+            },
+            {
                 test: /\.(png||jpg||jpeg||gif||svg)$/,
                 type: 'asset/resource',
                 generator: {
@@ -107,5 +118,6 @@ module.exports = exports = {
         new MiniCssExtractPlugin({
             filename: `${PATHS.distCss}/[name].css`,
         }),
+        new ESLintWebpackPlugin(),
     ]
 };

@@ -10,10 +10,10 @@ class MilesModel {
                 enumerable: false
             },
         })
-    };
+    }
     query(item) {
         return this.db.miles[item];
-    };
+    }
     createEntry(entry) {
         this[entry] = {
             stats: this.query(entry).stats
@@ -22,12 +22,12 @@ class MilesModel {
         this[entry].max = this.getMax(this[entry]);
         this[entry].percentages = this.getPercentagesArray(this[entry]);
         this[entry].subtitles = this.getSubtitles(entry);
-    };
+    }
     getSum(item) {
         return item.stats.reduce((accumulator, value) => {
             return accumulator + value;
         });
-    };
+    }
     getMax(item) {
         return item.stats.reduce((accumulator, value) => {
             if (accumulator < value) {
@@ -35,12 +35,12 @@ class MilesModel {
             }
             return accumulator
         });
-    };
+    }
     getPercentagesArray(item) {
         return item.stats.map((value) => {
             return value/item.max * 100;
         });
-    };
+    }
     getSubtitles(itemName) {
             let date = new Date();
             let subtitles = [];
@@ -91,14 +91,14 @@ class MilesModel {
                 }
             }
             return subtitles
-    };
-};
+    }
+}
 class MilesView {
     constructor() {
         this.stats = stats;
         this.chartItems = chartItems;
         this.tooltip = tooltip;
-    };
+    }
     updateRenderers(model) {
         for (let entry in model) {
             this[entry] = function() {
@@ -113,7 +113,7 @@ class MilesView {
                 }
             }
         }
-    };
+    }
     // Тут создаются несколько методов для вывода
 }
 function control(model, view, button) {
@@ -138,13 +138,13 @@ for (let button of milesTimespanButtons) {
         control(milesModel, milesView, button);
         break
     }
-};
+}
 // При нажатии на радиокнопки
 for (let button of milesTimespanButtons) {
     button.addEventListener('click', () => {
         control(milesModel, milesView, button)
     })
-};
+}
 
 // Тултип и подсветка элементов, на которые наведен курсор
 for (let item of chartItems) {
@@ -169,4 +169,4 @@ for (let item of chartItems) {
         tooltip.style.left = `${evt.pageX + 20}px`;
         tooltip.style.top = `${evt.pageY}px`
     });
-};
+}

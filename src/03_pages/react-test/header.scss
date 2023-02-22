@@ -1,0 +1,44 @@
+@use '/src/07_shared/vars' as v;
+
+.header {
+    background-color: v.$primary1;
+    margin-left: 248px;
+
+    &__inner {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+
+        box-sizing: content-box;
+        height: v.$header-inner-height;
+        padding: calc((v.$header-height - v.$header-inner-height) / 2) 30px;
+    }
+
+    &__user {
+        margin-left: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-basis: 110px;
+
+        > * {
+            flex-shrink: 0;
+        }
+    }
+
+    & .header__notification-bell {
+        width: calc(20/46 * v.$header-inner-height);
+        height: auto;
+    }
+
+    & .header__profile {
+        height: v.$header-inner-height;
+        width: v.$header-inner-height;
+    }
+
+    & .header__searchbar {
+        height: v.$header-inner-height;
+    }
+}
