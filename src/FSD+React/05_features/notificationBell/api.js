@@ -4,4 +4,4 @@ export class NotificationBellApi {
     check() {
         return api.database.unreadNotifications ? true : false;
     }
-};
+}

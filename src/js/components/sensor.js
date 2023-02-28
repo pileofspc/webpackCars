@@ -20,7 +20,7 @@ export class Sensor {
 
         this.sensorNameNode = this.node.querySelector('.sensor__label-text');
         this.unitNode = this.node.querySelector('.sensor__unit');
-    };
+    }
 
     get name() {
         return this.sensorNameNode.textContent;

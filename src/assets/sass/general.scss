@@ -93,8 +93,6 @@ html, body {
     }
 }
 
-
-
 .radio {
     margin: 0;
 }
@@ -260,17 +258,17 @@ html, body {
         }
     }
 
-    & .header__notification-bell {
+    &__notification-bell {
         width: calc(20/46 * $header-inner-height);
         height: auto;
     }
 
-    & .header__profile {
+    &__profile {
         height: $header-inner-height;
         width: $header-inner-height;
     }
 
-    & .header__searchbar {
+    &__searchbar {
         height: $header-inner-height;
     }
 }

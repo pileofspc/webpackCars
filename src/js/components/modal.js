@@ -25,9 +25,9 @@ export class Modal {
         this.closeButton.addEventListener('pointerdown', (evt) => {
             this.modal.remove();
         });
-    };
+    }
 
     prepend(element) {
         element.prepend(this.modal);
-    };
-};
+    }
+}

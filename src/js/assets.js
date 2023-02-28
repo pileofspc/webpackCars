@@ -1,4 +1,4 @@
-"use strict";
+
 
 import 'external-svg-loader'
 

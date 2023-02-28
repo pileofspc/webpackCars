@@ -1,5 +1,3 @@
-"use strict";
-
 import 'external-svg-loader';
 
 import './misc';

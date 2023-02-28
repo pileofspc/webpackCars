@@ -128,7 +128,7 @@ class SVGGenerator {
                 stroke-width="11"
                 stroke-linecap="round"/>
             </svg>`;
-        };
+        }
         render(target, className) {
             let template = this.template.replace(`class=""`, `class="${className}"`)
             target.insertAdjacentHTML('beforeend', template);

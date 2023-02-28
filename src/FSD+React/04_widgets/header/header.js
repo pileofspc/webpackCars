@@ -31,4 +31,4 @@ export class Header {
             this.node.classList.add(parentClassName);
         }
     }
-};
+}

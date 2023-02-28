@@ -35,10 +35,10 @@ class CarsModel {
                 enumerable: false
             },
         })
-    };
+    }
     query(item) {
         return this.db.cars[item]
-    };
+    }
     createEntry(entry) {
         this[entry] = {
             stats: this.query(entry).stats,
@@ -52,7 +52,7 @@ class CarsModel {
                 return true
             }
         });
-    };
+    }
     getPointsArray(itemName) {
         let points = [];
         for (let value of this.query(itemName).stats) {
@@ -60,7 +60,7 @@ class CarsModel {
         }
         this.normalizeX(points);
         return points
-    };
+    }
     normalizeX(coords) {
         let gap = 52.25;
         let endGap = gap/2;
@@ -73,7 +73,7 @@ class CarsModel {
                 accum += gap;
             }
         })
-    };
+    }
     getSubtitles(itemName) {
         let date = new Date();
         let subtitles = [];
@@ -125,7 +125,7 @@ class CarsModel {
         }
         return subtitles
     }
-};
+}
 class CarsView {
     constructor() {
         this.carsStats = carsStats;
@@ -133,7 +133,7 @@ class CarsView {
         this.tooltip = global.tooltip;
         this.svgHeight = 200;
         this.svgWidth = 418;
-    };
+    }
     updateRenderers(model) {
         for (let entry in model) {
             this[entry] = function() {
@@ -165,16 +165,16 @@ class CarsView {
                 carsStats.querySelector('.stats__graphics').append(carsSVG);
             }
         }
-    };
+    }
     // Тут создаются несколько методов для вывода
-};
+}
 function controlCars(model, view, button) {
     model.createEntry(button.value);
     view.updateRenderers(model);
     view[button.value]();
 
     path = document.querySelector('.stats_cars path');
-};
+}
 let path = document.querySelector('.stats_cars path');
 
 let tooltip = global.tooltip;
@@ -191,13 +191,13 @@ for (let button of carsTimespanButtons) {
         controlCars(carsModel, carsView, button)
         break
     }
-};
+}
 // При нажатии на радиокнопки
 for (let button of carsTimespanButtons) {
     button.addEventListener('click', () => {
         controlCars(carsModel, carsView, button)
     })
-};
+}
 
 
 // Тултип и подсветка элементов, на которые наведен курсор
@@ -243,7 +243,7 @@ for (let i = 0; i < carsChartItems.length; i++) {
         tooltip.style.top = rectDot.top - tooltipHeight/2 + 'px';
         tooltip.style.visibility = 'visible';
     });
-};
+}
 
 chart.addEventListener('mouseenter', (evt) => {
     document.documentElement.style.setProperty('--tooltip', 'var(--secondary4)');

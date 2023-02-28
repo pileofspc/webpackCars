@@ -75,7 +75,7 @@ export default function LineChart(data, {
         .attr('y1', '0')
         .attr('x2', '0')
         .attr('y2', '1')
-        .classed('data__gradient', true);;
+        .classed('data__gradient', true);
     gradient.append('stop')
         .attr('offset', 0)
         .attr('stop-color', color)
@@ -102,4 +102,4 @@ export default function LineChart(data, {
 
     counter++;
     return svg.node();
-};
+}

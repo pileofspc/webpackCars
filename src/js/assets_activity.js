@@ -19,11 +19,11 @@ class ActivityData {
                 enumerable: false
             }
         });
-    };
+    }
 
     query(item) {
         return this.db.activity[item]
-    };
+    }
 
     createEntry(entry) {
         this[entry] = {};
@@ -33,7 +33,7 @@ class ActivityData {
         this[entry].datasetArray = this[entry].stats.slice();
         // this[entry].datasetArray.pop();
         // this[entry].datasetArray.shift();
-    };
+    }
 
     getPointsArray(itemName) {
         let points = [];
@@ -42,7 +42,7 @@ class ActivityData {
         }
         this.setX(points);
         return points
-    };
+    }
 
     setX(coords) {
         // В данном случае не важно какое расстояние между точками, т.к оно везде одинаковое
@@ -57,7 +57,7 @@ class ActivityData {
                 accum += gap;
             }
         })
-    };
+    }
 
     getSubtitles(itemName) {
         let date = new Date();
@@ -102,7 +102,7 @@ class ActivityData {
         }
         return subtitles
     }
-};
+}
 
 class ActivityView {
     constructor() {
@@ -127,7 +127,7 @@ class ActivityView {
         this.readyForAnimation = true;
         this.lastPercentage = 0;
         this.part = 'left';
-    };
+    }
 
     updateRenderers() {
         for (let entry in this.data) {
@@ -188,7 +188,7 @@ class ActivityView {
                 // console.log(this.data[entry].points)
             }
         }
-    };
+    }
     // 
     // Тут создаются несколько методов для вывода
     // 
@@ -199,7 +199,7 @@ class ActivityView {
                 throw new Error('В percentage попало не число!')
             }
             return `${value / graphicsWidth * 100}%`
-        };
+        }
 
         const markerWidth = parseFloat(window.getComputedStyle(this.marker).width);
         const graphicsWidth = parseFloat(window.getComputedStyle(this.graphics).width);
@@ -220,7 +220,7 @@ class ActivityView {
                 x = evt.clientX - getCoords(this.graphics).left;
             } else {
                 x = graphicsWidth * this.lastPercentage;
-            };
+            }
         }
 
         let atLeftBorder = x < leftmostX;
@@ -234,12 +234,12 @@ class ActivityView {
                 this.marker.style.left = `0px`;
                 this.dot.style.top = `${findY(this.currentPath, percentage(leftmostX)) / this.svgHeight * actualSvgHeight + someMargin}px`;
 
-            };
+            }
             if (atRightBorder) {
                 this.marker.style.left = `${graphicsWidth - markerWidth}px`;
                 this.dot.style.top = `${findY(this.currentPath, percentage(rightmostX)) / this.svgHeight * actualSvgHeight + someMargin}px`;
             }
-        };
+        }
 
         // Анимация тултипа
 
@@ -265,7 +265,7 @@ class ActivityView {
                 this.tooltip.style.left = `${getCoords(this.graphics).left + markerWidth + gap}px`;
             } else {
                 this.tooltip.style.left = `${getCoords(this.graphics).left + x + markerWidth}px`;
-            };
+            }
         } else {
             // Случай, если мы в правой части (тултип столкнулся с правым краем)
             if (atRightBorder) {
@@ -282,7 +282,7 @@ class ActivityView {
                 // + markerWidth / 2 - это сдвигаемся до левого края маркера
                 // + gap - ну и добавляем отступ
                 this.tooltip.style.right = `${windowRightBorder - getCoords(this.graphics).left - x + markerWidth / 2 + gap}px`;
-            };
+            }
         }
 
         this.lastPercentage = x / graphicsWidth;
@@ -297,7 +297,7 @@ class ActivityView {
                 this.tooltip.querySelector('.tooltip__value').textContent = column.dataset.value;
             })
         }
-    };
+    }
 
     initialState() {
         // Добавлено, чтобы сразу работал transition
@@ -310,15 +310,15 @@ class ActivityView {
 
         this.tooltip.style.top = `${getCoords(this.graphics).top - 20}px`;
         this.tooltip.querySelector('.tooltip__value').textContent = this.columns[0].dataset.value;
-    };
-};
+    }
+}
 function controlActivity(view, value = 'month') {
     view.data.createEntry(value);
     view.updateRenderers();
     view[value]();
     view.handleListeners();
     view.initialState();
-};
+}
 
 // let tooltip = global.tooltip;
 // let carsStats = document.querySelector('.stats_cars')

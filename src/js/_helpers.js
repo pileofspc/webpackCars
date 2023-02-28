@@ -13,7 +13,7 @@ export function findY(path, x) {
 
     if (typeof x === 'string') {
         x = parseFloat(x) / 100 * endX;
-    };
+    }
 
     // Ensure that x is within the range of the path
     x = Math.max(x, startX)
@@ -35,7 +35,7 @@ export function findY(path, x) {
         }
         target = (start + end) / 2
     }
-};
+}
 
 export function getCoords(elem) {
     let box = elem.getBoundingClientRect();
@@ -53,7 +53,7 @@ export function getCoords(elem) {
 
 export function isNumber(n) {
     return !isNaN(parseFloat(n)) && !isNaN(n - 0)
-};
+}
 
 export function throttle(func, throttleTime) {
     let isReady = true;
@@ -77,11 +77,15 @@ export function throttle(func, throttleTime) {
             savedThis = this;
         }
     }
-};
+}
 
 export function htmlToElement(html) {
     var template = document.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
     template.innerHTML = html;
     return template.content.firstChild;
+}
+
+export function toCamelCase(string) {
+    String(string).repbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 }

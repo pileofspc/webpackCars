@@ -8,17 +8,14 @@ const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const helpers = require('./webpack-helpers/helpers.js');
 
 const PATHS = {
-    FSDApp: path.resolve(__dirname, './src', '01_app'),
-    FSDPages: path.resolve(__dirname, './src', '03_pages'),
-
     src: path.resolve(__dirname, './src'),
     dist: path.resolve(__dirname, './dist'),
 
-    // Path to html pages
     pages: path.resolve(__dirname, './src', 'pages'),
-
-    // Path to js
     js: path.resolve(__dirname, './src', 'js'),
+
+    FSDApp: path.resolve(__dirname, './src', '01_app'),
+    FSDPages: path.resolve(__dirname, './src', '03_pages'),
 
     distAssets: 'assets',
     distJs: 'assets/js',
@@ -26,10 +23,10 @@ const PATHS = {
     distImg: 'assets/img',
 }
 
+const ENTRIES = {};
 
 // Array of names of *.html files:
-const PAGES = helpers.getFilesOfExt(PATHS.pages, '.html');
-
+let PAGES = helpers.getFilesOfExt(PATHS.pages, '.html');
 
 // Array of HtmlWebpackPLugin entries for PAGES:
 let htmlPluginPages = PAGES.map(
@@ -40,14 +37,12 @@ let htmlPluginPages = PAGES.map(
     })
 );
 
-const JS_FILES = helpers.getFilesOfExt(PATHS.js, '.js', 'mjs');
-let entryNamesFromJsFiles = JS_FILES.map(
-    (jsFile) => path.parse(jsFile).name
-);
-
+// const JS_FILES = helpers.getFilesOfExt(PATHS.js, '.js', 'mjs');
+// let entryNamesFromJsFiles = JS_FILES.map(
+//     (jsFile) => path.parse(jsFile).name
+// );
 
 // Js entries for each page of PAGES:
-const ENTRIES = {};
 PAGES.forEach((page) => {
     let entryName = path.parse(page).name;
     let filePath = path.join(PATHS.js, `${entryName}.js`);
@@ -56,32 +51,33 @@ PAGES.forEach((page) => {
     }
 });
 
+// // FSD pages
+// const FSD_PAGES = helpers.getFolders(PATHS.FSDPages);
+// let FSDHtmlPluginPages;
 
+// FSDHtmlPluginPages = FSD_PAGES.map(
+//     (page) => new HtmlWebpackPlugin({
+//         template: `${PATHS.FSDPages}/${page}/${page}.html`,
+//         filename: `${page}.html`,
+//         chunks: [page],
+//     })
+// );
+// FSD_PAGES.forEach((page) => {
+//     let filePath = path.join(PATHS.FSDPages, `${page}/index.js`);
+//     if (helpers.exists(filePath)) {
+//         ENTRIES[page] = filePath;
+//     }
+// });
 
-// FSD pages
-const FSD_PAGES = helpers.getFolders(PATHS.FSDPages);
-let FSDHtmlPluginPages = FSD_PAGES.map(
-    (page) => new HtmlWebpackPlugin({
-        template: `${PATHS.FSDPages}/${page}/${page}.html`,
-        filename: `${page}.html`,
-        chunks: [page],
-    })
-);
-FSD_PAGES.forEach((page) => {
-    let filePath = path.join(PATHS.FSDPages, `${page}/index.js`);
-    if (helpers.exists(filePath)) {
-        ENTRIES[page] = filePath;
-    }
-});
-
-let app = path.join(PATHS.FSDApp, 'app.js');
-if (helpers.exists(app)) {
-    ENTRIES['app'] = app;
-}
+// let app = path.join(PATHS.FSDApp, 'app.js');
+// if (helpers.exists(app)) {
+//     ENTRIES['app'] = app;
+// }
 
 module.exports = exports = {
     externals: {
         pages: PAGES,
+        // TODO добавить сюда FSD_PAGES
         paths: PATHS,
     },
     mode: 'development',
@@ -114,10 +110,10 @@ module.exports = exports = {
     },
     plugins: [
         ...htmlPluginPages,
-        ...FSDHtmlPluginPages,
+        // ...FSDHtmlPluginPages,
         new MiniCssExtractPlugin({
             filename: `${PATHS.distCss}/[name].css`,
         }),
-        new ESLintWebpackPlugin(),
+        // new ESLintWebpackPlugin(),
     ]
 };

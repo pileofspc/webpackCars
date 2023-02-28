@@ -20,10 +20,10 @@ export class NotificationBell {
             bell.setAttribute('src', unreadBellPath)
         } else {
             bell.setAttribute('src', bellPath)
-        };
+        }
 
         if (parentClassName) {
             this.node.classList.add(parentClassName);
         }
     }
-};
+}
