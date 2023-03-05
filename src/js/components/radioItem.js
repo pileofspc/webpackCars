@@ -1,4 +1,4 @@
-import { htmlToElement } from "../_helpers"
+import { htmlToElement, toCamelCase } from "../_helpers"
 
 export class RadioItem {
     constructor(itemName, className) {
@@ -6,9 +6,8 @@ export class RadioItem {
         let nameAttribute = 'NOT_FILLED';
         if (itemName) {
             name = itemName;
-            nameAttribute = name
+            nameAttribute = toCamelCase(name)
         };
-        
         this.html = 
             `<div class="radio-item ${className}">
                 <label class="radio-item__label">
@@ -20,9 +19,8 @@ export class RadioItem {
                 </label>
             </div>`;
         this.node = htmlToElement(this.html);
-        // this.node.classList.add(className);
-
         this.nameNode = this.node.querySelector('.radio-item__label-text');
+        return this.node
     }
 
     get name() {

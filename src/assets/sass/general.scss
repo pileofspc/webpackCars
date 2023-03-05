@@ -28,6 +28,11 @@ html, body {
     min-width: min-content;
 }
 
+// .button {
+//     background-color: v.$dark1;
+//     border-radius: 20px;
+// }
+
 .datepicker {
     z-index: 2000!important;
 }
@@ -97,10 +102,6 @@ html, body {
     margin: 0;
 }
 
-.custom-radio-button {
-
-}
-
 .radio-item {
     &__label {
         display: flex;
@@ -119,12 +120,24 @@ html, body {
     color: v.$white;
     cursor: pointer;
 
+    &_round {
+        border-radius: 50%;
+    }
+
     &_bgcolor_secondary1 {
         background-color: v.$secondary1;
     }
 
     &_bgcolor_primary3 {
         background-color: v.$primary3;
+    }
+
+    &_bgcolor_dark1 {
+        background-color: v.$dark1;
+    }
+
+    &_bgcolor_transparent {
+        background-color: transparent;
     }
 }
 
@@ -155,6 +168,23 @@ html, body {
         color: v.$text;
     }
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-left: 248px;
+    $header-height: 40px;
+    $header-margin-bottom: 20px;
+
+    &__name {
+        height: $header-height;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: $header-margin-bottom;
+    }
+}
+
 
 // BLOCKS
 .link {

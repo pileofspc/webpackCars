@@ -1,4 +1,3 @@
-
 import { htmlToElement } from '../_helpers';
 import { Modal } from './modal';
 import { Sensor } from './sensor';

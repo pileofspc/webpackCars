@@ -83,9 +83,47 @@ export function htmlToElement(html) {
     var template = document.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
     template.innerHTML = html;
-    return template.content.firstChild;
+    return template.content;
 }
 
-export function toCamelCase(string) {
-    String(string).repbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+export function toCamelCase(string, options = {
+    separators: [' - ', '- ', ' -', '_', ' ', '\n', '(', ')', ',',],
+    fold: ['_', '-', ' ', '\n'],
+    serviceSymbol: 'servicesymbol333' // must be lowercase string
+}) {
+    string = String(string);
+
+    let result = fold(string, options);
+    result = splitByWord(result, options);
+
+    result = result.map((item, index) => {
+        return index === 0 ? item : capitalize(item)
+    });
+    
+    return result.join('');
+}
+
+function fold(string, { fold: foldChars }) {
+    string = String(string);
+    for (let foldChar of foldChars) {
+        string = string.replace(new RegExp(`${foldChar}+`), foldChar);
+    }
+    return string
+}
+
+function splitByWord(string, { separators, serviceSymbol }) {
+    string = String(string);
+    let prevString;
+    while (prevString !== string) {
+        prevString = string
+        for (let separator of separators) {
+            string = string.replace(separator, serviceSymbol);
+        }
+    }
+    return string.toLowerCase().split(serviceSymbol).filter(item => item === '' ? false : true)
+}
+
+function capitalize(string) {
+    string = String(string);
+    return string[0].toUpperCase() + string.slice(1);
 }

@@ -43,6 +43,278 @@ export default {
                 // subtitles: ['4', '8', '12', '16', '20', '24', '28', '30'],
             },
         },
+        booking: [
+            {
+                id: 1,
+                itemName: 'Toyota',
+                img: '../assets/img/car_id_1.png',
+                rentCost: 400,
+                type: 'Coupe',
+                transmission: 'Manual',
+                amount: 4
+            },
+            {
+                id: 2,
+                itemName: 'Subaru',
+                img: '../assets/img/car_id_2.png',
+                rentCost: 500,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 3
+            },
+            {
+                id: 3,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 4,
+                itemName: 'Opel',
+                img: '../assets/img/car_id_4.png',
+                rentCost: 300,
+                type: 'Coupe',
+                transmission: 'Auto',
+                amount: 1
+            },
+            {
+                id: 5,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 6,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 7,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 8,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 9,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 10,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 11,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 12,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 13,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 14,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 15,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 16,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 17,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 18,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 19,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 20,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 21,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 22,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 23,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 24,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 25,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 26,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 27,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 28,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 29,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            },
+            {
+                id: 30,
+                itemName: 'Porsche',
+                img: '../assets/img/car_id_3.png',
+                rentCost: 750,
+                type: 'Sport Coupe',
+                transmission: 'Manual',
+                amount: 2
+            }
+        ],
         meters: {
             'energy': 0,
             'range': 20,
@@ -50,5 +322,6 @@ export default {
             'tire-wear': 80
         },
         unreadNotifications: true,
+        userFavoriteCars: new Set(),
     }
 }
