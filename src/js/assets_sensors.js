@@ -1,9 +1,12 @@
 import { SelectSensors } from './components/select_sensors';
 import { ModalSensorsSeeAll } from './components/modal_sensorsSeeAll';
 import { Sensor } from './components/sensor';
+import Component from './components/Component/Component';
 
-class Sensors {
+class Sensors extends Component {
     constructor() {
+        super();
+
         this.sensorsWidget = document.querySelector('.sensors');
         this.sensors = this.sensorsWidget.querySelectorAll('.sensor');
         this.sensorsListNode = this.sensorsWidget.querySelector('.sensors__list');

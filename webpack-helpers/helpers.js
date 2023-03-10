@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const { compileString } = require('sass');
 
 
 
@@ -47,9 +46,21 @@ function getCssPlugin(exp) {
     }
 }
 
+function absPathToJsconfigArray(pathString) {
+    return [
+        `${
+            path.relative(
+                path.resolve(__dirname, '../'),
+                pathString
+            ).replace(/\\/g, '/')
+        }/*`
+    ];
+}
+
 exports = module.exports = {
     getFilesOfExt,
     getFolders,
     exists,
     getCssPlugin,
+    absPathToJsconfigArray,
 }

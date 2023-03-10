@@ -79,11 +79,14 @@ export function throttle(func, throttleTime) {
     }
 }
 
-export function htmlToElement(html) {
-    var template = document.createElement('template');
+export function htmlToFragment(html) {
+    const template = document.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
     template.innerHTML = html;
     return template.content;
+}
+export function htmlToElement(html) {
+    return htmlToFragment(html).firstChild
 }
 
 export function toCamelCase(string, options = {

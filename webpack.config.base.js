@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+// const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 // Import webpack helpers
 const helpers = require('./webpack-helpers/helpers.js');
@@ -21,6 +21,11 @@ const PATHS = {
     distJs: 'assets/js',
     distCss: 'assets/css',
     distImg: 'assets/img',
+
+    modules: path.resolve(__dirname,'src', 'js', 'modules'),
+    components: path.resolve(__dirname, 'src', 'js', 'components'),
+
+    jsconfig: path.resolve(__dirname, 'jsconfig.json')
 }
 
 const ENTRIES = {};
@@ -74,11 +79,44 @@ PAGES.forEach((page) => {
 //     ENTRIES['app'] = app;
 // }
 
+try {
+    const data = fs.readFileSync(PATHS.jsconfig, 'utf8');
+    const config = JSON.parse(data);
+
+    let modules = config.compilerOptions.paths['modules/*'];
+    let components = config.compilerOptions.paths['components/*'];
+
+    let rewrite;
+    if (!modules || !components) {
+        rewrite = true;
+    }
+    if (!modules) {
+        config.compilerOptions.paths['modules/*'] = helpers.absPathToJsconfigArray(PATHS.modules);
+    }
+    if (!components) {
+        config.compilerOptions.paths['components/*'] = helpers.absPathToJsconfigArray(PATHS.components);
+    }
+
+    const string = JSON.stringify(config, null, 4);
+
+    if (rewrite) {
+        fs.writeFileSync(PATHS.jsconfig, string)
+    }
+} catch (err) {
+    console.error(err);
+}
+
 module.exports = exports = {
     externals: {
         pages: PAGES,
         // TODO добавить сюда FSD_PAGES
         paths: PATHS,
+    },
+    resolve: {
+        alias: {
+            modules: PATHS.modules,
+            components: PATHS.components
+        }
     },
     mode: 'development',
     entry: ENTRIES,

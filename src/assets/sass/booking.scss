@@ -1,90 +1,90 @@
-@use 'general';
-@use 'vars' as v;
-@use '_mixins' as m;
+@use '/src/assets/sass/general';
+@use '/src/assets/sass/_vars' as v;
+@use '/src/assets/sass/_mixins' as m;
 
-.inf-list {
-    &__controls {
-        display: flex;
-        margin-bottom: 30px;
-    }
+// .inf-list {
+//     &__controls {
+//         display: flex;
+//         margin-bottom: 30px;
+//     }
 
-    &__buttons {
-        margin-left: auto;
-    }
+//     &__buttons {
+//         margin-left: auto;
+//     }
 
-    &__button {
-        position: relative;
-        width: 44px;
-        height: 44px;
+//     &__button {
+//         position: relative;
+//         width: 44px;
+//         height: 44px;
 
-        &:not(:first-child) {
-            margin-left: 16px;
-        }
-    }
+//         &:not(:first-child) {
+//             margin-left: 16px;
+//         }
+//     }
 
-    &__button-img {
-        @include m.centerPosAbs();
-    }
+//     &__button-img {
+//         @include m.centerPosAbs();
+//     }
 
-    &__button.active {
-        background-color: v.$primary3;
-    }
+//     &__button.active {
+//         background-color: v.$primary3;
+//     }
 
-    &__list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 24px;
-    }
-}
+//     &__list {
+//         display: grid;
+//         grid-template-columns: 1fr 1fr 1fr;
+//         gap: 24px;
+//     }
+// }
 
-.product-card {
-    background-color: v.$dark1;
-    border-radius: 16px;
-    padding: 24px;
-    // Временно
-    // width: 300px;
+// .product-card {
+//     background-color: v.$dark1;
+//     border-radius: 16px;
+//     padding: 24px;
+//     // Временно
+//     // width: 300px;
 
-    &__top-bar {
-        font-family: 'DM Sans';
-        font-size: 18px;
-        font-weight: 700;
+//     &__top-bar {
+//         font-family: 'DM Sans';
+//         font-size: 18px;
+//         font-weight: 700;
 
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 4.5px;
-    }
+//         display: flex;
+//         justify-content: space-between;
+//         margin-bottom: 4.5px;
+//     }
 
-    &__type {
-        font-family: 'DM Sans';
-        font-size: 16px;
-        font-weight: 400;
-        color: v.$dark3;
-    }
+//     &__type {
+//         font-family: 'DM Sans';
+//         font-size: 16px;
+//         font-weight: 400;
+//         color: v.$dark3;
+//     }
 
-    &__img {
-        margin: 21px auto;
-        max-height: 130px;
-    }
+//     &__img {
+//         margin: 21px auto;
+//         max-height: 130px;
+//     }
 
-    &__bottom-bar {
-        display: flex;
-        gap: 18px;
+//     &__bottom-bar {
+//         display: flex;
+//         gap: 18px;
 
-        & > :last-child {
-            margin-left: auto;
-        }
-    }
+//         & > :last-child {
+//             margin-left: auto;
+//         }
+//     }
 
-    &__stat {
-        font-family: 'DM Sans';
-        font-size: 16px;
-        font-weight: 400;
-        color: v.$white1;
+//     &__stat {
+//         font-family: 'DM Sans';
+//         font-size: 16px;
+//         font-weight: 400;
+//         color: v.$white1;
 
-        display: flex;
-    }
+//         display: flex;
+//     }
 
-    &__stat-icon {
-        margin-right: 4px;
-    }
-}
+//     &__stat-icon {
+//         margin-right: 4px;
+//     }
+// }

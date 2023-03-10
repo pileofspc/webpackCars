@@ -1,0 +1,34 @@
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+.button {
+    border: none;
+    border-radius: 5px;
+    color: v.$white;
+    cursor: pointer;
+
+    &_round {
+        border-radius: 50%;
+    }
+
+    &_bgcolor_secondary1 {
+        background-color: v.$secondary1;
+    }
+
+    &_bgcolor_primary3 {
+        background-color: v.$primary3;
+    }
+
+    &_bgcolor_dark1 {
+        background-color: v.$dark1;
+    }
+
+    &_bgcolor_transparent {
+        background-color: transparent;
+    }
+
+    // Активное состояние
+    // &.active {
+    //     background-color: v.$primary3;
+    // }
+}

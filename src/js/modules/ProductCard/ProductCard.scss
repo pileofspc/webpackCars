@@ -1,0 +1,55 @@
+@use '/src/assets/sass/_vars' as v;
+@use '/src/assets/sass/_mixins' as m;
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background-color: v.$dark1;
+    border-radius: 16px;
+    padding: 24px;
+
+    &__top-bar {
+        font-family: 'DM Sans';
+        font-size: 18px;
+        font-weight: 700;
+
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4.5px;
+    }
+
+    &__type {
+        font-family: 'DM Sans';
+        font-size: 16px;
+        font-weight: 400;
+        color: v.$dark3;
+    }
+
+    &__img {
+        margin: 21px auto;
+        max-height: 120px;
+    }
+
+    &__bottom-bar {
+        margin-top: auto;
+        display: flex;
+        gap: 18px;
+
+        & > :last-child {
+            margin-left: auto;
+        }
+    }
+
+    &__stat {
+        font-family: 'DM Sans';
+        font-size: 16px;
+        font-weight: 400;
+        color: v.$white1;
+
+        display: flex;
+    }
+
+    &__stat-icon {
+        margin-right: 4px;
+    }
+}

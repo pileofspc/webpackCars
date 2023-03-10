@@ -1,5 +1,4 @@
-import Button from './components/Button';
-import BookingInfiniteList from './modules/BookingInfiniteList';
+import BookingInfiniteList from 'modules/BookingInfiniteList/BookingInfiniteList';
 
 let infList = new BookingInfiniteList();
 

@@ -1,7 +1,7 @@
-@use 'reset';
-@use 'vars' as v;
-@use 'fonts';
-@use 'mixins' as m;
+@use '/src/assets/sass/reset';
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/fonts';
+@use '/src/assets/sass/mixins' as m;
 @use "sass:color";
 
 $header-height: 78px;
@@ -27,11 +27,6 @@ input {
 html, body {
     min-width: min-content;
 }
-
-// .button {
-//     background-color: v.$dark1;
-//     border-radius: 20px;
-// }
 
 .datepicker {
     z-index: 2000!important;
@@ -114,32 +109,32 @@ html, body {
     }
 }
 
-.button {
-    border: none;
-    border-radius: 5px;
-    color: v.$white;
-    cursor: pointer;
+// .button {
+//     border: none;
+//     border-radius: 5px;
+//     color: v.$white;
+//     cursor: pointer;
 
-    &_round {
-        border-radius: 50%;
-    }
+//     &_round {
+//         border-radius: 50%;
+//     }
 
-    &_bgcolor_secondary1 {
-        background-color: v.$secondary1;
-    }
+//     &_bgcolor_secondary1 {
+//         background-color: v.$secondary1;
+//     }
 
-    &_bgcolor_primary3 {
-        background-color: v.$primary3;
-    }
+//     &_bgcolor_primary3 {
+//         background-color: v.$primary3;
+//     }
 
-    &_bgcolor_dark1 {
-        background-color: v.$dark1;
-    }
+//     &_bgcolor_dark1 {
+//         background-color: v.$dark1;
+//     }
 
-    &_bgcolor_transparent {
-        background-color: transparent;
-    }
-}
+//     &_bgcolor_transparent {
+//         background-color: transparent;
+//     }
+// }
 
 // PAGE
 .page {
