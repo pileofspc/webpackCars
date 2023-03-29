@@ -2,44 +2,59 @@ import Component from 'components/Component/Component';
 import './Button.scss';
 
 export default class Button extends Component {
-    html = 
-        `<button class="button button_bgcolor_dark1 button_round">
-            <svg class="button__img" data-src="" ${Component.idAttr}="img">
-        </button>`;
+    isActive = false;
+
     constructor({
+        html = 
+            `<button class="button button_bgcolor_dark1 button_round">
+                <svg class="button__img" data-src="" ${Component.idAttr}="img">
+            </button>`,
         id,
         isActive,
-        icon,
+        iconPath,
+        handleClick
     }) {
-        super();
-        this.init();
+        super({
+            html
+        });
 
-        this.nodes.img.setAttribute('data-src', icon);
+        this.nodes.img.setAttribute('data-src', iconPath);
 
         this.mainNode.addEventListener('click', () => {
-            this.toggleButton();
+            this.toggle();
         })
 
         if (isActive) {
-            this.activateButton();
+            this.activate();
         }
-        
-        return this.mainNode
+        if (handleClick) {
+            this.addClickListener(handleClick)
+        }
     }
 
-    activateButton() {
-        this.mainNode.classList.add('active')
+    activate() {
+        this.mainNode.classList.add('active');
+        this.isActive = true;
     }
 
-    deactivateButton() {
-        this.mainNode.classList.remove('active')
+    deactivate() {
+        this.mainNode.classList.remove('active');
+        this.isActive = false;
     }
 
-    toggleButton() {
+    toggle() {
         if (this.mainNode.classList.contains('active')) {
-            this.deactivateButton()
+            this.deactivate()
         } else {
-            this.activateButton();
+            this.activate();
         }
+    }
+
+    addListener(type, callback) {
+        let listener = (e) => {
+            callback.apply(this)
+        }
+
+        this.mainNode.addEventListener(type, listener)
     }
 }

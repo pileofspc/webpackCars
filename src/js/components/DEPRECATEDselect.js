@@ -1,6 +1,6 @@
 import { htmlToElement } from "../_helpers";
 
-export class Select {
+export default class Select {
     constructor() {
         // this.selectWindow = htmlToElement(
         //     `<div class="select">

@@ -32,37 +32,37 @@ html, body {
     z-index: 2000!important;
 }
 
-.select {
-    padding: 10px;
-    background-color: v.$background;
-    border: 2px solid v.$spacers;
-    border-radius: 10px;
-    overflow: hidden;
-    width: max-content;
-    // width: 150px;
+// .select {
+//     padding: 10px;
+//     background-color: v.$background;
+//     border: 2px solid v.$spacers;
+//     border-radius: 10px;
+//     overflow: hidden;
+//     width: max-content;
+//     // width: 150px;
 
-    transition: max-height $select-transition;
-    max-height: 1px;
+//     transition: max-height $select-transition;
+//     max-height: 1px;
 
-    &__apply-button {
-        margin-top: 10px;
-    }
+//     // &__apply-button {
+//     //     margin-top: 10px;
+//     // }
 
-    &_open {
-        max-height: 400px;
-    }
-}
+//     &_open {
+//         max-height: 400px;
+//     }
+// }
 
-.arrow {
-    transition: transform $select-transition;
-    transform-origin: center 15%;
-    transform: translate(80%, 40%) rotate(90deg);
+// .arrow {
+//     transition: transform $select-transition;
+//     transform-origin: center 15%;
+//     transform: translate(80%, 40%) rotate(90deg);
 
-    // При открытом селекте
-    &_open {
-        transform: translate(80%, 40%);
-    }
-}
+//     // При открытом селекте
+//     &_open {
+//         transform: translate(80%, 40%);
+//     }
+// }
 
 .custom-checkbox {
     display: flex;

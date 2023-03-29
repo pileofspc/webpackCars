@@ -1,6 +1,6 @@
 import { htmlToElement } from '../_helpers';
 
-export class Modal {
+export default class Modal {
     constructor() {
         this.modal = htmlToElement(
             `<div class="modal">

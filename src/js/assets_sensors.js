@@ -1,6 +1,6 @@
-import { SelectSensors } from './components/select_sensors';
-import { ModalSensorsSeeAll } from './components/modal_sensorsSeeAll';
-import { Sensor } from './components/sensor';
+import SelectSensors from './components/select_sensors';
+import ModalSensorsSeeAll from './components/modal_sensorsSeeAll';
+import Sensor from './components/sensor';
 import Component from './components/Component/Component';
 
 class Sensors extends Component {

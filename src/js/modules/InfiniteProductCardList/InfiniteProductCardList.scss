@@ -1,0 +1,44 @@
+@use '/src/assets/sass/_vars' as v;
+@use '/src/assets/sass/_mixins' as m;
+
+.infinite-product-card-list {
+    &__controls {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    &__selects {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__buttons {
+        margin-left: auto;
+    }
+
+    &__button {
+        position: relative;
+        width: 44px;
+        height: 44px;
+
+        &:not(:first-child) {
+            margin-left: 16px;
+        }
+    }
+
+    &__button-img {
+        @include m.centerPosAbs();
+    }
+
+    &__button.active {
+        background-color: v.$primary3;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+    }
+}

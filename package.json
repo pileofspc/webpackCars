@@ -21,6 +21,7 @@
     "css-loader": "^6.7.1",
     "cssnano": "^5.1.14",
     "cssnano-preset-default": "^5.2.13",
+    "directory-named-webpack-plugin": "^4.0.1",
     "eslint": "^8.34.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-webpack-plugin": "^4.0.0",
@@ -43,6 +44,7 @@
   },
   "dependencies": {
     "air-datepicker": "^3.3.5",
+    "clsx": "^1.2.1",
     "d3": "^7.7.0",
     "date-fns": "^2.29.3",
     "external-svg-loader": "^1.6.1",

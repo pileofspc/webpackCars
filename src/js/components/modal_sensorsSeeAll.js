@@ -1,8 +1,8 @@
 import { htmlToElement } from '../_helpers';
-import { Modal } from './modal';
-import { Sensor } from './sensor';
+import Modal from './modal';
+import Sensor from './sensor';
 
-export class ModalSensorsSeeAll extends Modal {
+export default class ModalSensorsSeeAll extends Modal {
     constructor() {
         super();
 

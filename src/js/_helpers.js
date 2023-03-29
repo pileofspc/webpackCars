@@ -130,3 +130,9 @@ function capitalize(string) {
     string = String(string);
     return string[0].toUpperCase() + string.slice(1);
 }
+
+export function getMethods(obj) {
+    return Object.getOwnPropertyNames(Object.getPrototypeOf(obj))
+    .filter((key) => obj[key] && typeof obj[key] === "function" && key !== 'constructor')
+    .map(key => obj[key]);
+};

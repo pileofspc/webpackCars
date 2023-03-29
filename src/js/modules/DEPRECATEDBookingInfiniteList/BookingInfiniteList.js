@@ -5,7 +5,7 @@ import ProductCard from 'modules/ProductCard/ProductCard';
 
 import './BookingInfiniteList.scss';
 import global from '/src/js/global';
-import { getCoords } from '/src/js/_helpers.js';
+import { getCoords, htmlToElement } from '/src/js/_helpers.js';
 
 export default class BookingInfiniteList extends Component {
     api = new Api();
@@ -17,30 +17,48 @@ export default class BookingInfiniteList extends Component {
             </div>
             <div class="inf-list__list" ${Component.idAttr}="list"></div>
         </div>`;
+
     constructor() {
         super();
-        this.init();
+        this._init(this.html);
 
-        let firstSelect = new Select();
-        this.nodes.selects.append(firstSelect);
-        
+        this.initSelects(
+            [
+                new Select({
+                    name: 'Sort',
+                    variant: 'bordered',
+                    options: [
+                        htmlToElement(`<div>Option1Option1Option1Option1Option1Option1</div>`),
+                        htmlToElement(`<div>Option2Option2Option2Option2Option2Option2</div>`),
+                        htmlToElement(`<div>Option3Option3Option3Option3Option3Option3</div>`),
+                        htmlToElement(`<div>Option4Option4Option4Option4Option4Option4</div>`),
+                        htmlToElement(`<div>Option5Option5Option5Option5Option5Option5</div>`),
+                    ]
+                }),
+                new Select({
+                    name: 'Category',
+                    variant: 'bordered',
+                })
+            ]
+        );
+
         const viewButton = new Button({
             id: 'view-type',
-            icon: '../assets/img/view-type.svg'
+            iconPath: '../assets/img/view-type.svg'
         });
-        viewButton.classList.add('inf-list__button');
+        viewButton.mainNode.classList.add('inf-list__button');
         viewButton.nodes.img.classList.add('inf-list__button-img');
 
         const filterButton = new Button({
             id: 'filter',
-            icon: '../assets/img/filter.svg'
+            iconPath: '../assets/img/filter.svg'
         });
-        filterButton.classList.add('inf-list__button');
+        filterButton.mainNode.classList.add('inf-list__button');
         filterButton.nodes.img.classList.add('inf-list__button-img');
 
         this.nodes.buttons.append(
-            viewButton,
-            filterButton
+            viewButton.mainNode,
+            filterButton.mainNode
         );
 
 
@@ -56,15 +74,36 @@ export default class BookingInfiniteList extends Component {
                 this.addCards(6);
             }
         });
-        
-        return this.mainNode;
-    };
+    }
 
     addCards(amount) {
         let cards = this.api.queryMultiple(amount);
         if (cards) {
             for (const card of cards) {
                 this.nodes.list.append(new ProductCard(card));
+            }
+        }
+    }
+
+    initSelects(selectsArray) {
+        this.selects = selectsArray;
+
+        for (let i = 0; i < selectsArray.length; i++) {
+            const item = selectsArray[i];
+
+            item.addListener('click', () => {
+                this.closeOtherSelects(item)
+            })
+            this.nodes.selects.append(item.mainNode)
+        }
+    }
+
+    closeOtherSelects(current) {
+        for (let i = 0; i < this.selects.length; i++) {
+            const item = this.selects[i];
+            
+            if (this.selects[i].isOpen === true && this.selects[i] !== current) {
+                this.selects[i].close()
             }
         }
     }

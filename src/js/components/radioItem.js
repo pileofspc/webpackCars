@@ -1,6 +1,6 @@
-import { htmlToElement, toCamelCase } from "../_helpers"
+import { htmlToElement, toCamelCase } from "/src/js/_helpers"
 
-export class RadioItem {
+export default class RadioItem {
     constructor(itemName, className) {
         let name = '';
         let nameAttribute = 'NOT_FILLED';

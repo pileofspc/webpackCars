@@ -1,5 +1,5 @@
-import BookingInfiniteList from 'modules/BookingInfiniteList/BookingInfiniteList';
+import BookingInfiniteProductCardList from 'modules/BookingInfiniteProductCardList';
 
-let infList = new BookingInfiniteList();
+let infList = new BookingInfiniteProductCardList();
 
-document.querySelector('.content').append(infList);
+document.querySelector('.content').append(infList.mainNode);

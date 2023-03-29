@@ -1,6 +1,6 @@
-import { htmlToElement } from "../_helpers";
+import { htmlToElement } from "/src/js/_helpers";
 
-export class Sensor {
+export default class Sensor {
     constructor(className = 'sensor') {
         this.html = 
             `<div class="sensor sensors__sensor">

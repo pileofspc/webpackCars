@@ -1,7 +1,7 @@
-import { Select } from './select';
-import { RadioItem } from './radioItem';
+import Select from 'components/DEPRECATEDselect.js';
+import RadioItem from 'components/radioItem';
 
-export class SelectSensors extends Select {
+export default class SelectSensors extends Select {
     constructor() {
         super();
 

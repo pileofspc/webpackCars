@@ -8,6 +8,12 @@
         margin-bottom: 30px;
     }
 
+    &__selects {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
     &__buttons {
         margin-left: auto;
     }
