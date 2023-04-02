@@ -1,6 +1,8 @@
-import SelectSensors from './components/select_sensors';
-import ModalSensorsSeeAll from './components/modal_sensorsSeeAll';
-import Sensor from './components/sensor';
+import Select from 'components/Select/Select';
+import Modal from 'components/Modal/Modal';
+
+import FormSensorsSeeAll from 'modules/Forms/FormSensorsSeeAll/FormSensorsSeeAll';
+import Sensor from 'modules/Sensor/Sensor';
 import Component from './components/Component/Component';
 
 class Sensors extends Component {
@@ -10,22 +12,42 @@ class Sensors extends Component {
         this.sensorsWidget = document.querySelector('.sensors');
         this.sensors = this.sensorsWidget.querySelectorAll('.sensor');
         this.sensorsListNode = this.sensorsWidget.querySelector('.sensors__list');
-        this.generator = new Sensor();
         this.selectRoot = this.sensorsWidget.querySelector('.select-root');
-        this.seeAllButton = this.sensorsWidget.querySelector('.sensors__button')
+        this.seeAllButton = this.sensorsWidget.querySelector('.sensors__button');
+        this.sensorsHeader = this.sensorsWidget.querySelector('.sensors__header');
 
         for (let i = 1; i <= 5; i++) {
-            this.generator.name = 'Asset - Fuel Consumed';
-            this.generator.unit = 'km';
-            this.sensorsListNode.append(this.generator.generate())
+            let name = 'Asset - Fuel Consumed';
+            let unit = 'km';
+            let sensor = new Sensor({
+                name: name,
+                unit: unit,
+            });
+
+            this.sensorsListNode.append(sensor.mainNode);
         }
 
-        new SelectSensors().mount(this.selectRoot);
+        const categorySelect = new Select({
+            name: 'Assets',
+            isRightSided: true,
+            options: [
+                this._element(`<div>123</div>`)
+            ]
+        });
+        this.sensorsHeader.append(categorySelect.mainNode);
 
-        this.modal = new ModalSensorsSeeAll();
+        const form = new FormSensorsSeeAll();
+        form.addGroup('Priv', new Sensor({name: 'Hello', unit: 'World'}).mainNode);
+        form.addGroup('Priv', new Sensor({name: 'Hello', unit: 'World'}).mainNode);
+        form.addGroup('Priv', new Sensor({name: 'Hello', unit: 'World'}).mainNode);
+        
+        const modal = new Modal({
+            name: 'Тестовая форма',
+            children: form.mainNode
+        });
         this.seeAllButton.addEventListener('click', (evt) => {
-            this.modal.prepend(document.body);
-        })
+            document.body.prepend(modal.mainNode);
+        });
     }
 }
 

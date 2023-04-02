@@ -1,4 +1,4 @@
-import BookingInfiniteProductCardList from 'modules/BookingInfiniteProductCardList';
+import BookingInfiniteProductCardList from 'modules/BookingInfiniteProductCardList/BookingInfiniteProductCardList';
 
 let infList = new BookingInfiniteProductCardList();
 

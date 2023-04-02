@@ -1,24 +1,28 @@
+// Button.js
 import Component from 'components/Component/Component';
-import './Button.scss';
 
 export default class Button extends Component {
-    html = 
-        `<button class="button button_bgcolor_dark1 button_round">
-            <svg class="button__img" data-src="" ${Component.idAttr}="img">
-        </button>`;
-
     isActive = false;
+    #iconPath;
+    #inactiveIconPath;
 
     constructor({
         id,
         isActive,
         iconPath,
+        inactiveIconPath,
         handleClick
     } = {}) {
-        super();
-        this._init(this.html)
+        const html = 
+            `<button class="button button_bgcolor_dark1 button_round">
+                <svg class="button__img" data-src="" ${Component.idAttr}="img">
+            </button>`;
+        super({html});
 
-        this.nodes.img.setAttribute('data-src', iconPath);
+        this.#iconPath = iconPath;
+        this.#inactiveIconPath = inactiveIconPath;
+
+        this.deactivate();
 
         this.mainNode.addEventListener('click', () => {
             this.toggle();
@@ -28,22 +32,26 @@ export default class Button extends Component {
             this.activate();
         }
         if (handleClick) {
-            this.addListener('click', handleClick)
+            this.addClickListener(handleClick)
         }
     }
 
+    setIcon(pathToIcon) {
+        this.nodes.img.setAttribute('data-src', pathToIcon);
+    }
+
     activate() {
-        this.mainNode.classList.add('active');
+        this.setIcon(this.#iconPath);
         this.isActive = true;
     }
 
     deactivate() {
-        this.mainNode.classList.remove('active');
+        this.setIcon(this.#inactiveIconPath);
         this.isActive = false;
     }
 
     toggle() {
-        if (this.mainNode.classList.contains('active')) {
+        if (this.isActive) {
             this.deactivate()
         } else {
             this.activate();

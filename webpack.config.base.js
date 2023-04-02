@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
+// const DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 // const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 // Import webpack helpers
@@ -114,9 +114,9 @@ module.exports = exports = {
         paths: PATHS,
     },
     resolve: {
-        plugins: [
-            new DirectoryNamedWebpackPlugin()
-        ],
+        // plugins: [
+        //     new DirectoryNamedWebpackPlugin()
+        // ],
         alias: {
             modules: PATHS.modules,
             components: PATHS.components

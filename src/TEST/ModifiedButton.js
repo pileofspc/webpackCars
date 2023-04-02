@@ -1,24 +1,18 @@
+// ModifiedButton.js
 import Component from 'components/Component/Component';
-import './Button.scss';
 
-export default class Button extends Component {
-    html = 
-        `<button class="button button_bgcolor_dark1 button_round">
-            <svg class="button__img" data-src="" ${Component.idAttr}="img">
-        </button>`;
-
+export default class ModifiedButton extends Component {
     isActive = false;
 
     constructor({
         id,
         isActive,
-        iconPath,
         handleClick
     } = {}) {
-        super();
-        this._init(this.html)
-
-        this.nodes.img.setAttribute('data-src', iconPath);
+        const html = 
+            `<button class="button button_bgcolor_dark1 button_round">
+            </button>`
+        super(html);
 
         this.mainNode.addEventListener('click', () => {
             this.toggle();
@@ -28,7 +22,7 @@ export default class Button extends Component {
             this.activate();
         }
         if (handleClick) {
-            this.addListener('click', handleClick)
+            this.addClickListener(handleClick)
         }
     }
 
@@ -43,7 +37,7 @@ export default class Button extends Component {
     }
 
     toggle() {
-        if (this.mainNode.classList.contains('active')) {
+        if (this.isActive) {
             this.deactivate()
         } else {
             this.activate();

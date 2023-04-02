@@ -1,0 +1,14 @@
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+.form-sensors-see-all {
+    &__group-name {
+        color: v.$dark4;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__item {
+        margin-left: 20px;
+    }
+}

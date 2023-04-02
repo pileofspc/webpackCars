@@ -1,29 +1,29 @@
-import Component from 'components/Component';
-import Button from 'components/Button';
-import Select from 'components/Select';
-import InfiniteProductCardList from 'modules/InfiniteProductCardList';
+import Component from 'components/Component/Component';
+import Button from 'components/Button/Button';
+import Select from 'components/Select/Select';
+import InfiniteProductCardList from 'modules/InfiniteProductCardList/InfiniteProductCardList';
 
-import './BookingInfiniteProductCardList.scss';
 import global from '/src/js/global';
 import { htmlToElement } from '/src/js/_helpers.js';
+import Modal from 'components/Modal/Modal';
 
 export default class BookingInfiniteProductCardList extends InfiniteProductCardList {
-    constructor({
-        html = 
-            `<div class="inf-list">
-                <div class="inf-list__controls">
-                    <div class="inf-list__selects" ${Component.idAttr}="selects"></div>
-                    <div class="inf-list__buttons" ${Component.idAttr}="buttons"></div>
-                </div>
-                <div class="inf-list__list" ${Component.idAttr}="list"></div>
-            </div>`,
-    } = {}) {
+    html = 
+        `<div class="infinite-product-card-list__controls">
+            <div class="infinite-product-card-list__selects" ${Component.idAttr}="selects"></div>
+            <div class="infinite-product-card-list__buttons" ${Component.idAttr}="buttons"></div>
+        </div>`;
+
+    constructor() {
         super({
-            html,
             initialAmount: 12,
             addedAmount: 6,
             backendEndpoint: global.database.booking
         });
+
+        const controls = this._fragment(this.html);
+        this.mainNode.prepend(controls);
+        this._collectNodes(this.mainNode);
 
         this.initSelects(
             [
@@ -45,24 +45,33 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
             ]
         );
 
-        const viewButton = new Button({
-            id: 'view-type',
-            iconPath: '../assets/img/view-type.svg'
-        });
-        viewButton.mainNode.classList.add('inf-list__button');
-        viewButton.nodes.img.classList.add('inf-list__button-img');
-
-        const filterButton = new Button({
-            id: 'filter',
-            iconPath: '../assets/img/filter.svg'
-        });
-        filterButton.mainNode.classList.add('inf-list__button');
-        filterButton.nodes.img.classList.add('inf-list__button-img');
-
-        this.nodes.buttons.append(
-            viewButton.mainNode,
-            filterButton.mainNode
+        this.initButtons(
+            [
+                new Button({
+                    id: 'view-type',
+                    iconPath: '../assets/img/view-type.svg',
+                    handleClick() {
+                        if (this.isActive) {
+                            console.log('ACTIVATED')
+                        }
+                    }
+                }),
+                new Button({
+                    id: 'filter',
+                    iconPath: '../assets/img/filter.svg'
+                })
+            ]
         );
+
+        const modalContent = this._fragment(
+            `<div>123</div>
+            <div>321</div>`
+        );
+        const modal = new Modal({
+            name: 'Privet',
+            children: modalContent
+        })
+        this.mainNode.prepend(modal.mainNode)
     }
 
     initSelects(selectsArray) {
@@ -72,13 +81,31 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
             const item = selectsArray[i];
 
             item.addListener('click', () => {
-                this.closeOtherSelects(item)
+                this.closeSelectsExcept(item)
+            });
+            window.addEventListener('click', (e) => {
+                if (!this.isClickInsideSelects(e)) {
+                    this.closeSelectsExcept(null);
+                }
             })
-            this.nodes.selects.append(item.mainNode)
+            this.nodes.selects.append(item.mainNode);
         }
     }
 
-    closeOtherSelects(current) {
+    initButtons(buttonsArray) {
+        this.buttons = buttonsArray;
+
+        for (let i = 0; i < buttonsArray.length; i++) {
+            const item = buttonsArray[i];
+
+            item.mainNode.classList.add('infinite-product-card-list__button');
+            item.nodes.img.classList.add('infinite-product-card-list__button-img');
+
+            this.nodes.buttons.append(item.mainNode)
+        }
+    }
+
+    closeSelectsExcept(current) {
         for (let i = 0; i < this.selects.length; i++) {
             const item = this.selects[i];
             
@@ -86,5 +113,15 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
                 this.selects[i].close()
             }
         }
+    }
+
+    isClickInsideSelects(e) {
+        for (let i = 0; i < this.selects.length; i++) {
+            const item = this.selects[i];
+            if (item.mainNode.contains(e.target)) {
+                return true
+            }
+        }
+        return false;
     }
 }
