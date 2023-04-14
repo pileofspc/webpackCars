@@ -6,14 +6,14 @@ let newOptions = {
     devtool: 'source-map',
     devServer: {
         static: {
-            directory: base.externals.paths.dist,
+            directory: global.PATHS.dist,
             // publicPath: '/',
         },
         port: 3000,
         // open: true,
-        // hot: true,
+        hot: true,
         compress: true,
-        watchFiles: ['src/'],
+        // watchFiles: ['src/'],
     },
     module: {
         rules: [
@@ -49,7 +49,7 @@ let newOptions = {
                     {
                         loader: 'css-loader',
                         options: {
-                            url: false,
+                            url: true,
                         }
                     },
                     // {
@@ -68,7 +68,7 @@ let newOptions = {
                 ],
             },
         ]
-    }
+    },
 }
 
 exports = module.exports = merge(base, newOptions);

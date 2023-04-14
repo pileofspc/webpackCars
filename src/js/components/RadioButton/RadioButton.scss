@@ -1,0 +1,12 @@
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+.radio-button {
+    display: flex;
+    align-items: center;
+
+    &__circle {
+        margin: 0;
+        margin-right: 5px;
+    }
+}

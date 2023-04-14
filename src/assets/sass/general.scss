@@ -461,7 +461,6 @@ html, body {
 
         position: relative;
         justify-content: flex-end;
-        align-items: center;
         width: 40px;
         // width: 11.8%;
     }
@@ -491,7 +490,6 @@ html, body {
 .dot {
     display: none;
     position: absolute;
-    background-color: white;
     left: 50%;
     top: 0;
     transform: translateX(-50%);

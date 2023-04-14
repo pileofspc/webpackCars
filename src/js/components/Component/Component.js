@@ -4,6 +4,11 @@ export default class Component {
     static idAttr = 'data-node-id';
     
     _init(html) {
+        if (!html) {
+            console.error('В Component не поступила строка html');
+            return
+        }
+
         // Создаем мейн ноду и собираем нужные ноды в this.nodes
         this.mainNode = htmlToElement(html);
         this.nodes = {};

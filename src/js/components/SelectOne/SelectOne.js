@@ -1,12 +1,12 @@
 import Component from "components/Component/Component";
-import './Select.scss';
 import { htmlToElement } from '/src/js/_helpers';
+import './SelectOne.scss';
 
-export default class Select extends Component {
+export default class SelectOne extends Component {
     static idAttr = 'data-select-id';
 
     html = 
-        `<div class="select">
+        `<div class="select select_one">
             <span class="select__value" ${Component.idAttr}="value"></span>
             <div class="arrow select__arrow" ${Component.idAttr}="arrow"></div>
             <div class="select__window" ${Component.idAttr}="window">

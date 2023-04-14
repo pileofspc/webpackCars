@@ -13,7 +13,7 @@ export default class ProductCard extends Component {
                 </button>
             </div>
             <div class="product-card__type" ${Component.idAttr}="type">Sport Coupe</div>
-            <img class="product-card__img" src="../assets/img/car_id_1.png" alt="Car" ${Component.idAttr}="img">
+            <img class="product-card__img" alt="Car" ${Component.idAttr}="img">
             <div class="product-card__bottom-bar">
                 <div class="product-card__stat">
                     <img class="product-card__stat-icon" src="../assets/img/product-card_amount.svg" alt="Amount">

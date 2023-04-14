@@ -4,8 +4,8 @@ import Select from 'components/Select/Select';
 import InfiniteProductCardList from 'modules/InfiniteProductCardList/InfiniteProductCardList';
 
 import global from '/src/js/global';
-import { htmlToElement } from '/src/js/_helpers.js';
 import Modal from 'components/Modal/Modal';
+import RadioButton from 'components/RadioButton/RadioButton';
 
 export default class BookingInfiniteProductCardList extends InfiniteProductCardList {
     html = 
@@ -31,16 +31,21 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
                     name: 'Sort',
                     variant: 'bordered',
                     options: [
-                        htmlToElement(`<div>Option1Option1Option1Option1Option1Option1</div>`),
-                        htmlToElement(`<div>Option2Option2Option2Option2Option2Option2</div>`),
-                        htmlToElement(`<div>Option3Option3Option3Option3Option3Option3</div>`),
-                        htmlToElement(`<div>Option4Option4Option4Option4Option4Option4</div>`),
-                        htmlToElement(`<div>Option5Option5Option5Option5Option5Option5</div>`),
+                        new RadioButton({label: 'Oldest', groupName: 'sort'}).mainNode,
+                        new RadioButton({label: 'Newest', groupName: 'sort'}).mainNode,
+                        new RadioButton({label: 'High Price', groupName: 'sort'}).mainNode,
+                        new RadioButton({label: 'Low Price', groupName: 'sort'}).mainNode,
                     ]
                 }),
                 new Select({
-                    name: 'Category',
+                    name: 'Categories',
                     variant: 'bordered',
+                    options: [
+                        new RadioButton({label: 'Manual Transmission', groupName: 'sort'}).mainNode,
+                        new RadioButton({label: 'Auto Transmission', groupName: 'sort'}).mainNode,
+                        new RadioButton({label: 'Coupe', groupName: 'sort'}).mainNode,
+                        new RadioButton({label: 'Sport Coupe', groupName: 'sort'}).mainNode,
+                    ]
                 })
             ]
         );
@@ -49,7 +54,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
             [
                 new Button({
                     id: 'view-type',
-                    iconPath: '../assets/img/view-type.svg',
+                    iconPath: '/assets/img/view-type.svg',
                     handleClick() {
                         if (this.isActive) {
                             console.log('ACTIVATED')
@@ -58,20 +63,10 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
                 }),
                 new Button({
                     id: 'filter',
-                    iconPath: '../assets/img/filter.svg'
+                    iconPath: '/assets/img/filter.svg'
                 })
             ]
         );
-
-        const modalContent = this._fragment(
-            `<div>123</div>
-            <div>321</div>`
-        );
-        const modal = new Modal({
-            name: 'Privet',
-            children: modalContent
-        })
-        this.mainNode.prepend(modal.mainNode)
     }
 
     initSelects(selectsArray) {
@@ -84,7 +79,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
                 this.closeSelectsExcept(item)
             });
             window.addEventListener('click', (e) => {
-                if (!this.isClickInsideSelects(e)) {
+                if (!this.isEventInsideSelects(e)) {
                     this.closeSelectsExcept(null);
                 }
             })
@@ -115,7 +110,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
         }
     }
 
-    isClickInsideSelects(e) {
+    isEventInsideSelects(e) {
         for (let i = 0; i < this.selects.length; i++) {
             const item = this.selects[i];
             if (item.mainNode.contains(e.target)) {

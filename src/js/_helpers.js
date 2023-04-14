@@ -59,7 +59,7 @@ export function throttle(func, throttleTime) {
     let isReady = true;
     let savedArgs;
     let savedThis;
-    
+
     return function throttled(...args) {
         if (isReady) {
             func.apply(this, args);
@@ -85,6 +85,7 @@ export function htmlToFragment(html) {
     template.innerHTML = html;
     return template.content;
 }
+
 export function htmlToElement(html) {
     return htmlToFragment(html).firstChild
 }
@@ -102,11 +103,11 @@ export function toCamelCase(string, options = {
     result = result.map((item, index) => {
         return index === 0 ? item : capitalize(item)
     });
-    
+
     return result.join('');
 }
 
-function fold(string, { fold: foldChars }) {
+function fold(string, {fold: foldChars}) {
     string = String(string);
     for (let foldChar of foldChars) {
         string = string.replace(new RegExp(`${foldChar}+`), foldChar);
@@ -114,7 +115,7 @@ function fold(string, { fold: foldChars }) {
     return string
 }
 
-function splitByWord(string, { separators, serviceSymbol }) {
+function splitByWord(string, {separators, serviceSymbol}) {
     string = String(string);
     let prevString;
     while (prevString !== string) {
@@ -123,7 +124,7 @@ function splitByWord(string, { separators, serviceSymbol }) {
             string = string.replace(separator, serviceSymbol);
         }
     }
-    return string.toLowerCase().split(serviceSymbol).filter(item => item === '' ? false : true)
+    return string.toLowerCase().split(serviceSymbol).filter(item => item !== '')
 }
 
 function capitalize(string) {
@@ -133,6 +134,14 @@ function capitalize(string) {
 
 export function getMethods(obj) {
     return Object.getOwnPropertyNames(Object.getPrototypeOf(obj))
-    .filter((key) => obj[key] && typeof obj[key] === "function" && key !== 'constructor')
-    .map(key => obj[key]);
+        .filter((key) => obj[key] && typeof obj[key] === "function" && key !== 'constructor')
+        .map(key => obj[key]);
+}
+
+export function getModules(context) {
+    let modules = {};
+    context.keys().forEach((item) => {
+        modules[item.replace('./', '')] = context(item);
+    });
+    return modules;
 };

@@ -4,7 +4,7 @@ import './Button.scss';
 export default class Button extends Component {
     html = 
         `<button class="button button_bgcolor_dark1 button_round">
-            <svg class="button__img" data-src="" ${Component.idAttr}="img">
+            <svg class="button__img" ${Component.idAttr}="img">
         </button>`;
 
     isActive = false;

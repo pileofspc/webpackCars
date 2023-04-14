@@ -1,14 +1,14 @@
 const base = require('./webpack.config.base.js');
 const { merge } = require('webpack-merge');
 
-const helpers = require('./webpack-helpers/helpers.js');
+const helpers = require('./webpack-helpers/webpack-helpers.js');
 
 let newOptions = {
     mode: 'production',
     module: {
         rules: [
             {
-                test: /\.m?js$/,
+                test: /\.m?js$/i,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -79,11 +79,11 @@ let newOptions = {
         ]
     },
     output: {
-        filename: `${base.externals.paths.distJs}/[name].[contenthash].js`,
+        filename: `${global.PATHS.distJs}/[name].[contenthash].js`,
     },
 }
 
 exports = module.exports = merge(base, newOptions);
 
 let css = helpers.getCssPlugin(exports);
-css.options.filename = css.options.filename.replace('[name]', '[name].[contenthash]');
+css.options.filename = css.options.filename.replace('[name]', '[name].[hash]');

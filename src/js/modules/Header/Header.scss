@@ -1,0 +1,48 @@
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+$header-height: 78px;
+$header-inner-height: 46px;
+
+.header {
+    background-color: v.$primary1;
+    margin-left: 248px;
+
+    &__inner {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+
+        box-sizing: content-box;
+        height: $header-inner-height;
+        padding: calc(($header-height - $header-inner-height) / 2) 30px;
+    }
+
+    &__user {
+        margin-left: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-basis: 110px;
+
+        > * {
+            flex-shrink: 0;
+        }
+    }
+
+    &__notification-bell {
+        width: calc(20/46 * $header-inner-height);
+        height: auto;
+    }
+
+    &__profile {
+        height: $header-inner-height;
+        width: $header-inner-height;
+    }
+
+    &__searchbar {
+        height: $header-inner-height;
+    }
+}

@@ -2,15 +2,9 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-            "/*": [
-                "*"
-            ],
-            "modules/*": [
-                "src/js/modules/*"
-            ],
-            "components/*": [
-                "src/js/components/*"
-            ]
+            "/*": ["*"],
+            "modules/*": ["src/js/modules/*"],
+            "components/*": ["src/js/components/*"]
         }
     }
 }
