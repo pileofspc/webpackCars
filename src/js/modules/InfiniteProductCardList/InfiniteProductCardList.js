@@ -1,5 +1,5 @@
-import Component from 'components/Component/Component';
-import ProductCard from 'modules/ProductCard/ProductCard';
+import Component from '@components/Component/Component';
+import ProductCard from '@modules/ProductCard/ProductCard';
 
 import './InfiniteProductCardList.scss';
 import { getCoords } from '/src/js/_helpers.js';

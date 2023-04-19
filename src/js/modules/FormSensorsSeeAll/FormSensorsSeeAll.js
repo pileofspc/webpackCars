@@ -1,4 +1,4 @@
-import Component from 'components/Component/Component';
+import Component from '@components/Component/Component';
 import './FormSensorsSeeAll.scss';
 
 export default class FormSensorsSeeAll extends Component {

@@ -1,11 +1,14 @@
-import Component from 'components/Component/Component';
-import Button from 'components/Button/Button';
-import Select from 'components/Select/Select';
-import InfiniteProductCardList from 'modules/InfiniteProductCardList/InfiniteProductCardList';
+import Component from '@components/Component/Component';
+import Button from '@components/Button/Button';
+import Select from '@components/Select/Select';
+import InfiniteProductCardList from '@modules/InfiniteProductCardList/InfiniteProductCardList';
 
 import global from '/src/js/global';
-import Modal from 'components/Modal/Modal';
-import RadioButton from 'components/RadioButton/RadioButton';
+import Modal from '@components/Modal/Modal';
+import RadioButton from '@components/RadioButton/RadioButton';
+
+import filterSvg from '@img/button_filter.svg';
+import viewModeSvg from '@img/button_view-mode.svg';
 
 export default class BookingInfiniteProductCardList extends InfiniteProductCardList {
     html = 
@@ -54,7 +57,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
             [
                 new Button({
                     id: 'view-type',
-                    iconPath: '/assets/img/view-type.svg',
+                    iconPath: viewModeSvg,
                     handleClick() {
                         if (this.isActive) {
                             console.log('ACTIVATED')
@@ -63,7 +66,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
                 }),
                 new Button({
                     id: 'filter',
-                    iconPath: '/assets/img/filter.svg'
+                    iconPath: filterSvg
                 })
             ]
         );

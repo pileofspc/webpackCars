@@ -1,8 +1,10 @@
 import global from './global'
 
 // Notification bell
-let unreadBellPath = 'assets/img/notification-bell_active.svg';
-let bellPath = 'assets/img/notification-bell.svg';
+import unreadBellPath from '@img/icon_notification-bell-active.svg';
+import bellPath from  '@img/icon_notification-bell.svg'
+// let unreadBellPath = 'assets/img/notification-bell_active.svg';
+// let bellPath = 'assets/img/notification-bell.svg';
 
 if (global.database.unreadNotifications) {
     let bell = document.querySelector('.notification-bell__img');

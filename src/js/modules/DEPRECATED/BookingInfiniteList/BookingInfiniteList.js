@@ -1,7 +1,7 @@
-import Button from 'components/Button/Button';
-import Component from 'components/Component/Component';
-import Select from 'components/Select/Select';
-import ProductCard from 'modules/ProductCard/ProductCard';
+import Button from '@components/Button/Button';
+import Component from '@components/Component/Component';
+import Select from '@components/Select/Select';
+import ProductCard from '@modules/ProductCard/ProductCard';
 
 import './BookingInfiniteList.scss';
 import global from '/src/js/global';

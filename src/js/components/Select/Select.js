@@ -1,6 +1,6 @@
-import Component from "components/Component/Component";
+import Component from "@components/Component/Component";
 import './Select.scss';
-import { htmlToElement } from '/src/js/_helpers';
+import {htmlToElement} from '/src/js/_helpers';
 
 export default class Select extends Component {
     static idAttr = 'data-select-id';

@@ -1,6 +1,6 @@
 import AirDatepicker from "air-datepicker";
 import 'air-datepicker/air-datepicker.css';
-import Modal from "components/modal";
+import Modal from "@components/modal";
 
 export default class ModalAddNewReminder extends Modal {
     constructor() {

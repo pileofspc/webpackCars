@@ -1,9 +1,9 @@
-import Select from 'components/Select/Select';
-import Modal from 'components/Modal/Modal';
+import Select from '@components/Select/Select';
+import Modal from '@components/Modal/Modal';
 
-import FormSensorsSeeAll from 'modules/FormSensorsSeeAll/FormSensorsSeeAll';
-import Sensor from 'modules/Sensor/Sensor';
-import Component from './components/Component/Component';
+import FormSensorsSeeAll from '@modules/FormSensorsSeeAll/FormSensorsSeeAll';
+import Sensor from '@modules/Sensor/Sensor';
+import Component from '@components/Component/Component';
 
 class Sensors extends Component {
     constructor() {

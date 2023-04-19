@@ -1,16 +1,16 @@
 import Component from "@components/Component/Component";
+import './Select.scss';
 import {htmlToElement} from '/src/js/_helpers';
-import './SelectOne.scss';
 
-export default class SelectOne extends Component {
+export default class Dropdown extends Component {
     static idAttr = 'data-select-id';
 
     html = 
-        `<div class="select select_one">
-            <span class="select__value" ${Component.idAttr}="value"></span>
-            <div class="arrow select__arrow" ${Component.idAttr}="arrow"></div>
-            <div class="select__window" ${Component.idAttr}="window">
-                <form class="select__form" action="" ${Component.idAttr}="form"></form>
+        `<div class="dropdown">
+            <span class="dropdown__value" ${Component.idAttr}="value"></span>
+            <div class="arrow dropdown__arrow" ${Component.idAttr}="arrow"></div>
+            <div class="dropdown__window" ${Component.idAttr}="window">
+                <form class="dropdown__form" action="" ${Component.idAttr}="form"></form>
             </div>
         </div>`;
 
@@ -18,8 +18,8 @@ export default class SelectOne extends Component {
     isOpen = false;
 
     constructor({
-        name = 'Select',
-        options = [htmlToElement('<div>No options yet :(</div>')],
+        name = 'Dropdown',
+        options = [htmlToElement('<div>Nothing here :(</div>')],
         isRightSided = false,
         variant,
     } = {}) {
@@ -30,10 +30,10 @@ export default class SelectOne extends Component {
 
         this.nodes.value.textContent = name;
         if (isRightSided) {
-            this.mainNode.classList.add('select_right')
+            this.mainNode.classList.add('dropdown_right')
         };
         if (variant === 'bordered') {
-            this.mainNode.classList.add('select_bordered')
+            this.mainNode.classList.add('dropdown_bordered')
         };
         this.populate(options);
 
@@ -43,14 +43,14 @@ export default class SelectOne extends Component {
     open() {
         // TODO: Пересмотреть класс, т.к получается, что селект знает о поведении стрелки (оно описано в стилях)
         this.nodes.arrow.classList.add('arrow_open');
-        this.nodes.window.classList.add('select__window_open');
+        this.nodes.window.classList.add('dropdown__window_open');
         this.isOpen = true;
     }
 
     close() {
         // TODO: Пересмотреть класс, т.к получается, что селект знает о поведении стрелки (оно описано в стилях)
         this.nodes.arrow.classList.remove('arrow_open');
-        this.nodes.window.classList.remove('select__window_open');
+        this.nodes.window.classList.remove('dropdown__window_open');
         this.isOpen = false;
     }
 
@@ -72,24 +72,6 @@ export default class SelectOne extends Component {
         for (let option of options) {
             this.addOption(option)
         }
-    }
-
-    addOption(option) {
-        option.setAttribute(Select.idAttr, this.childId);
-        this.childId++;
-        this.nodes.form.append(option);
-    }
-
-    removeOption(id) {
-        this.nodes.form.children.find(item => item.getAttribute(Select.idAttr) === id).remove();
-    }
-
-    resetIds() {
-        this.childId = 0;
-        for (let option of this.nodes.form.children) {
-            option.setAttribute(Select.idAttr, this.childId);
-            this.childId++;
-        } 
     }
 
     addListener(type, callback) {

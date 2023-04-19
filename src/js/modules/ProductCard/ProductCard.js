@@ -1,7 +1,13 @@
 import './ProductCard.scss';
 import global from '/src/js/global';
 
-import Component from 'components/Component/Component';
+import Component from '@components/Component/Component';
+
+import statAmountSvgPath from '@img/product-card_amount.svg';
+import statTransmissionSvgPath from '@img/product-card_transmission.svg';
+import heartSvg from '@img/icon_heart.svg';
+import heartActiveSvg from '@img/icon_heart-active.svg';
+
 
 export default class ProductCard extends Component {
     html = 
@@ -9,18 +15,18 @@ export default class ProductCard extends Component {
             <div class="product-card__top-bar">
                 <span class="product-card__name" ${Component.idAttr}="name">Porshe 718 Cayman S</span>
                 <button class="button button_bgcolor_transparent product-card__favorite" ${Component.idAttr}="heartButton">
-                    <img class="product-card__favorite-img" src="../assets/img/heart.svg" alt="Favorite" ${Component.idAttr}="heart">
+                    <img class="product-card__favorite-img" src="${heartSvg}" alt="Favorite" ${Component.idAttr}="heart">
                 </button>
             </div>
             <div class="product-card__type" ${Component.idAttr}="type">Sport Coupe</div>
             <img class="product-card__img" alt="Car" ${Component.idAttr}="img">
             <div class="product-card__bottom-bar">
                 <div class="product-card__stat">
-                    <img class="product-card__stat-icon" src="../assets/img/product-card_amount.svg" alt="Amount">
+                    <img class="product-card__stat-icon" src="${statAmountSvgPath}" alt="Amount">
                     <span class="product-card__stat-value" ${Component.idAttr}="amount">4</span>
                 </div>
                 <div class="product-card__stat">
-                    <img class="product-card__stat-icon" src="../assets/img/product-card_transmission.svg" alt="Transmission">
+                    <img class="product-card__stat-icon" src="${statTransmissionSvgPath}" alt="Transmission">
                     <span class="product-card__stat-value" ${Component.idAttr}="transmissions">Manual</span>
                 </div>
                 <div class="product-card__stat">
@@ -65,11 +71,11 @@ export default class ProductCard extends Component {
     }
 
     activateHeart() {
-        this.nodes.heart.setAttribute('src', '../assets/img/heart-active.svg');
+        this.nodes.heart.setAttribute('src', heartActiveSvg);
     }
 
     deactivateHeart() {
-        this.nodes.heart.setAttribute('src', '../assets/img/heart.svg');
+        this.nodes.heart.setAttribute('src', heartSvg);
     }
 }
 

@@ -9,286 +9,296 @@
 </head>
 
 <body class="page">
-    <div class="sidebar page__sidebar">
-        <a class="logo sidebar__logo" href="./">
-            <img class="sidebar__logo-img" src="assets/img/logo.svg" alt="">
-        </a>
-        <nav class="nav">
-            <div class="nav__main">
-                <a href="dashboard.html" class="link nav__link nav_current-link"><img class="nav__img"
-                        src="assets/img/dashboard_icon.svg" alt="">Dashboard</a>
-                <a href="assets.html" class="link nav__link"><img class="nav__img" src="assets/img/assets_icon.svg"
-                        alt="">Assets</a>
-                <a href="booking.html" class="link nav__link"><img class="nav__img" src="assets/img/booking_icon.svg"
-                        alt="">Booking</a>
-                <a href="sell.html" class="link nav__link"><img class="nav__img" src="assets/img/sellcars_icon.svg"
-                        alt="">Sell Cars</a>
-                <a href="buy.html" class="link nav__link"><img class="nav__img" src="assets/img/buycars_icon.svg"
-                        alt="">Buy
-                    Cars</a>
-                <a href="services.html" class="link nav__link"><img class="nav__img" src="assets/img/services_icon.svg"
-                        alt="">Services</a>
-                <a href="calendar.html" class="link nav__link"><img class="nav__img" src="assets/img/calendar_icon.svg"
-                        alt="">Calendar</a>
-                <a href="messages.html" class="link nav__link"><img class="nav__img" src="assets/img/messages_icon.svg"
-                        alt="">Messages</a>
-            </div>
-            <div class="nav__controls">
-                <a href="settings.html" class="link nav__link"><img class="nav__img" src="assets/img/settings_icon.svg"
-                        alt="">Settings</a>
-                <a href="logout.html" class="link nav__link"><img class="nav__img" src="assets/img/logout_icon.svg"
-                        alt="">Log out</a>
-            </div>
-        </nav>
-    </div>
+<div class="sidebar page__sidebar">
+    <a class="logo sidebar__logo" href="./">
+        <img class="sidebar__logo-img" src="/src/assets/img/icon_logo.svg" alt="">
+    </a>
+    <nav class="nav">
+        <div class="nav__main">
+            <a href="dashboard.html" class="link nav__link nav_current-link">
+                <img class="nav__img" src="/src/assets/img/sidebar_dashboard.svg" alt="">
+                Dashboard
+            </a>
+            <a href="assets.html" class="link nav__link">
+                <img class="nav__img" src="/src/assets/img/sidebar_assets.svg" alt="">
+                Assets
+            </a>
+            <a href="booking.html" class="link nav__link">
+                <img class="nav__img" src="/src/assets/img/sidebar_booking.svg" alt="">
+                Booking
+            </a>
+            <a href="sell-cars.html" class="link nav__link">
+                <img class="nav__img" src="/src/assets/img/sidebar_sell-cars.svg" alt="">
+                Sell Cars
+            </a>
+            <a href="buy-cars.html" class="link nav__link">
+                <img class="nav__img" src="/src/assets/img/sidebar_buy-cars.svg" alt="">
+                Buy Cars
+            </a>
+<!--            <a href="services.html" class="link nav__link">-->
+<!--                <img class="nav__img" src="/src/assets/img/sidebar_services.svg" alt="">-->
+<!--                Services-->
+<!--            </a>-->
+<!--            <a href="calendar.html" class="link nav__link">-->
+<!--                <img class="nav__img" src="/src/assets/img/sidebar_calendar.svg" alt="">-->
+<!--                Calendar-->
+<!--            </a>-->
+<!--            <a href="messages.html" class="link nav__link">-->
+<!--                <img class="nav__img" src="/src/assets/img/sidebar_messages.svg" alt="">-->
+<!--                Messages-->
+<!--            </a>-->
+        </div>
+        <div class="nav__controls">
+            <a href="settings.html" class="link nav__link">
+                <img class="nav__img" src="/src/assets/img/sidebar_settings.svg" alt="">
+                Settings
+            </a>
+            <a href="logout.html" class="link nav__link">
+                <img class="nav__img" src="/src/assets/img/sidebar_logout.svg" alt="">
+                Log out
+            </a>
+        </div>
+    </nav>
+</div>
 
-    <header class="header page__header">
-        <div class="header__inner">
-            <label class="searchbar header__searchbar">
-                <img src="assets/img/searchbar__icon.svg" alt="Search" class="searchbar__icon">
-                <form action="" method="get" class="searchbar__form">
-                    <input class="searchbar__input" type="text" placeholder="Search or type">
-                </form>
-            </label>
-            <div class="header__user">
-                <a href="bell.html" class="notification-bell header__notification-bell">
-                    <img src="assets/img/notification-bell.svg" alt="Bell" class="notification-bell__img">
-                </a>
-                <a href="profile.html" class="profile header__profile">
-                    <img src="assets/img/avatar.jpg" alt="Avatar" class="profile__img">
-                </a>
+<header class="header page__header">
+    <div class="header__inner">
+        <label class="searchbar header__searchbar">
+            <img src="/src/assets/img/searchbar_search.svg" alt="Search" class="searchbar__icon">
+            <form action="" method="get" class="searchbar__form">
+                <input class="searchbar__input" type="text" placeholder="Search or type">
+            </form>
+        </label>
+        <div class="header__user">
+            <a href="bell.html" class="notification-bell header__notification-bell">
+                <img src="/src/assets/img/icon_notification-bell.svg" alt="Bell" class="notification-bell__img">
+            </a>
+            <a href="profile.html" class="profile header__profile">
+                <img src="/src/assets/img/external/avatar.jpg" alt="Avatar" class="profile__img">
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="main page__main">
+    <section class="content content-dashboard _first-screen">
+        <div class="tooltip">
+            <div class="tooltip__time">TIME</div>
+            <div class="tooltip__value">VALUE</div>
+        </div>
+        <div class="meter meter_id_energy content-dashboard__meter content__grid-item">
+
+            <div class="meter__logo">
+                <div class="meter__circle"></div>
+                <div class="meter__icon"></div>
+            </div>
+            <h2 class="meter__name">Energy</h2>
+            <div class="progress meter__progress">
+                <div class="progress__bar"></div>
+                <div class="progress__percentage">45%</div>
+            </div>
+
+        </div>
+        <div class="meter meter_id_range content-dashboard__meter content__grid-item">
+            <div class="meter__logo">
+                <div class="meter__circle"></div>
+                <div class="meter__icon"></div>
+            </div>
+            <h2 class="meter__name">Range</h2>
+            <div class="progress progress_circular meter__progress">
+                <div class="progress__bar"></div>
+                <div class="progress__percentage">45%</div>
             </div>
         </div>
-    </header>
+        <div class="meter meter_id_brake-fluid content-dashboard__meter content__grid-item">
+            <div class="meter__logo">
+                <div class="meter__circle"></div>
+                <div class="meter__icon"></div>
+            </div>
+            <h2 class="meter__name">Brake fluid</h2>
+            <div class="progress meter__progress">
+                <div class="progress__bar"></div>
+                <div class="progress__percentage">45%</div>
+            </div>
+        </div>
+        <div class="meter meter_id_tire-wear content-dashboard__meter content__grid-item">
+            <div class="meter__logo">
+                <div class="meter__circle"></div>
+                <div class="meter__icon"></div>
+            </div>
+            <h2 class="meter__name">Tire wear</h2>
+            <div class="progress meter__progress">
+                <div class="progress__bar"></div>
+                <div class="progress__percentage">45%</div>
+            </div>
+        </div>
+        <div class="stats stats_miles content-dashboard__stats content__grid-item">
+            <div class="stats__header">
+                <span class="stats__span">Miles</span> statistics
+            </div>
+            <div class="stats__controls">
+                <div class="stats__timespan">
+                    <input class="stats__day" id="stats__day" type="radio" name="timespan" value="day" checked>
+                    <label for="stats__day">Day</label>
+                    <input class="stats__week" id="stats__week" type="radio" name="timespan" value="week">
+                    <label for="stats__week">Week</label>
+                    <input class="stats__month" id="stats__month" type="radio" name="timespan" value="month">
+                    <label for="stats__month">Month</label>
+                </div>
+                <div class="stats__miles">0 Miles</div>
+            </div>
+            <div class="stats__chart">
+                <div class="stats__chart-item">
+                    <div class="stats__column"></div>
+                    <div class="stats__item-name">3 AM</div>
+                </div>
+                <div class="stats__spacer"></div>
+                <div class="stats__chart-item">
+                    <div class="stats__column"></div>
+                    <div class="stats__item-name">7 AM</div>
+                </div>
+                <div class="stats__spacer"></div>
+                <div class="stats__chart-item">
+                    <div class="stats__column"></div>
+                    <div class="stats__item-name">10 AM</div>
+                </div>
+                <div class="stats__spacer"></div>
+                <div class="stats__chart-item">
+                    <div class="stats__column"></div>
+                    <div class="stats__item-name">2 PM</div>
+                </div>
+                <div class="stats__spacer"></div>
+                <div class="stats__chart-item">
+                    <div class="stats__column"></div>
+                    <div class="stats__item-name">5 PM</div>
+                </div>
+                <div class="stats__spacer"></div>
+                <div class="stats__chart-item">
+                    <div class="stats__column"></div>
+                    <div class="stats__item-name">9 PM</div>
+                </div>
+                <div class="stats__spacer"></div>
+                <div class="stats__chart-item">
+                    <div class="stats__column"></div>
+                    <div class="stats__item-name">12 PM</div>
+                </div>
+            </div>
+        </div>
+        <div class="stats stats_cars content-dashboard__stats content__grid-item">
+            <div class="stats__header">
+                <span class="stats__span">Cars</span> statistics
+            </div>
+            <div class="stats__controls">
+                <div class="stats__timespan">
+                    <input class="stats__day" id="stats__day_cars" type="radio" name="timespan_2" value="day"
+                           checked>
+                    <label for="stats__day_cars">Day</label>
+                    <input class="stats__week" id="stats__week_cars" type="radio" name="timespan_2" value="week">
+                    <label for="stats__week_cars">Week</label>
+                    <input class="stats__month" id="stats__month_cars" type="radio" name="timespan_2" value="month">
+                    <label for="stats__month_cars">Month</label>
+                </div>
+                <div class="stats__miles">20 January 2022</div>
+            </div>
+            <div class="stats__chart">
+                <div class="stats__graphics">
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="stats__chart-item">
+                        <div class="stats__spacer"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="stats__names">
+                    <div class="stats__item-name">9 PM</div>
+                    <div class="stats__item-name">9 PM</div>
+                    <div class="stats__item-name">9 PM</div>
+                    <div class="stats__item-name">9 PM</div>
+                    <div class="stats__item-name">9 PM</div>
+                    <div class="stats__item-name">9 PM</div>
+                    <div class="stats__item-name">9 PM</div>
+                    <div class="stats__item-name">9 PM</div>
+                </div>
+            </div>
+        </div>
+        <div class="product-card product-card_n1 content-dashboard__product-card content__grid-item">
+            <div class="product-card__recommendation">
+                <img class="product-card__recommendation-svg" src="/src/assets/img/product-card_recommendation.svg" alt="Recommended">
+                <span class="product-card__recommendation-percentage">64% Recommend</span>
+            </div>
+            <img src="/src/assets/img/external/dashboard_car.png" alt="Product Image" class="product-card__img">
+            <div class="product-card__name">Mini Cooper</div>
+            <div class="product-card__stats">
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-1.svg" alt="Statistic 1">
+                <div class="product-card__stat product-card__stat2">132k</div>
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-3.svg" alt="Statistic 3">
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-4.svg" alt="Statistic 4">
 
-    <main class="main page__main">
-        <section class="content content-dashboard _first-screen">
-            <div class="tooltip">
-                <div class="tooltip__time">TIME</div>
-                <div class="tooltip__value">VALUE</div>
+                <div class="product-card__price">$32/h</div>
             </div>
-            <div class="meter meter_id_energy content-dashboard__meter content__grid-item">
+        </div>
 
-                <div class="meter__logo">
-                    <div class="meter__circle"></div>
-                    <div class="meter__icon"></div>
-                </div>
-                <h2 class="meter__name">Energy</h2>
-                <div class="progress meter__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
+        <div class="product-card product-card_n2 content-dashboard__product-card content__grid-item">
+            <div class="product-card__recommendation">
+                <img class="product-card__recommendation-svg" src="/src/assets/img/product-card_recommendation.svg" alt="Recommended">
+                <span class="product-card__recommendation-percentage">64% Recommend</span>
+            </div>
+            <img src="/src/assets/img/external/dashboard_car2.png" alt="Product Image" class="product-card__img">
+            <div class="product-card__name">Porsche Carrera</div>
+            <div class="product-card__stats">
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-1.svg" alt="Statistic 1">
+                <div class="product-card__stat product-card__stat2">132k</div>
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-3.svg" alt="Statistic 3">
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-4.svg" alt="Statistic 4">
 
+                <div class="product-card__price">$32/h</div>
             </div>
-            <div class="meter meter_id_range content-dashboard__meter content__grid-item">
-                <div class="meter__logo">
-                    <div class="meter__circle"></div>
-                    <div class="meter__icon"></div>
-                </div>
-                <h2 class="meter__name">Range</h2>
-                <div class="progress progress_circular meter__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="meter meter_id_brake-fluid content-dashboard__meter content__grid-item">
-                <div class="meter__logo">
-                    <div class="meter__circle"></div>
-                    <div class="meter__icon"></div>
-                </div>
-                <h2 class="meter__name">Brake fluid</h2>
-                <div class="progress meter__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="meter meter_id_tire-wear content-dashboard__meter content__grid-item">
-                <div class="meter__logo">
-                    <div class="meter__circle"></div>
-                    <div class="meter__icon"></div>
-                </div>
-                <h2 class="meter__name">Tire wear</h2>
-                <div class="progress meter__progress">
-                    <div class="progress__bar"></div>
-                    <div class="progress__percentage">45%</div>
-                </div>
-            </div>
-            <div class="stats stats_miles content-dashboard__stats content__grid-item">
-                <div class="stats__header">
-                    <span class="stats__span">Miles</span> statistics
-                </div>
-                <div class="stats__controls">
-                    <div class="stats__timespan">
-                        <input class="stats__day" id="stats__day" type="radio" name="timespan" value="day" checked>
-                        <label for="stats__day">Day</label>
-                        <input class="stats__week" id="stats__week" type="radio" name="timespan" value="week">
-                        <label for="stats__week">Week</label>
-                        <input class="stats__month" id="stats__month" type="radio" name="timespan" value="month">
-                        <label for="stats__month">Month</label>
-                    </div>
-                    <div class="stats__miles">0 Miles</div>
-                </div>
-                <div class="stats__chart">
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__item-name">3 AM</div>
-                    </div>
-                    <div class="stats__spacer"></div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__item-name">7 AM</div>
-                    </div>
-                    <div class="stats__spacer"></div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__item-name">10 AM</div>
-                    </div>
-                    <div class="stats__spacer"></div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__item-name">2 PM</div>
-                    </div>
-                    <div class="stats__spacer"></div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__item-name">5 PM</div>
-                    </div>
-                    <div class="stats__spacer"></div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__item-name">9 PM</div>
-                    </div>
-                    <div class="stats__spacer"></div>
-                    <div class="stats__chart-item">
-                        <div class="stats__column"></div>
-                        <div class="stats__item-name">12 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="stats stats_cars content-dashboard__stats content__grid-item">
-                <div class="stats__header">
-                    <span class="stats__span">Cars</span> statistics
-                </div>
-                <div class="stats__controls">
-                    <div class="stats__timespan">
-                        <input class="stats__day" id="stats__day_cars" type="radio" name="timespan_2" value="day"
-                            checked>
-                        <label for="stats__day_cars">Day</label>
-                        <input class="stats__week" id="stats__week_cars" type="radio" name="timespan_2" value="week">
-                        <label for="stats__week_cars">Week</label>
-                        <input class="stats__month" id="stats__month_cars" type="radio" name="timespan_2" value="month">
-                        <label for="stats__month_cars">Month</label>
-                    </div>
-                    <div class="stats__miles">20 January 2022</div>
-                </div>
-                <div class="stats__chart">
-                    <div class="stats__graphics">
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div class="stats__chart-item">
-                            <div class="stats__spacer"></div>
-                            <div class="dot"></div>
-                        </div>
-                    </div>
-                    <div class="stats__names">
-                        <div class="stats__item-name">9 PM</div>
-                        <div class="stats__item-name">9 PM</div>
-                        <div class="stats__item-name">9 PM</div>
-                        <div class="stats__item-name">9 PM</div>
-                        <div class="stats__item-name">9 PM</div>
-                        <div class="stats__item-name">9 PM</div>
-                        <div class="stats__item-name">9 PM</div>
-                        <div class="stats__item-name">9 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card product-card_n1 content-dashboard__product-card content__grid-item">
-                <div class="product-card__recommendation">
-                    <svg class="product-card__recommendation-svg"
-                        data-src="assets/img/product-card__recommendation-img.svg"></svg>
-                    <span class="product-card__recommendation-percentage">64% Recommend</span>
-                </div>
-                <img src="assets/img/car.png" alt="Product Image" class="product-card__img">
-                <div class="product-card__name">Mini Cooper</div>
-                <div class="product-card__stats">
-                    <svg class="product-card__stat product-card__stat1"
-                        data-src="assets/img/product-card__stat-1.svg"></svg>
-                    <div class="product-card__stat product-card__stat2">132k</div>
-                    <svg class="product-card__stat product-card__stat3"
-                        data-src="assets/img/product-card__stat-3.svg"></svg>
-                    <svg class="product-card__stat product-card__stat4"
-                        data-src="assets/img/product-card__stat-4.svg"></svg>
-                    <div class="product-card__price">$32/h</div>
-                </div>
-            </div>
+        </div>
 
-            <div class="product-card product-card_n2 content-dashboard__product-card content__grid-item">
-                <div class="product-card__recommendation">
-                    <svg class="product-card__recommendation-svg"
-                        data-src="assets/img/product-card__recommendation-img.svg"></svg>
-                    <span class="product-card__recommendation-percentage">64% Recommend</span>
-                </div>
-                <img class="product-card__img" src="assets/img/car2.png" alt="Product Image">
-                <div class="product-card__name">Porsche 911 Carrera</div>
-                <div class="product-card__stats">
-                    <svg class="product-card__stat product-card__stat1"
-                        data-src="assets/img/product-card__stat-1.svg"></svg>
-                    <div class="product-card__stat product-card__stat2">132k</div>
-                    <svg class="product-card__stat product-card__stat3"
-                        data-src="assets/img/product-card__stat-3.svg"></svg>
-                    <svg class="product-card__stat product-card__stat4"
-                        data-src="assets/img/product-card__stat-4.svg"></svg>
-                    <div class="product-card__price">$32/h</div>
-                </div>
+        <div class="product-card product-card_n3 content-dashboard__product-card content__grid-item">
+            <div class="product-card__recommendation">
+                <img class="product-card__recommendation-svg" src="/src/assets/img/product-card_recommendation.svg" alt="Recommended">
+                <span class="product-card__recommendation-percentage">64% Recommend</span>
             </div>
+            <img src="/src/assets/img/external/dashboard_car3.png" alt="Product Image" class="product-card__img">
+            <div class="product-card__name">Mini Cooper</div>
+            <div class="product-card__stats">
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-1.svg" alt="Statistic 1">
+                <div class="product-card__stat product-card__stat2">132k</div>
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-3.svg" alt="Statistic 3">
+                <img class="product-card__stat" src="/src/assets/img/product-card_stat-4.svg" alt="Statistic 4">
 
-            <div class="product-card product-card_n3 content-dashboard__product-card content__grid-item">
-                <div class="product-card__recommendation">
-                    <svg class="product-card__recommendation-svg"
-                        data-src="assets/img/product-card__recommendation-img.svg"></svg>
-                    <span class="product-card__recommendation-percentage">64% Recommend</span>
-                </div>
-                <img class="product-card__img" src="assets/img/car3.png" alt="Product Image">
-                <div class="product-card__name">Porsche 911 Carrera</div>
-                <div class="product-card__stats">
-                    <svg class="product-card__stat product-card__stat1"
-                        data-src="assets/img/product-card__stat-1.svg"></svg>
-                    <div class="product-card__stat product-card__stat2">132k</div>
-                    <svg class="product-card__stat product-card__stat3"
-                        data-src="assets/img/product-card__stat-3.svg"></svg>
-                    <svg class="product-card__stat product-card__stat4"
-                        data-src="assets/img/product-card__stat-4.svg"></svg>
-                    <div class="product-card__price">$32/h</div>
-                </div>
+                <div class="product-card__price">$32/h</div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 
 </body>
 

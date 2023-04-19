@@ -46,6 +46,9 @@ function absPathToJsconfigArray(pathString) {
 
 function resolveAliases(pathString, webpackAliases) {
     let resolved = pathString;
+    if (pathString.startsWith('~')) {
+        pathString = pathString.slice(1);
+    }
     if (pathString.startsWith('/')) {
         resolved = path.resolve(__dirname, '../', pathString.slice(1));
         return resolved

@@ -138,8 +138,8 @@ $flex-basis-multiplier: 1.5;
         }
 
         .meter__icon {
-            mask-image: url('/src/assets/img/dashboard/meters/energy.svg');
-            -webkit-mask-image: url('/src/assets/img/dashboard/meters/energy.svg');
+            mask-image: url('/src/assets/img/meters_energy.svg');
+            -webkit-mask-image: url('/src/assets/img/meters_energy.svg');
             background-color: v.$primary3;
         }
 
@@ -155,8 +155,8 @@ $flex-basis-multiplier: 1.5;
         }
 
         .meter__icon {
-            mask-image: url('/src/assets/img/dashboard/meters/range.svg');
-            -webkit-mask-image: url('/src/assets/img/dashboard/meters/range.svg');
+            mask-image: url('/src/assets/img/meters_range.svg');
+            -webkit-mask-image: url('/src/assets/img/meters_range.svg');
             background-color: v.$secondary1;
         }
 
@@ -172,8 +172,8 @@ $flex-basis-multiplier: 1.5;
         }
 
         .meter__icon {
-            mask-image: url('/src/assets/img/dashboard/meters/brake-fluid.svg');
-            -webkit-mask-image: url('/src/assets/img/dashboard/meters/brake-fluid.svg');
+            mask-image: url('/src/assets/img/meters_brake-fluid.svg');
+            -webkit-mask-image: url('/src/assets/img/meters_brake-fluid.svg');
             background-color: v.$primary3;
         }
 
@@ -188,8 +188,8 @@ $flex-basis-multiplier: 1.5;
         }
 
         .meter__icon {
-            mask-image: url('/src/assets/img/dashboard/meters/tire_wear.svg');
-            -webkit-mask-image: url('/src/assets/img/dashboard/meters/tire_wear.svg');
+            mask-image: url('/src/assets/img/meters_tire-wear.svg');
+            -webkit-mask-image: url('/src/assets/img/meters_tire-wear.svg');
             background-color: v.$secondary2;
         }
 

@@ -1,4 +1,4 @@
-import Component from 'components/Component/Component';
+import Component from '@components/Component/Component';
 
 export default class FormAddNewReminder extends Component {
     html =

@@ -138,10 +138,10 @@ export function getMethods(obj) {
         .map(key => obj[key]);
 }
 
-export function getModules(context) {
+export function importModules(context) {
     let modules = {};
     context.keys().forEach((item) => {
         modules[item.replace('./', '')] = context(item);
     });
     return modules;
-};
+}

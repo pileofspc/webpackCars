@@ -1,8 +1,8 @@
 import 'external-svg-loader';
-import './misc';
 
-import '../assets/sass/booking.scss';
+import '@sass/booking.scss';
+import './misc';
 import './booking_inf-list.js';
 
-require.context('../assets/img/general/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
-require.context('../assets/img/booking/', true, /\.(svg)|(png)|(jpg)|(jpeg)$/);
+// Этого не должно быть в финальном билде
+require.context('@img/external/')

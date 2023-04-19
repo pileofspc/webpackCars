@@ -1,10 +1,11 @@
-import ModalAddNewReminder from "components/modal_addNewReminder";
+// import ModalAddNewReminder from "components/modal_addNewReminder";
+import Modal from "@components/Modal/Modal";
 
-let modal = new ModalAddNewReminder();
+let modal = new Modal();
 
 const reminder = document.querySelector('.reminder');
 const addButton = reminder.querySelector('.reminder__add');
 
 addButton.addEventListener('click', (evt) => {
-    modal.prepend(document.body);
+    document.body.prepend(modal.mainNode)
 })
