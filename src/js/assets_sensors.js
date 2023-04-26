@@ -1,4 +1,4 @@
-import Select from '@components/Select/Select';
+import DropdownSelectOne from '@components/DropdownSelectOne/DropdownSelectOne';
 import Modal from '@components/Modal/Modal';
 
 import FormSensorsSeeAll from '@modules/FormSensorsSeeAll/FormSensorsSeeAll';
@@ -27,10 +27,10 @@ class Sensors extends Component {
             this.sensorsListNode.append(sensor.mainNode);
         }
 
-        const categorySelect = new Select({
+        const categorySelect = new DropdownSelectOne({
             name: 'Assets',
             isRightSided: true,
-            options: [
+            children: [
                 this._element(`<div>123</div>`)
             ]
         });

@@ -1,28 +1,24 @@
 import Component from "@components/Component/Component";
-import './Select.scss';
-import {htmlToElement} from '/src/js/_helpers';
+import './Dropdown.scss';
 
 export default class Dropdown extends Component {
-    static idAttr = 'data-select-id';
-
-    html = 
+    html =
         `<div class="dropdown">
             <span class="dropdown__value" ${Component.idAttr}="value"></span>
             <div class="arrow dropdown__arrow" ${Component.idAttr}="arrow"></div>
-            <div class="dropdown__window" ${Component.idAttr}="window">
-                <form class="dropdown__form" action="" ${Component.idAttr}="form"></form>
-            </div>
+            <div class="dropdown__window" ${Component.idAttr}="window" ${Component.appendHereAttr}></div>
         </div>`;
 
-    childId = 1;
     isOpen = false;
 
-    constructor({
-        name = 'Dropdown',
-        options = [htmlToElement('<div>Nothing here :(</div>')],
-        isRightSided = false,
-        variant,
-    } = {}) {
+    constructor(
+        {
+            name = 'Dropdown',
+            children = null,
+            isRightSided = false,
+            variant,
+        } = {}
+    ) {
         super();
         this._init(this.html);
 
@@ -35,11 +31,10 @@ export default class Dropdown extends Component {
         if (variant === 'bordered') {
             this.mainNode.classList.add('dropdown_bordered')
         };
-        this.populate(options);
 
+        this._acceptChildren(children);
         // TODO: Возможно вынести стрелку в отдельный компонент, а если не выносить, то добавить в общие стили
     }
-
     open() {
         // TODO: Пересмотреть класс, т.к получается, что селект знает о поведении стрелки (оно описано в стилях)
         this.nodes.arrow.classList.add('arrow_open');
@@ -48,7 +43,7 @@ export default class Dropdown extends Component {
     }
 
     close() {
-        // TODO: Пересмотреть класс, т.к получается, что селект знает о поведении стрелки (оно описано в стилях)
+        // TODO: Пересмотреть класс, т.к получается, что селект знает о поведении стрелки (оно описано в стилях)авппппппппппппппппппппппппппппппппппппппппппппппппп ававры ваыр ваыр ывар
         this.nodes.arrow.classList.remove('arrow_open');
         this.nodes.window.classList.remove('dropdown__window_open');
         this.isOpen = false;
@@ -63,15 +58,7 @@ export default class Dropdown extends Component {
     }
 
     clear() {
-        this.nodes.form.innerHtml = null;
-        this.childId = 1;
-    }
-
-    populate(options) {
-        this.clear();
-        for (let option of options) {
-            this.addOption(option)
-        }
+        this.nodes.appendHere.innerHtml = null;
     }
 
     addListener(type, callback) {

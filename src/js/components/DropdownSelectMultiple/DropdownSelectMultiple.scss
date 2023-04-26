@@ -1,0 +1,31 @@
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+.dropdown {
+    &__controls {
+        display: flex;
+        gap: 5px;
+        margin-top: 10px;
+
+        > * {
+            flex-basis: 100%;
+        }
+    }
+
+    &__button {
+        font-size: 14px;
+
+        //color: black;
+        padding: 4px 8px;
+
+        box-shadow: inset ;
+    }
+
+    &__apply {
+        background-color: v.$primary3;
+    }
+
+    &__reset {
+        color: v.$dark1;
+    }
+}

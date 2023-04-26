@@ -125,7 +125,7 @@ module.exports = exports = {
                         test: /\.(png|jpg|jpeg|gif|svg)$/i,
                         type: 'asset/resource',
                         generator: {
-                            filename: `${PATHS.distImg}/[name].[hash][ext]`
+                            filename: `${PATHS.distImg}/[name][ext]`
                         }
                     }
                 ]

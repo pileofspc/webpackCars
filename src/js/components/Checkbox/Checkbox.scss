@@ -1,0 +1,102 @@
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+//.radio-button {
+//    --color: #{v.$primary3};
+//
+//    display: flex;
+//    align-items: center;
+//    cursor: pointer;
+//
+//    &__input {
+//        display: none;
+//    }
+//
+//    &__circle {
+//        display: flex;
+//        align-items: center;
+//        justify-content: center;
+//
+//        margin: 0;
+//        margin-right: 8px;
+//
+//        width: 18px;
+//        height: 18px;
+//
+//        border: 1px solid v.$dark2;
+//        border-radius: 50%;
+//    }
+//
+//    &__label-text {
+//        font-family: "DM Sans", sans-serif;
+//        font-size: 16px;
+//        font-weight: 400;
+//    }
+//
+//    &__input:checked ~ &__circle {
+//        border-color: var(--color);
+//
+//        &::after {
+//            content: "";
+//            width: 10px;
+//            height: 10px;
+//            background-color: var(--color);
+//            border-radius: 50%;
+//        }
+//    }
+//
+//    &:hover &__circle {
+//        border-color: lighten(v.$dark2, 25%)
+//    }
+//}
+
+
+.checkbox {
+    --color: #{v.$primary3};
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &__box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+
+        border: 1px solid v.$dark2;
+        border-radius: 4px;
+    }
+
+    &__label-text {
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    &__checkmark {
+        display: none;
+        width: 12px;
+        height: 12px;
+        color: var(--color);
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__input:checked ~ &__box {
+        border-color: var(--color);
+
+        .checkbox__checkmark {
+            display: block;
+        }
+    }
+
+    &:hover &__box {
+        filter: brightness(125%);
+    }
+}

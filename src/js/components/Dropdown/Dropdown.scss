@@ -1,1 +1,80 @@
-@use '/src/assets/sass/by-component/Select.scss';
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+.dropdown {
+    --select-transition: 0.2s ease;
+
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    color: v.$dark4;
+    display: flex;
+
+    margin-right: 8px;
+    cursor: pointer;
+
+    &__window {
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+        padding: 10px;
+        border: 2px solid v.$background2;
+        border-radius: 8px;
+        overflow: hidden;
+        width: max-content;
+        z-index: 2;
+
+        cursor: default;
+        color: v.$white1;
+        background-color: v.$background;
+
+        transition: transform var(--select-transition);
+        transform-origin: top;
+        transform: scaleY(0);
+
+        &_open {
+            transform: scaleY(1);
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &_right {
+        .select__window {
+            left: auto;
+            right: -10px;
+        }
+    }
+
+    &_bordered {
+        color: v.$white1;
+        background-color: v.$dark1;
+        border-radius: 22.5px;
+
+
+        $padding-sides: 20px;
+        padding: 6px $padding-sides;
+        padding-right: calc($padding-sides + 8px);
+
+        .select__value {
+            margin-right: 20px;
+        }
+    }
+}
+
+.arrow {
+    transition: transform var(--select-transition);
+    transform-origin: center 15%;
+    transform: translate(80%, 40%) rotate(90deg);
+
+    border: solid 4px transparent;
+    border-top: solid 5px v.$dark4;
+
+    // При открытом селекте
+    &_open {
+        transform: translate(80%, 40%);
+    }
+}

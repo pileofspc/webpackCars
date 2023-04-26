@@ -1,4 +1,4 @@
-import Button from '@components/Button/Button';
+import ButtonToggle from '@components/ButtonToggle/ButtonToggle';
 import Component from '@components/Component/Component';
 import Select from '@components/Select/Select';
 import ProductCard from '@modules/ProductCard/ProductCard';
@@ -42,14 +42,14 @@ export default class BookingInfiniteList extends Component {
             ]
         );
 
-        const viewButton = new Button({
+        const viewButton = new ButtonToggle({
             id: 'view-type',
             iconPath: '../assets/img/view-type.svg'
         });
         viewButton.mainNode.classList.add('inf-list__button');
         viewButton.nodes.img.classList.add('inf-list__button-img');
 
-        const filterButton = new Button({
+        const filterButton = new ButtonToggle({
             id: 'filter',
             iconPath: '../assets/img/filter.svg'
         });

@@ -1,3 +1,5 @@
+import {v4 as uuidv4} from 'uuid';
+
 export function findY(path, x) {
     if (typeof x !== 'string' && typeof x !== 'number') {
         throw new Error('findY получила неправильный тип');
@@ -100,9 +102,7 @@ export function toCamelCase(string, options = {
     let result = fold(string, options);
     result = splitByWord(result, options);
 
-    result = result.map((item, index) => {
-        return index === 0 ? item : capitalize(item)
-    });
+    result = result.map((item, index) => index === 0 ? item : capitalize(item));
 
     return result.join('');
 }
@@ -140,8 +140,15 @@ export function getMethods(obj) {
 
 export function importModules(context) {
     let modules = {};
-    context.keys().forEach((item) => {
+    for (let item of context.keys()) {
         modules[item.replace('./', '')] = context(item);
-    });
+    }
+    // context.keys().forEach((item) => {
+    //     modules[item.replace('./', '')] = context(item);
+    // });
     return modules;
+}
+
+export function uuid() {
+    return uuidv4();
 }

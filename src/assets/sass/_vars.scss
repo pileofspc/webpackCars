@@ -1,57 +1,101 @@
-
 @use 'sass:color';
 
-$primary1:              rgb(36, 39, 49);
-$primary2:              rgb(224, 228, 231);
-$primary3:              rgb(161, 98, 247);
-$primary3transparent:   rgba($primary3, 70%);
+$primary1:                  rgb(36, 39, 49);
+$primary2:                  rgb(224, 228, 231);
+$primary3:                  rgb(161, 98, 247);
+$primary3transparent:       rgba($primary3, 70%);
 
-$secondary1:            rgb(255, 99, 112);
-$secondary2:            rgb(246, 204, 13);
-$secondary3:            rgb(40, 132, 255);
-$secondary3transparent:   rgba(darken($secondary3, 10%), 0.2);
-$secondary4:            rgb(255, 118, 76);
-$secondary4transparent:   rgba(darken($secondary4, 10%), 0.2);
+$secondary1:                rgb(255, 99, 112);
+$secondary2:                rgb(246, 204, 13);
+$secondary3:                rgb(40, 132, 255);
+$secondary3transparent:     rgba(darken($secondary3, 10%), 0.2);
+$secondary4:                rgb(255, 118, 76);
+$secondary4transparent:     rgba(darken($secondary4, 10%), 0.2);
 
-$tertiary1:             rgb(225, 223, 164);
-$tertiary2:             rgb(227, 236, 241);
-$tertiary3:             rgb(244, 227, 229);
-
-
-
-$white:                 rgb(255, 255, 255);
-$white1:                rgb(224, 228, 231);
-$dark1:                 rgb(36, 39, 49);
-$dark3:                 rgb(114, 118, 124);
-$dark4:                 rgb(124, 124, 141);
-$dark5:                 rgb(128, 129, 145);
-
-$caret-color:           rgb(239, 144, 17);
-
-$background:            rgb(31, 33, 40);
-$background2:           rgb(43, 46, 56);
-$text:                  rgb(255, 255, 255);
-$text-inactive:         rgba(255, 255, 255, 0.5);
-$link-active:           rgb(41, 46, 61);
-
-$dot:                   $white;
-$tooltip:               rgb(40, 43, 50);
-
-$notifications:         rgb(43, 46, 56);
-$notifications-shadow:  rgba(14, 14, 14, 0.2);
-$notifications-status-ok: rgba(112, 207, 151, 1);
+$tertiary1:                 rgb(225, 223, 164);
+$tertiary2:                 rgb(227, 236, 241);
+$tertiary3:                 rgb(244, 227, 229);
 
 
-$spacers:               rgb(40, 44, 47);
-$spacers-lighter:       rgb(51, 54, 66);
-$spacers-header:        rgb(44, 48, 61);
 
-$modal-bg:              rgba(20, 20, 20, 0.8);
+$white:                     rgb(255, 255, 255);
+$white1:                    rgb(224, 228, 231);
+$dark1:                     rgb(36, 39, 49);
+$dark2:                     rgb(124, 124, 124);
 
-$sensor__graphic-svg:   #A4A5A6;
+// TODO: Объединить все серые цвета в один $dark2
+
+$dark3:                     rgb(114, 118, 124);
+$dark4:                     rgb(124, 124, 141);
+$dark5:                     rgb(128, 129, 145);
+
+$caret-color:               rgb(239, 144, 17);
+
+$background:                rgb(31, 33, 40);
+$background2:               rgb(43, 46, 56);
+$text:                      rgb(255, 255, 255);
+$text-inactive:             rgba(255, 255, 255, 0.5);
+$link-active:               rgb(41, 46, 61);
+
+$dot:                       $white;
+$tooltip:                   rgb(40, 43, 50);
+
+$notifications:             rgb(43, 46, 56);
+$notifications-shadow:      rgba(14, 14, 14, 0.2);
+$notifications-status-ok:   rgba(112, 207, 151, 1);
+
+
+$spacers:                   rgb(40, 44, 47);
+$spacers-lighter:           rgb(51, 54, 66);
+$spacers-header:            rgb(44, 48, 61);
+
+$modal-bg:                  rgba(20, 20, 20, 0.8);
+
+$sensor__graphic-svg:       #A4A5A6;
 
 :root {
-    --secondary1: #{$secondary1};
+    --primary1:                     rgb(36, 39, 49);
+    --primary2:                     rgb(224, 228, 231);
+        $primary3:                  rgb(161, 98, 247);
+    --primary3:                     #{$primary3};
+    --primary3transparent:          #{rgba($primary3, 0.7)};
+
+    --secondary1:                   rgb(255, 99, 112);
+    --secondary2:                   rgb(246, 204, 13);
+        $secondary3:                rgb(40, 132, 255);
+    --secondary3:                   #{$secondary3};
+    --secondary3transparent:        #{rgba(darken($secondary3, 10%), 0.2)};
+        $secondary4:                rgb(255, 118, 76);
+    --secondary4:                   #{$secondary4};
+    --secondary4transparent:        #{rgba(darken($secondary4, 10%), 0.2)};
+
+    --tertiary1:                    rgb(225, 223, 164);
+    --tertiary2:                    rgb(227, 236, 241);
+    --tertiary3:                    rgb(244, 227, 229);
+
+    --white:                        rgb(255, 255, 255);
+    --white1:                       rgb(224, 228, 231);
+    --dark1:                        rgb(36, 39, 49);
+    --dark2:                        rgb(124, 124, 124);
+
+    --background:                   rgb(31, 33, 40);
+    --background2:                  rgb(43, 46, 56);
+
+    --text:                         rgb(255, 255, 255);
+    --text-inactive:                rgba(255, 255, 255, 0.5);
+    --link-active:                  rgb(41, 46, 61);
+
+    --caret-color:                  rgb(239, 144, 17);
+    --dot:                          var(--white);
+    --tooltip:                      rgb(40, 43, 50);
+    --notifications:                rgb(43, 46, 56);
+    --notifications-shadow:         rgba(14, 14, 14, 0.2);
+    --notifications-status-ok:      rgba(112, 207, 151, 1);
+    --spacers:                      rgb(40, 44, 47);
+    --spacers-lighter:              rgb(51, 54, 66);
+    --spacers-header:               rgb(44, 48, 61);
+    --modal-bg:                     rgba(20, 20, 20, 0.8);
+    --sensor__graphic-svg:          rgb(164, 165, 166);
 }
 
 
@@ -60,8 +104,3 @@ $sensor__graphic-svg:   #A4A5A6;
 // ----------------------------------------------
 
 $ff-primary: 'DM Sans', sans-serif;
-// $f-title-13M: ;
-
-// font-size: 13px;
-// font-weight: 500;
-// line-height: 17px;

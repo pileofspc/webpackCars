@@ -1,12 +1,62 @@
 @use '/src/assets/sass/vars' as v;
 @use '/src/assets/sass/mixins' as m;
 
+//.radio-button {
+//    display: flex;
+//    align-items: center;
+//
+//    &__circle {
+//        margin: 0;
+//        margin-right: 5px;
+//    }
+//}
+
+
 .radio-button {
+    --color: #{v.$primary3};
+
     display: flex;
     align-items: center;
+    cursor: pointer;
+
+    &__input {
+        display: none;
+    }
 
     &__circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         margin: 0;
-        margin-right: 5px;
+        margin-right: 8px;
+
+        width: 18px;
+        height: 18px;
+
+        border: 1px solid v.$dark2;
+        border-radius: 50%;
+    }
+
+    &__label-text {
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    &__input:checked ~ &__circle {
+        border-color: var(--color);
+
+        &::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: var(--color);
+            border-radius: 50%;
+        }
+    }
+
+    &:hover &__circle {
+        filter: brightness(125%);
     }
 }

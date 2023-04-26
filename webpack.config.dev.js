@@ -10,10 +10,12 @@ let newOptions = {
             // publicPath: '/',
         },
         port: 3000,
-        // open: true,
         hot: true,
         compress: true,
         // watchFiles: ['src/'],
+    },
+    output: {
+        clean: false
     },
     module: {
         rules: [

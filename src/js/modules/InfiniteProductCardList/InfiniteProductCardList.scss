@@ -16,25 +16,15 @@
 
     &__buttons {
         margin-left: auto;
-    }
 
-    &__button {
-        position: relative;
-        width: 44px;
-        height: 44px;
-
-        &:not(:first-child) {
+        > * {
             margin-left: 16px;
         }
     }
 
-    &__button-img {
-        @include m.centerPosAbs();
-    }
-
-    &__button.active {
-        background-color: v.$primary3;
-    }
+    //&__button.active {
+    //    background-color: v.$primary3;
+    //}
     
     &__list {
         display: grid;

@@ -2,13 +2,24 @@
 @use '/src/assets/sass/mixins' as m;
 
 .button {
+    --activecolor: #{v.$primary3};
+
     border: none;
     border-radius: 5px;
     color: v.$white;
     cursor: pointer;
 
     &_round {
+        position: relative;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
+
+        .button__img {
+            @include m.centerPosAbs();
+            width: 24px;
+            height: 24px;
+        }
     }
 
     &_bgcolor_secondary1 {
@@ -28,7 +39,9 @@
     }
 
     // Активное состояние
-    // &.active {
-    //     background-color: v.$primary3;
-    // }
+     &.active {
+         background-color: var(--activecolor);
+     }
+
+
 }

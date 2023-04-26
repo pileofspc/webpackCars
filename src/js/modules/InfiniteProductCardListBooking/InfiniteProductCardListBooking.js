@@ -1,14 +1,14 @@
 import Component from '@components/Component/Component';
-import Button from '@components/Button/Button';
-import Select from '@components/Select/Select';
 import InfiniteProductCardList from '@modules/InfiniteProductCardList/InfiniteProductCardList';
+import ButtonToggle from '@components/ButtonToggle/ButtonToggle';
+import DropdownSelectOne from "@components/DropdownSelectOne/DropdownSelectOne";
+import DropdownSelectMultiple from "@components/DropdownSelectMultiple/DropdownSelectMultiple";
+import Modal from '@components/Modal/Modal';
 
 import global from '/src/js/global';
-import Modal from '@components/Modal/Modal';
-import RadioButton from '@components/RadioButton/RadioButton';
 
-import filterSvg from '@img/button_filter.svg';
-import viewModeSvg from '@img/button_view-mode.svg';
+import filterSvg from '@img/button_filter.svg?sprite';
+import viewModeSvg from '@img/button_view-mode.svg?sprite';
 
 export default class BookingInfiniteProductCardList extends InfiniteProductCardList {
     html = 
@@ -30,24 +30,25 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
 
         this.initSelects(
             [
-                new Select({
+                new DropdownSelectOne({
                     name: 'Sort',
                     variant: 'bordered',
-                    options: [
-                        new RadioButton({label: 'Oldest', groupName: 'sort'}).mainNode,
-                        new RadioButton({label: 'Newest', groupName: 'sort'}).mainNode,
-                        new RadioButton({label: 'High Price', groupName: 'sort'}).mainNode,
-                        new RadioButton({label: 'Low Price', groupName: 'sort'}).mainNode,
-                    ]
+                    selectOptions: [
+                        {label: 'Oldest', onSelected: 'делать что то'},
+                        {label: 'Newest', onSelected: 'делать что то'},
+                        {label: 'High Price', onSelected: 'делать что то'},
+                        {label: 'Low Price', onSelected: 'делать что то'},
+                    ],
+                    cleanup: 'общая уборка'
                 }),
-                new Select({
+                new DropdownSelectMultiple({
                     name: 'Categories',
                     variant: 'bordered',
-                    options: [
-                        new RadioButton({label: 'Manual Transmission', groupName: 'sort'}).mainNode,
-                        new RadioButton({label: 'Auto Transmission', groupName: 'sort'}).mainNode,
-                        new RadioButton({label: 'Coupe', groupName: 'sort'}).mainNode,
-                        new RadioButton({label: 'Sport Coupe', groupName: 'sort'}).mainNode,
+                    selectOptions: [
+                        {label: 'Manual Transmission', onSelected: 'делать что то', cleanup: 'убрать за собой'},
+                        {label: 'Auto Transmission', onSelected: 'делать что то', cleanup: 'убрать за собой'},
+                        {label: 'Coupe', onSelected: 'делать что то', cleanup: 'убрать за собой'},
+                        {label: 'Sport Coupe', onSelected: 'делать что то', cleanup: 'убрать за собой'},
                     ]
                 })
             ]
@@ -55,18 +56,16 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
 
         this.initButtons(
             [
-                new Button({
+                new ButtonToggle({
                     id: 'view-type',
-                    iconPath: viewModeSvg,
-                    handleClick() {
-                        if (this.isActive) {
-                            console.log('ACTIVATED')
-                        }
+                    iconSpriteId: viewModeSvg.id,
+                    onActivation() {
+                        console.log(123)
                     }
                 }),
-                new Button({
+                new ButtonToggle({
                     id: 'filter',
-                    iconPath: filterSvg
+                    // iconSpriteId: filterSvg.id,
                 })
             ]
         );
@@ -83,7 +82,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
             });
             window.addEventListener('click', (e) => {
                 if (!this.isEventInsideSelects(e)) {
-                    this.closeSelectsExcept(null);
+                    this.closeAllSelects();
                 }
             })
             this.nodes.selects.append(item.mainNode);
@@ -95,9 +94,6 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
 
         for (let i = 0; i < buttonsArray.length; i++) {
             const item = buttonsArray[i];
-
-            item.mainNode.classList.add('infinite-product-card-list__button');
-            item.nodes.img.classList.add('infinite-product-card-list__button-img');
 
             this.nodes.buttons.append(item.mainNode)
         }
@@ -113,9 +109,12 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
         }
     }
 
+    closeAllSelects() {
+        this.closeSelectsExcept(null)
+    }
+
     isEventInsideSelects(e) {
-        for (let i = 0; i < this.selects.length; i++) {
-            const item = this.selects[i];
+        for (let item of this.selects) {
             if (item.mainNode.contains(e.target)) {
                 return true
             }

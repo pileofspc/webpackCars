@@ -1,0 +1,76 @@
+@use '/src/assets/sass/vars' as v;
+@use '/src/assets/sass/mixins' as m;
+
+//.button {
+//    --activecolor: var(--primary3);
+//    --bgcolor: var(--dark1);
+//
+//    border: none;
+//    border-radius: 5px;
+//    color: var(--white);
+//    cursor: pointer;
+//    background-color: var(--bgcolor);
+//
+//    &_round {
+//        position: relative;
+//        width: 44px;
+//        height: 44px;
+//        border-radius: 50%;
+//
+//        .button__img {
+//            @include m.centerPosAbs();
+//            width: 24px;
+//            height: 24px;
+//        }
+//    }
+//
+//    //&_bgcolor_secondary1 {
+//    //    background-color: var(--secondary1);
+//    //}
+//    //
+//    //&_bgcolor_primary3 {
+//    //    background-color: var(--primary3);
+//    //}
+//    //
+//    //&_bgcolor_dark1 {
+//    //    background-color: var(--dark1);
+//    //}
+//    //
+//    //&_bgcolor_transparent {
+//    //    background-color: transparent;
+//    //}
+//
+//    // Активное состояние
+//     &.active {
+//         background-color: var(--activecolor);
+//     }
+//}
+
+.button {
+    --activecolor: var(--primary3);
+    --bgcolor: var(--dark1);
+
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    background-color: var(--bgcolor);
+
+    &_round {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+
+        .button__img {
+            @include m.centerPosAbs();
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    // Активное состояние
+     &.active {
+         background-color: var(--activecolor);
+     }
+}
