@@ -49,9 +49,9 @@ export default class DropdownSelectMultiple extends DropdownSelectOne {
         this.selectOptions.push(option);
         option.nodes.input.addEventListener('change', () => {
             if (option.nodes.input.checked) {
-                console.log(optionData.onSelected)
+                optionData.onSelected();
             } else {
-                console.log(optionData.cleanup)
+                optionData.cleanup();
             }
         });
 

@@ -15,17 +15,22 @@ export default class Component {
 
         // Создаем мейн ноду и собираем нужные ноды в this.nodes
         this.mainNode = this._element(html);
-        this._collectNodes(this.mainNode);
-        this._collectAppendNode(this.mainNode);
+        this._collectAll(this.mainNode);
 
         this.mainNode.INSTANCE_REFERENCE = this;
     }
 
     _initAdditional(html) {
         let additionalNode = this._element(html);
-        this._collectNodes(additionalNode);
+        this._collectAll(additionalNode);
         this._append(additionalNode);
-        this._collectAppendNode(additionalNode);
+
+        return additionalNode
+    }
+
+    _prepare(html) {
+        let additionalNode = this._element(html);
+        this._collectAll(additionalNode);
 
         return additionalNode
     }
@@ -42,7 +47,7 @@ export default class Component {
         for (const node of collectedNodes) {
             if (this.nodes[node.getAttribute(Component.idAttr)]) {
                 console.warn(
-                    `Нода "${node.getAttribute(Component.idAttr)}" asd экземпляра класса ${this.constructor.name} перезаписана!`
+                    `Нода "${node.getAttribute(Component.idAttr)}" экземпляра класса ${this.constructor.name} перезаписана!`
                 )
             }
             this.nodes[node.getAttribute(Component.idAttr)] = node
@@ -55,17 +60,24 @@ export default class Component {
         if (!collectedNode && fromNode.hasAttribute(Component.appendHereAttr)) {
             collectedNode = fromNode
         }
-        if (!collectedNode) {
-            return
+        if (!collectedNode && !this.nodes.appendHere) {
+            collectedNode = this.mainNode
         }
 
-        this.nodes.appendHere = collectedNode;
-        this.nodes.appendHere.removeAttribute(Component.appendHereAttr);
+        if (collectedNode) {
+            this.nodes.appendHere = collectedNode;
+            this.nodes.appendHere?.removeAttribute(Component.appendHereAttr);
+        }
     }
 
-    _fragment(html) {
-        return htmlToFragment(html);
+    _collectAll(fromNode) {
+        this._collectNodes(fromNode);
+        this._collectAppendNode(fromNode);
     }
+
+    // _fragment(html) {
+    //     return htmlToFragment(html);
+    // }
 
     _element(html) {
         return htmlToElement(html);
@@ -91,8 +103,8 @@ export default class Component {
         }
     }
 
-    _append(element) {
-        this.nodes.appendHere?.append(element)
+    _append(node) {
+        this.nodes.appendHere?.append(node)
     }
 
     _removeChild(id) {

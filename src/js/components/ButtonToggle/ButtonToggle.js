@@ -2,33 +2,34 @@ import Component from '@components/Component/Component';
 import './ButtonToggle.scss';
 
 export default class ButtonToggle extends Component {
-    html = 
-        `<button class="button button_toggle"></button>`;
+    html =
+        `<button class="button"></button>`;
     svgHtml =
         `<svg class="button__img" ${Component.idAttr}="img">
-            <use xlink:href="PLACEHOLDER" ${Component.idAttr}="imgUse"></use>
+            <use xlink:href="" ${Component.idAttr}="imgUse"></use>
         </svg>`;
     innerTextHtml =
-        `<span class="button__inner-text" ${Component.idAttr}="innerText">BUTTON_TEXT</span>`
+        `<span class="button__inner-text" ${Component.idAttr}="innerText"></span>`;
 
     isActive = false;
     onActivation = [];
     onDeactivation = [];
 
-    constructor({
-        isActive,
-        iconSpriteId,
-        onActivation,
-        onDeactivation,
-        // default color is --primary3 in scss
-        activeColor,
-        // default bgcolor is --dark1 in scss
-        bgcolor
-    } = {}) {
+    constructor(
+        {
+            isActive,
+            innerText,
+            iconSpriteId,
+            onActivation,
+            onDeactivation,
+            // default color is --primary3 in scss
+            activeColor,
+            // default bgcolor is --dark1 in scss
+            bgcolor
+        } = {}
+    ) {
         super();
         this._init(this.html)
-
-        // this.nodes.imgUse.setAttribute('xlink:href', `#${iconSpriteId}`);
 
         this.mainNode.addEventListener('click', () => {
             this.toggle();
@@ -36,6 +37,9 @@ export default class ButtonToggle extends Component {
 
         if (iconSpriteId) {
             this.addSvg(iconSpriteId)
+        }
+        if (innerText) {
+            this.addInnerText(innerText)
         }
 
         if (isActive) {
@@ -94,6 +98,7 @@ export default class ButtonToggle extends Component {
     addDeactivationListener(callback) {
         if (typeof callback === 'function') {
             this.onDeactivation.push(callback);
+            return
         }
         if (Array.isArray(callback)) {
             for (const item of callback) {
@@ -103,6 +108,14 @@ export default class ButtonToggle extends Component {
     }
 
     addSvg(spriteId) {
-        this._initAdditional(this.svgHtml);
+        const svgNode = this._prepare(this.svgHtml);
+        this.nodes.imgUse.setAttribute('xlink:href', `#${spriteId}`)
+        this.mainNode.append(svgNode);
+    }
+
+    addInnerText(innerText) {
+        const textNode = this._prepare(this.innerTextHtml);
+        textNode.textContent = innerText;
+        this.mainNode.append(textNode);
     }
 }

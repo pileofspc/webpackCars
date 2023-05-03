@@ -10,12 +10,14 @@ import global from '/src/js/global';
 import filterSvg from '@img/button_filter.svg?sprite';
 import viewModeSvg from '@img/button_view-mode.svg?sprite';
 
-export default class BookingInfiniteProductCardList extends InfiniteProductCardList {
+export default class InfiniteProductCardListBooking extends InfiniteProductCardList {
     html = 
         `<div class="infinite-product-card-list__controls">
             <div class="infinite-product-card-list__selects" ${Component.idAttr}="selects"></div>
             <div class="infinite-product-card-list__buttons" ${Component.idAttr}="buttons"></div>
         </div>`;
+
+    controls = {};
 
     constructor() {
         super({
@@ -24,9 +26,9 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
             backendEndpoint: global.database.booking
         });
 
-        const controls = this._fragment(this.html);
-        this.mainNode.prepend(controls);
-        this._collectNodes(this.mainNode);
+        const controlsNode = this._prepare(this.html)
+        this.mainNode.prepend(controlsNode);
+
 
         this.initSelects(
             [
@@ -34,21 +36,74 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
                     name: 'Sort',
                     variant: 'bordered',
                     selectOptions: [
-                        {label: 'Oldest', onSelected: 'делать что то'},
-                        {label: 'Newest', onSelected: 'делать что то'},
-                        {label: 'High Price', onSelected: 'делать что то'},
-                        {label: 'Low Price', onSelected: 'делать что то'},
+                        {
+                            label: 'Oldest', onSelected: () => {
+                                console.log('делать что то')
+                            }
+                        },
+                        {
+                            label: 'Newest',
+                            onSelected: () => {
+                                console.log('делать что то')
+                            }
+                        },
+                        {
+                            label: 'High Price',
+                            onSelected: () => {
+                                console.log('делать что то')
+                            }
+                        },
+                        {
+                            label: 'Low Price',
+                            onSelected: () => {
+                                console.log('делать что то')
+                            }
+                        },
                     ],
-                    cleanup: 'общая уборка'
+                    cleanup: () => {
+                        console.log(this)
+                    }
                 }),
                 new DropdownSelectMultiple({
                     name: 'Categories',
                     variant: 'bordered',
                     selectOptions: [
-                        {label: 'Manual Transmission', onSelected: 'делать что то', cleanup: 'убрать за собой'},
-                        {label: 'Auto Transmission', onSelected: 'делать что то', cleanup: 'убрать за собой'},
-                        {label: 'Coupe', onSelected: 'делать что то', cleanup: 'убрать за собой'},
-                        {label: 'Sport Coupe', onSelected: 'делать что то', cleanup: 'убрать за собой'},
+                        {
+                            label: 'Manual Transmission',
+                            onSelected: () => {
+                                console.log('делать что то',)
+                            },
+                            cleanup: () => {
+                                console.log('убрать за собой')
+                            }
+                        },
+                        {
+                            label: 'Auto Transmission',
+                            onSelected: () => {
+                                console.log('делать что то',)
+                            },
+                            cleanup: () => {
+                                console.log('убрать за собой')
+                            }
+                        },
+                        {
+                            label: 'Coupe',
+                            onSelected: () => {
+                                console.log('делать что то',)
+                            },
+                            cleanup: () => {
+                                console.log('убрать за собой')
+                            }
+                        },
+                        {
+                            label: 'Sport Coupe',
+                            onSelected: () => {
+                                console.log('делать что то',)
+                            },
+                            cleanup: () => {
+                                console.log('убрать за собой')
+                            }
+                        },
                     ]
                 })
             ]
@@ -59,6 +114,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
                 new ButtonToggle({
                     id: 'view-type',
                     iconSpriteId: viewModeSvg.id,
+                    innerText: 'здоров sdasd asdsad asdо',
                     onActivation() {
                         console.log(123)
                     }
@@ -72,7 +128,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
     }
 
     initSelects(selectsArray) {
-        this.selects = selectsArray;
+        this.controls.selects = selectsArray;
 
         for (let i = 0; i < selectsArray.length; i++) {
             const item = selectsArray[i];
@@ -90,7 +146,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
     }
 
     initButtons(buttonsArray) {
-        this.buttons = buttonsArray;
+        this.controls.buttons = buttonsArray;
 
         for (let i = 0; i < buttonsArray.length; i++) {
             const item = buttonsArray[i];
@@ -100,11 +156,11 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
     }
 
     closeSelectsExcept(current) {
-        for (let i = 0; i < this.selects.length; i++) {
-            const item = this.selects[i];
+        for (let i = 0; i < this.controls.selects.length; i++) {
+            const item = this.controls.selects[i];
             
-            if (this.selects[i].isOpen === true && this.selects[i] !== current) {
-                this.selects[i].close()
+            if (this.controls.selects[i].isOpen === true && this.controls.selects[i] !== current) {
+                this.controls.selects[i].close()
             }
         }
     }
@@ -114,7 +170,7 @@ export default class BookingInfiniteProductCardList extends InfiniteProductCardL
     }
 
     isEventInsideSelects(e) {
-        for (let item of this.selects) {
+        for (let item of this.controls.selects) {
             if (item.mainNode.contains(e.target)) {
                 return true
             }

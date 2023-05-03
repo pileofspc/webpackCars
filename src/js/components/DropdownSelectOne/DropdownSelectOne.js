@@ -25,6 +25,9 @@ export default class DropdownSelectOne extends Dropdown {
         super({
             name, children, isRightSided, variant
         });
+        // const contents = this._element(this.contentsHtml);
+        // this.nodes.appendHere.append(contents);
+        // this._collectAll(this.mainNode);
         this._initAdditional(this.contentsHtml);
 
         this.selectName = toCamelCase(name);
@@ -51,8 +54,10 @@ export default class DropdownSelectOne extends Dropdown {
         this.setId(option);
         this.selectOptions.push(option);
         option.nodes.input.addEventListener('change', () => {
-            console.log(this.cleanup);
-            console.log(optionData.onSelected);
+
+            this.cleanup();
+            optionData.onSelected();
+
             setTimeout(() => {
                 this.close()
             }, 200)

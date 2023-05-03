@@ -5,8 +5,9 @@ import Component from '@components/Component/Component';
 
 import statAmountSvgPath from '@img/product-card_amount.svg';
 import statTransmissionSvgPath from '@img/product-card_transmission.svg';
-import heartSvg from '@img/icon_heart.svg';
-import heartActiveSvg from '@img/icon_heart-active.svg';
+import heartSvg from '@img/icon_heart.svg?sprite';
+import heartActiveSvg from '@img/icon_heart-active.svg?sprite';
+import ButtonToggle from "@components/ButtonToggle/ButtonToggle";
 
 
 export default class ProductCard extends Component {
@@ -14,9 +15,7 @@ export default class ProductCard extends Component {
         `<div class="product-card">
             <div class="product-card__top-bar">
                 <span class="product-card__name" ${Component.idAttr}="name">Porshe 718 Cayman S</span>
-                <button class="button button_bgcolor_transparent product-card__favorite" ${Component.idAttr}="heartButton">
-                    <img class="product-card__favorite-img" src="${heartSvg}" alt="Favorite" ${Component.idAttr}="heart">
-                </button>
+                <div ${Component.idAttr}="buttons"></div>
             </div>
             <div class="product-card__type" ${Component.idAttr}="type">Sport Coupe</div>
             <img class="product-card__img" alt="Car" ${Component.idAttr}="img">
@@ -35,7 +34,10 @@ export default class ProductCard extends Component {
             </div>
         </div>`;
 
+
+
     api = new Api();
+    controls = {};
 
     constructor({
         id,
@@ -59,15 +61,28 @@ export default class ProductCard extends Component {
         this.nodes.transmissions.textContent = transmission;
         this.nodes.rentCost.textContent = `\$${rentCost}/d`;
 
-        this.nodes.heartButton.addEventListener('click', () => {
-            if (!this.api.check(id)) {
-                this.api.setFavorite(id);
-                this.activateHeart();
-            } else {
-                this.api.removeFavorite(id);
-                this.deactivateHeart();
-            }
-        })
+        // this.nodes.heartButton.addEventListener('click', () => {
+        //     if (!this.api.check(id)) {
+        //         this.api.setFavorite(id);
+        //         this.activateHeart();
+        //     } else {
+        //         this.api.removeFavorite(id);
+        //         this.deactivateHeart();
+        //     }
+        // })
+
+        this.initButtons(
+            [
+                new ButtonToggle(
+                    {
+                        iconSpriteId: heartSvg.id,
+                        onActivation: () => {
+                            this.activateHeart();
+                        }
+                    }
+                )
+            ]
+        );
     }
 
     activateHeart() {
@@ -76,6 +91,13 @@ export default class ProductCard extends Component {
 
     deactivateHeart() {
         this.nodes.heart.setAttribute('src', heartSvg);
+    }
+
+    initButtons(buttonsArray) {
+        this.controls.buttons = buttonsArray;
+        for (const button of buttonsArray) {
+            this.nodes.buttons.append(button.mainNode)
+        }
     }
 }
 
@@ -94,3 +116,8 @@ class Api {
         return this.global.database.userFavoriteCars.has(id);
     }
 }
+
+
+// <button className="button button_bgcolor_transparent product-card__favorite" ${Component.idAttr}="heartButton">
+//     <img className="product-card__favorite-img" src="${heartSvg}" alt="Favorite" ${Component.idAttr}="heart">
+// </button>
